@@ -19,8 +19,8 @@ Neste projeto engloba duas atividades que se complementam. Na primeira iremos pa
 
 A segunda envolve a utilização da base na construção de modelos de Machine Learning para a predição da resposta ao primeiro tratamento identificando oportunidades de melhoria nas ações de saúde pública no tratamento oncológico.
 
-## Documentation
+## Documentação
 
-[**Documentação**](https://ulf-tecc2.github.io/rhc_inca/site)
+[**Código Fonte - **](https://ulf-tecc2.github.io/rhc_inca/site)
 
 
