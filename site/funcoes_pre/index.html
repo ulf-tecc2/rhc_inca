@@ -10,13 +10,15 @@
       
       
       
+        <link rel="next" href="../funcoes_ana/">
+      
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
-        <title>Implementation Description - Registros Hospitalares de Câncer (RHC)</title>
+        <title>Pre Processamento e Carga de Dados - Registros Hospitalares de Câncer (RHC)</title>
       
     
     
@@ -60,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#implementation-description" class="md-skip">
+        <a href="#pre_processamento" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Implementation Description
+              Pre Processamento e Carga de Dados
             
           </span>
         </div>
@@ -173,10 +175,28 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../funcoes_pre/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Pre Processamento e Carga de Dados
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -185,6 +205,42 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre_processamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      pre_processamento
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre_processamento.leitura_inicial_dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      leitura_inicial_dados
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -246,23 +302,12 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#extracao-e-carga-dos-dados" class="md-nav__link">
-    <span class="md-ellipsis">
-      Extracao e Carga dos Dados
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#pre_processamento" class="md-nav__link">
@@ -277,42 +322,6 @@
   <a href="#pre_processamento.leitura_inicial_dados" class="md-nav__link">
     <span class="md-ellipsis">
       leitura_inicial_dados
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#analise-dos-dados" class="md-nav__link">
-    <span class="md-ellipsis">
-      Análise dos Dados
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#analise_valores" class="md-nav__link">
-    <span class="md-ellipsis">
-      analise_valores
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#selecao-dos-dados-para-a-criacao-dos-modelos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Seleção dos Dados para a criação dos modelos
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extracaoDados" class="md-nav__link">
-    <span class="md-ellipsis">
-      extracaoDados
     </span>
   </a>
   
@@ -336,9 +345,7 @@
   
 
 
-<h1 id="implementation-description">Implementation Description</h1>
-<h2 id="extracao-e-carga-dos-dados">Extracao e Carga dos Dados</h2>
-
+  <h1>Pre Processamento e Carga de Dados</h1>
 
 <div class="doc doc-object doc-module">
 
@@ -491,70 +498,6 @@ MBA em Data Science e Analytics - USP/Esalq - 2025</p>
     </div>
 
 </div>
-
-
-
-  </div>
-
-    </div>
-
-</div><h2 id="analise-dos-dados">Análise dos Dados</h2>
-
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="analise_valores"></a>
-    <div class="doc doc-contents first">
-
-      <p>Registros Hospitalares de Câncer (RHC) - Analise dos dados
-MBA em Data Science e Analytics - USP/Esalq - 2025</p>
-<p>@author: ulf Bergmann</p>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-</div><h2 id="selecao-dos-dados-para-a-criacao-dos-modelos">Seleção dos Dados para a criação dos modelos</h2>
-
-
-<div class="doc doc-object doc-module">
-
-
-
-<a id="extracaoDados"></a>
-    <div class="doc doc-contents first">
-
-      <p>Registros Hospitalares de Câncer (RHC) - Extracao e selecao dos dados para construcao dos modelos
-MBA em Data Science e Analytics - USP/Esalq - 2025</p>
-<p>@author: ulf Bergmann</p>
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
 
 
 

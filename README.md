@@ -21,6 +21,6 @@ A segunda envolve a utilização da base na construção de modelos de Machine L
 
 ## Documentação
 
-[**Código Fonte - **](https://ulf-tecc2.github.io/rhc_inca/site)
+[**Código Fonte**](https://ulf-tecc2.github.io/rhc_inca/site)
 
 

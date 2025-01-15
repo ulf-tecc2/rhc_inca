@@ -5,7 +5,10 @@ theme:
   
 plugins:
   - mkdocstrings
+  
+repo_url: https://github.com/ulf-tecc2/ml.git
 
 nav:
-  - Biblioteca de Funcoes: funcoes.md
-  - Repositorio de Dados: dados.md
+  - Pre Processamento e Carga de Dados: funcoes_pre.md
+  - Analise de Dados: funcoes_ana.md
+  - Extracao e Selecao de Dados: funcoes_ext.md
