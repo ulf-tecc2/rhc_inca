@@ -1,0 +1,11 @@
+site_name: Registros Hospitalares de Câncer (RHC)
+
+theme:
+  name: "material"
+  
+plugins:
+  - mkdocstrings
+
+nav:
+  - Biblioteca de Funcoes: funcoes.md
+  - Repositorio de Dados: dados.md
