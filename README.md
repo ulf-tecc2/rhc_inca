@@ -26,9 +26,18 @@ b. Utilização da base na construção de modelos de Machine Learning para a pr
 [**Código Fonte**](https://ulf-tecc2.github.io/rhc_inca/site)
 
 ## Conjunto de Dados
-Arquivos com os dados brutos e tratados
+Arquivos com os dados brutos e tratados - Período de 1985 a 2022 
 
-[**Dados Brutos Consolidados**](https://drive.google.com/file/d/1ylPCPEz8YR09exsf2eD2BoZFWw214nPW/view?usp=sharing) ARquivo CSV com o
+### Dados brutos consolidados em um arquivo único (CSV)
+[**Dados Brutos - Arquivo Unico**](https://drive.google.com/file/d/1ylPCPEz8YR09exsf2eD2BoZFWw214nPW/view?usp=sharing) 
+
+
+### Dados com tipos definidos (arquivo parquet)
+[**Dados Tipados**](https://drive.google.com/file/d/1ylPCPEz8YR09exsf2eD2BoZFWw214nPW/view?usp=sharing) 
+
+
+### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet)
+[**Dados Tipados**](https://drive.google.com/file/d/1ylPCPEz8YR09exsf2eD2BoZFWw214nPW/view?usp=sharing) 
 
 
 ## Analises e Conclusões
