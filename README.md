@@ -29,19 +29,19 @@ b. Utilização da base na construção de modelos de Machine Learning para a pr
 Arquivos com os dados brutos e tratados - Período de 1985 a 2022 
 
 ### Dados brutos consolidados em um arquivo único (CSV)
-[**Dados Brutos - Arquivo Unico**](https://drive.google.com/file/d/1Zt2Kv9DtM7IBdAGDdFwvMogPvceG7KYA/view?usp=sharing) 
+[**Dados Brutos - Arquivo Unico**](https://drive.google.com/uc?export=download&id=1Zt2Kv9DtM7IBdAGDdFwvMogPvceG7KYA) 
 
 
 ### Dados com tipos definidos (arquivo parquet)
-[**Dados Tipados**](https://drive.google.com/file/d/1NpBXq1u86ubK_HjDVWt4xswa0-cEhET7/view?usp=sharing) 
+[**Dados Tipados**](https://drive.google.com/uc?export=download&id=) 
 
 
 ### Dados com resultado das análises e sanitização (arquivo parquet)
-[**Dados Sanitizados**]() 
+[**Dados Sanitizados**](https://drive.google.com/uc?export=download&id=) 
 
 
 ### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet)
-[**Dados Fonte para Modelos**]() 
+[**Dados Fonte para Modelos**](https://drive.google.com/uc?export=download&id=) 
 
 
 ## Analises e Conclusões
