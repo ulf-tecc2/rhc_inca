@@ -28,6 +28,8 @@ b. Utilização da base na construção de modelos de Machine Learning para a pr
 ## Conjunto de Dados
 Arquivos com os dados brutos e tratados
 
+[**Dados Brutos Consolidados**](https://drive.google.com/file/d/1ylPCPEz8YR09exsf2eD2BoZFWw214nPW/view?usp=sharing) ARquivo CSV com o
+
 
 ## Analises e Conclusões
 Arquivos com os resultados detalhados das analises e conclusoes 
