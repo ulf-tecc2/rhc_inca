@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 
-"""Registros Hospitalares de Câncer (RHC) - Carregamento e consolidacao inicial dos dados
+"""Registros Hospitalares de Câncer (RHC) - Carregamento e consolidacao inicial dos dados.
+
 MBA em Data Science e Analytics - USP/Esalq - 2025
 
 @author: ulf Bergmann
 
 """
-
-# !pip install dbfread
-
 
 import dbfread as db
 import pandas as pd
@@ -16,16 +14,8 @@ import numpy as np
 import re 
 import os
 
-import sys
-sys.path.append("C:/Users/ulf/OneDrive/Python/ia_ml/templates/lib")
-
-import funcoes_ulf as ulfpp
-import bib_graficos as ug
-
 import funcoes as f
 from funcoes import Log
-
-from tabulate import tabulate
 
 # =============================================================================
 #  FUNCOES 
@@ -44,7 +34,6 @@ def leitura_inicial_dados(dir_bases = 'dados\\'):
     Returns:
         (DataFrame): df unico com os dados dos varios arquivos 
     """ 
-    
     count = 0
     
     df_aux = pd.DataFrame()
@@ -62,14 +51,17 @@ def leitura_inicial_dados(dir_bases = 'dados\\'):
         break
     return df_aux
 
-
-        
-
-
-
         
 # ACertar os tipos das variaveis
 def definir_tipos_variaveis(df):
+    """Definicao dos tipos das variaveis.
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado
+    """ 
     colunas_anos = ['ANOPRIDI' , 'ANTRI' , 'DTPRICON' , 'DTINITRT' ]
     colunas_numericos = ['IDADE']
     
@@ -89,21 +81,26 @@ def definir_tipos_variaveis(df):
         
     return df
     
-
-
-
 def strip_spaces(a_str):
     return str(a_str).replace(' ', '')
 
 def valida_datas_acerta_tipo(df):
+    """Define o tipo das variaveis Data e substitui valores invalidos por None.
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado
+    """ 
     lista_colunas = ['DTDIAGNO', 'DTTRIAGE', 'DATAPRICON', 'DATAOBITO' , 'DATAINITRT']
     nan_values = ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//']
     
     ind_antes=df[lista_colunas].isnull().sum()
     
     for a_var in lista_colunas:
-        df[a_var] = df[a_var].apply(lambda x: strip_spaces(x) )
-        df[a_var] = df[a_var].apply(lambda x: np.nan if (x in nan_values) else x)
+        # df[a_var] = df[a_var].apply(lambda x: strip_spaces(x) )
+        df[a_var] = df[a_var].apply(lambda x: np.nan if (strip_spaces(x) in nan_values) else strip_spaces(x))
         df[a_var] = pd.to_datetime(df[a_var] , format="%d/%m/%Y" , errors= 'coerce')
         df[a_var] = df[a_var].apply(lambda x: np.nan if (x.year < 1984 or x.year > 2023) else x)
         
@@ -123,6 +120,14 @@ def valida_datas_acerta_tipo(df):
 
 
 def tratar_codigo_municipio(a_str):
+    """Funcao auxiiar. Verifica se o codigo tem tamanho 7.
+    
+    Parameters:
+        a_str (String): codigo do municipio
+
+    Returns:
+        (String): s_str ou None 
+    """ 
     a_str = str(a_str)
     a_str = re.sub("\D", "", a_str)
     
@@ -135,6 +140,14 @@ def tratar_codigo_municipio(a_str):
     return np.nan
 
 def tratar_variavel_municipio(df):
+    """Valida os codigos do municipios transformando em None se invalidos.
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado 
+    """ 
     aux_nulos = df['PROCEDEN'].isnull().sum()
     df['PROCEDEN'] = df['PROCEDEN'].apply(tratar_codigo_municipio)
     aux_nulos1 = df['PROCEDEN'].isnull().sum()
@@ -147,38 +160,36 @@ def tratar_variavel_municipio(df):
 
     return df
 
-#%% PASSO 1: LEITURA DOS DADOS E TRATAMENTO INICIAL
-# =============================================================================
-log = Log()
+def main():
+    """Funcao principal.
+    
+    Parameters:
 
-df_unico = f.leitura_arquivo_csv('Consolidado_Integrador_Inca')
-print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base bruta' , df_unico.shape[0]) )
+    Returns:
+        (DataFrame): df carregado       
+    """ 
 
-# df = pd.read_csv('dados/consolidado/Consolidado_Integrador_Inca.csv' , dtype=str)
-# df_unico.info()
-# df_unico = df
+    
+    df_unico = f.leitura_arquivo_csv('Consolidado_Integrador_Inca')
+    print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base bruta' , df_unico.shape[0]) )
+       
+    #ACERTOS INICIAIS - TRATAR VALIDACOES A AJUSTES APLICAVEIS A TODA A BASE, SEM SER ESPECIFICO DOS CASOS QUE SERAO ABORDADOS (ANALITICOS)
+    df_unico = valida_datas_acerta_tipo(df_unico)
+    df_unico = definir_tipos_variaveis(df_unico)
+    df_unico = tratar_variavel_municipio(df_unico)
+    
+    # ETAPA INICIAL - SALVAR TRATAMENTO INICIAL 
+    f.salvar_parquet(df_unico , 'BaseCompleta')
+    log.salvar_log('log_BaseCompleta')
 
-
-#%% ACERTOS INICIAIS - TRATAR VALIDACOES A AJUSTES APLICAVEI A TODA A BASE, SEM SER ESPECIFICO DOS CASOS QUE SERAO ABORDADOS (ANALITICOS)
-
-
-df_unico = valida_datas_acerta_tipo(df_unico)
-
-df_unico = definir_tipos_variaveis(df_unico)
-
-df_unico = tratar_variavel_municipio(df_unico)
-
-
-#%% ETAPA INICIAL - SALVAR TRATAMENTO INICIAL 
-# =============================================================================
-
-f.salvar_parquet(df_unico , 'BaseCompleta')
-log.salvar_log('log_BaseCompleta')
-
-df_analiticos = df_unico.loc[df_unico['TPCASO'] == '1']
-f.salvar_parquet(df_analiticos , 'BaseAnaliticos')
+    df_analiticos = df_unico.loc[df_unico['TPCASO'] == '1']
+    f.salvar_parquet(df_analiticos , 'BaseAnaliticos')
+    return df_unico
 
 
+if __name__ == "__main__":
+    log = Log()
+    df_unico = main()
 
 
 
@@ -250,33 +261,33 @@ f.salvar_parquet(df_analiticos , 'BaseAnaliticos')
 
 
 
-df_resultado_analise_tnm, df_sem_conclusao = computa_resultados_TNM(df_unico)
-tab_df_resultado_analise_tnm = tabulate(df_resultado_analise_tnm, headers='keys', tablefmt='simple_grid', numalign='right' , floatfmt=".0f" )
-a_nome_arquivo = 'analiseTNM_completo'
-f.salvar_excel_conclusao(df_resultado_analise_tnm , a_nome_arquivo + '_sumario')
-f.salvar_excel_conclusao(df_sem_conclusao , a_nome_arquivo + '_fora_padrao')
+# df_resultado_analise_tnm, df_sem_conclusao = computa_resultados_TNM(df_unico)
+# tab_df_resultado_analise_tnm = tabulate(df_resultado_analise_tnm, headers='keys', tablefmt='simple_grid', numalign='right' , floatfmt=".0f" )
+# a_nome_arquivo = 'analiseTNM_completo'
+# f.salvar_excel_conclusao(df_resultado_analise_tnm , a_nome_arquivo + '_sumario')
+# f.salvar_excel_conclusao(df_sem_conclusao , a_nome_arquivo + '_fora_padrao')
 
-print(log.logar_acao_realizada('Analise Variavel' , 'Resultados da analise do TNM - Base completa' , f'ver arquivos {a_nome_arquivo}'))
-
-
-df_analitico = df_unico[df_unico['TPCASO'] == '1']
-
-df_analitico.shape[0]
-
-df_resultado_analise_tnm_analitico, df_sem_conclusao_analitico = computa_resultados_TNM(df_analitico)
-tab_df_resultado_analise_tnm_analitico = tabulate(df_resultado_analise_tnm_analitico, headers='keys', tablefmt='simple_grid', numalign='right' , floatfmt=".0f" )
-a_nome_arquivo = 'analiseTNM_analiticos'
-f.salvar_excel_conclusao(df_resultado_analise_tnm_analitico , a_nome_arquivo + '_sumario')
-f.salvar_excel_conclusao(df_sem_conclusao_analitico , a_nome_arquivo + '_fora_padrao')
-
-print(log.logar_acao_realizada('Analise Variavel' , 'Resultados da analise do TNM - Base de casos analiticos' , f'ver arquivos {a_nome_arquivo}'))
+# print(log.logar_acao_realizada('Analise Variavel' , 'Resultados da analise do TNM - Base completa' , f'ver arquivos {a_nome_arquivo}'))
 
 
-# a = pd.DataFrame()
-# a['teste'] = np.where(df_unico['TNM'].str.contains('XXX', regex= False, na=False) , 'achou YYY', 
-#              np.where(df_unico['TNM'].str.contains(r"^[0-4XIA][0-4X][0-1X]$", regex= True, na=False) ,'Exato',
-#             'nao achou'))
-# b = a.groupby('teste' , observed = True).size()
+# df_analitico = df_unico[df_unico['TPCASO'] == '1']
+
+# df_analitico.shape[0]
+
+# df_resultado_analise_tnm_analitico, df_sem_conclusao_analitico = computa_resultados_TNM(df_analitico)
+# tab_df_resultado_analise_tnm_analitico = tabulate(df_resultado_analise_tnm_analitico, headers='keys', tablefmt='simple_grid', numalign='right' , floatfmt=".0f" )
+# a_nome_arquivo = 'analiseTNM_analiticos'
+# f.salvar_excel_conclusao(df_resultado_analise_tnm_analitico , a_nome_arquivo + '_sumario')
+# f.salvar_excel_conclusao(df_sem_conclusao_analitico , a_nome_arquivo + '_fora_padrao')
+
+# print(log.logar_acao_realizada('Analise Variavel' , 'Resultados da analise do TNM - Base de casos analiticos' , f'ver arquivos {a_nome_arquivo}'))
+
+
+# # a = pd.DataFrame()
+# # a['teste'] = np.where(df_unico['TNM'].str.contains('XXX', regex= False, na=False) , 'achou YYY', 
+# #              np.where(df_unico['TNM'].str.contains(r"^[0-4XIA][0-4X][0-1X]$", regex= True, na=False) ,'Exato',
+# #             'nao achou'))
+# # b = a.groupby('teste' , observed = True).size()
 
 
 

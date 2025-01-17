@@ -16,7 +16,9 @@ Este projeto foi desenvolvido no contexto do MBA em Data Science e Analytics - U
 
 ## Objetivos
 Este projeto foi desenvolvido a partir dos dados disponíveis no IntegradorRHC com dois objetivos principais:
+
 a. Identificar transformações nos dados que possam completar informações ausentes, melhorando o indicador de Completude, e transformações que possam identificar e resolver inconsistências, todas com o objetivo de contribuir para que pesquisadores da área tenham acesso a melhores e mais completas informações sobre o tratamento oncológico no Brasil. 
+
 b. Utilização da base na construção de modelos de Machine Learning para a predição da resposta ao primeiro tratamento identificando oportunidades de melhoria nas ações de saúde pública no tratamento oncológico.
 
 ## Documentação

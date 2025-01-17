@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Registros Hospitalares de Câncer (RHC) - Analise dos dados
+"""Registros Hospitalares de Câncer (RHC) - Analise dos dados.
+
 MBA em Data Science e Analytics - USP/Esalq - 2025
 
 @author: ulf Bergmann
@@ -12,43 +13,18 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 # Resultados: exato incompleto nulo demais
 # =============================================================================
 
-
-
-import dbfread as db
 import pandas as pd
 import numpy as np
-import re 
-import os
-import glob
 from datetime import *
-import locale
-
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 import sys
 sys.path.append("C:/Users/ulf/OneDrive/Python/ia_ml/templates/lib")
 
-import funcoes_ulf as ulfpp
-import bib_graficos as ug
-
 import funcoes as f
 from funcoes import Log
 
-from tabulate import tabulate
 
-# ANALISE DADOS:  CARREGAR ANTERIOR PARA CONTINUIDADE
-log = Log()
-log.carregar_log('log_BaseCompleta')
-a = log.asString()
-
-df_unico = f.leitura_arquivo_parquet('BaseAnaliticos')
-# df_unico = f.leitura_arquivo_parquet('BaseCompleta')
-
-print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem analisados - Casos analiticos' , df_unico.shape[0]) )
-
-
-#%% Trocar os valores que representam brancos / nulos (99, 999, ...) por None
+# Trocar os valores que representam brancos / nulos (99, 999, ...) por None
 def trocar_valores_nulos(df):
     nan_values = {
         'ALCOOLIS' : ['0' , '9' , '4' ],
@@ -105,6 +81,14 @@ def trocar_valores_nulos(df):
         response_df = pd.concat([response_df , a_df] , axis = 1)
         
     return df , response_df
+
+def valida_idade(df):
+    # a = df[a_var].value_counts(dropna=False, normalize=False)
+    df['IDADE'] = df['IDADE'].apply(lambda x: -1 if x < 0 or x > 110 else -1 if np.isnan(x) else int(x))
+    return df
+    # a = df_unico[a_var].value_counts(dropna=False, normalize=False)
+    # df_unico[a_var].info()
+
 
 # ANALISE LOCAL TUMOR
 # LOCTUDET	Localização primária (Categoria 3d)	Localização primária do tumor pela CID-O, 3 dígitos
@@ -304,31 +288,7 @@ def analisa_ESTADIAM(df):
     
     return df , ab_df
 
-
-
-
-#%% TORNAR VALORES INVALIDOS COMO NULOS - NONE
-
-ind_antes=df_unico.isnull().sum()
-
-df_unico , df_result = trocar_valores_nulos(df_unico)
-
-ind_depois=df_unico.isnull().sum()
-
-df_aux = pd.DataFrame()
-df_aux['Nulos antes'] = ind_antes
-df_aux['Nulos depois'] = ind_depois
-df_aux['diferenca'] = ind_depois- ind_antes
-
-a_file_name = 'valores_tornados_null'
-f.salvar_excel_conclusao(df_aux , a_file_name)
-
-print(log.logar_acao_realizada('Valores Invalidos' , 'Corrigir valores invalidos para null. Ver arquivo valores_tornados_null.xslx' , ""))
-
-
-#%% VALIDACOES E INFERENCIAS ENTRE VARIAVEIS
-
-# Ver manual pagina 337
+# VALIDACOES E INFERENCIAS ENTRE VARIAVEIS - Ver manual pagina 337
 
 
 def infere_BASMAIMP():
@@ -364,169 +324,80 @@ def infere_ESTDFIMT():
     
     print(log.logar_acao_realizada('Inferir valor' , f'Inferir o valor de ESTDFIMT a partir de DATAOBITO ate {dias_entre_DATAINITRT_DATAOBITO} dias apos o inicio do tratamento' , f'{aux_quant}'))
     
+
+#CARREGAR ANTERIOR PARA CONTINUIDADE
+def main():
+    
+    # TORNAR VALORES INVALIDOS COMO NULOS - NONE
+    ind_antes=df_unico.isnull().sum()
+    
+    df_unico , df_result = trocar_valores_nulos(df_unico)
+    
+    ind_depois=df_unico.isnull().sum()
+    
+    df_aux = pd.DataFrame()
+    df_aux['Nulos antes'] = ind_antes
+    df_aux['Nulos depois'] = ind_depois
+    df_aux['diferenca'] = ind_depois- ind_antes
+    
+    a_file_name = 'valores_tornados_null'
+    f.salvar_excel_conclusao(df_aux , a_file_name)
+    
+    print(log.logar_acao_realizada('Valores Invalidos' , 'Corrigir valores invalidos para null. Ver arquivo valores_tornados_null.xslx' , ""))
+    
+    df_unico = valida_idade(df_unico)
+    
+    infere_BASMAIMP()
+    
+    infere_ESTDFIMT() 
+    
+    df_unico , df_result_aux = analisa_LOCTUDET(df_unico)
+    df_result = pd.concat([df_result , df_result_aux] , axis = 1)
+    print(log.logar_acao_realizada('Analise de valores' , f'Analisar o valor de LOCTUDET' , ''))
+    
+    df_unico , df_result_aux = analisa_LOCTUPRI(df_unico)
+    df_result = pd.concat([df_result , df_result_aux] , axis = 1)
+    print(log.logar_acao_realizada('Analise de valores' , f'Analisar o valor de LOCTUPRI' , ''))
+    
+    df_unico , df_result_aux = analisa_LOCTUPRO(df_unico)
+    df_result = pd.concat([df_result , df_result_aux] , axis = 1)
+    print(log.logar_acao_realizada('Analise de valores' , f'Analisar o valor de LOCTUPRO' , ''))
+    
+    df_unico , df_result_aux = analisa_TNM(df_unico)
+    df_result = pd.concat([df_result , df_result_aux] , axis = 1)
+    print(log.logar_acao_realizada('Analise de valores' , f'Analisar o valor de TNM' , ''))
+    
+    df_unico , df_result_aux = analisa_ESTADIAM(df_unico)
+    df_result = pd.concat([df_result , df_result_aux] , axis = 1)
+    print(log.logar_acao_realizada('Analise de valores' , f'Analisar o valor de ESTADIAM' , ''))
+    
+    df_result = df_result.fillna('')
+    
+    a_nome_arquivo = 'analiseValoresAtributos'
+    f.salvar_excel_conclusao(df_result , a_nome_arquivo)
+    
+    print(log.logar_acao_realizada('Analise de valores' , 'Resultados consolidados da analise dos valores' , f'ver arquivo {a_nome_arquivo}'))
     
     
+    log.salvar_log('log_analise_valores') 
+    f.salvar_parquet(df_unico , 'analise_valores')
     
-
-infere_BASMAIMP()
-
-
-infere_ESTDFIMT() 
+    return df_unico
 
 
-
-
-#%%
-
-
-
-df_unico , df_result_aux = analisa_LOCTUDET(df_unico)
-df_result = pd.concat([df_result , df_result_aux] , axis = 1)
-print(log.logar_acao_realizada('Analise de valores' , f'Analisar o valor de LOCTUDET' , ''))
-
-
-df_unico , df_result_aux = analisa_LOCTUPRI(df_unico)
-df_result = pd.concat([df_result , df_result_aux] , axis = 1)
-print(log.logar_acao_realizada('Analise de valores' , f'Analisar o valor de LOCTUPRI' , ''))
-
-df_unico , df_result_aux = analisa_LOCTUPRO(df_unico)
-df_result = pd.concat([df_result , df_result_aux] , axis = 1)
-print(log.logar_acao_realizada('Analise de valores' , f'Analisar o valor de LOCTUPRO' , ''))
-
-df_unico , df_result_aux = analisa_TNM(df_unico)
-df_result = pd.concat([df_result , df_result_aux] , axis = 1)
-print(log.logar_acao_realizada('Analise de valores' , f'Analisar o valor de TNM' , ''))
-
-df_unico , df_result_aux = analisa_ESTADIAM(df_unico)
-df_result = pd.concat([df_result , df_result_aux] , axis = 1)
-print(log.logar_acao_realizada('Analise de valores' , f'Analisar o valor de ESTADIAM' , ''))
-
-df_result = df_result.fillna('')
-
-a_nome_arquivo = 'analiseValoresAtributos'
-f.salvar_excel_conclusao(df_result , a_nome_arquivo)
-
-print(log.logar_acao_realizada('Analise de valores' , 'Resultados consolidados da analise dos valores' , f'ver arquivo {a_nome_arquivo}'))
-
-
-log.salvar_log('log_analise_valores') 
-f.salvar_parquet(df_unico , 'analise_valores')
-a = log.asString()
-
-#%%
-
-# df1 = df_unico[df_unico['AnaliseLOCTUPRI'] == 'demais']
-# b = df1['LOCTUPRI'].value_counts(dropna=False, normalize=False)
-# c = df_unico['AnaliseLOCTUDET_tipo'].value_counts(dropna=False, normalize=False)
-
-
-df_unico['ESTDFIMT'].info()
-#Resultado esperado. Variável dependente ==> ESTDFIMT
-(6).info()
-a = df_unico['ESTDFIMT'].value_counts(dropna=False, normalize=False)
-
-quant_sem_resultado = df_unico.loc[ (df_unico['ESTDFIMT'].isnull()) ].shape[0] # resultado do tratamento eh nulo
-df_sr_obitos = df_unico.loc[ (df_unico['ESTDFIMT'].isnull()) &  ~(df_unico['DATAOBITO'].isnull())]  # tem data de obito
-
-aux = df_unico.loc[ (df_unico['ESTDFIMT'].isnull()) &  ~(df_unico['DATAOBITO'].isnull()) & (df_unico['DATAOBITO'] < df_unico['DATAINITRT'] + timedelta(days = 50)  ) ] 
-aux.info()
-df_sr_obitos_prazo[['DATAINITRT' , 'DATAOBITO' ]].head(100)
-
-aux = df_sr_obitos_prazo['DATAINITRT'] - df_sr_obitos_prazo['DATAOBITO']
-aux.head(20)
-
-timedelta(days = 25)
-
-PRITRATH
-
-
-aux_quant = df_unico.loc[ (df_unico['ESTDFIMT'] is None) & (df_unico['BASDIAGSP'] == '1')  ].shape[0]
+if __name__ == "__main__":
+    log = Log()
+    log.carregar_log('log_BaseCompleta')
     
-    
-    
+    df_unico = f.leitura_arquivo_parquet('BaseAnaliticos')
+    print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem analisados - Casos analiticos' , df_unico.shape[0]) )
+
+    main() 
 
 
 
 
 
-
-
-log.salvar_log('log_analise_valores') 
-f.salvar_parquet(df_unico , 'analise_valores')
-
-#%% Tratar datas
-
-colunas_datas = ['DTDIAGNO', 'DTTRIAGE', 'DATAPRICON', 'DATAOBITO' , 'DATAINITRT']
-colunas_anos = ['ANOPRIDI' , 'ANTRI' , 'DTPRICON' , 'DTINITRT' ]
-
-# ver consistencia entre datas e anos
-# DTDIAGNO e ANOPRIDI
-
-b = df_unico[colunas_anos + colunas_datas]
-#%%
-ug.plot_null_values(df_unico)
-#%%
-a.isnull().sum()
-#%% Local de Tratamento - Ver SP
-
-# UFUH: UF da unidade hospitalar
-
-
-
-aux_sp = df_unico[df_unico['UFUH'] == 'SP']
-#ver a distribuicao do tempo
-
-aux = aux_sp["DATAINITRT"].dt.year
-
-plt.figure(figsize=(15,10))
-hist1 = sns.histplot(data=aux)
-plt.xlabel('Anos', fontsize=20)
-plt.ylabel('Registros', fontsize=20)
-plt.title(label = "Historico Registros de SP")
-
-
-
-
-# =============================================================================
-
-#%%
-
-
-df_analitico.info()
-#%%
-colunas_datas = ['DTDIAGNO', 'DTTRIAGE', 'DATAPRICON', 'DATAOBITO' , 'DATAINITRT']
-colunas_anos = ['ANOPRIDI' , 'ANTRI' , 'DTPRICON' , 'DTINITRT' ]
-
-df_analitico.groupby('DTINITRT')['DTINITRT'].count()
-
-ulfpp.print_count_cat_var_values(df_analitico , colunas_anos)
-print(df_analitico['DTINITRT'].isnull().sum())
-
-df_unico.info()
-#%%
-colunas_anos = ['ANOPRIDI' , 'ANTRI' , 'DTPRICON' , 'DTINITRT' ]
-ulfpp.print_count_cat_var_values(df_unico , ['DTPRICON'])
-    
-
-df_unico['DATAOBITO_TRANSF'] = pd.to_datetime(df_unico['DATAOBITO'] , format="%d/%m/%Y" , errors= 'coerce').dt.date
-a = df_unico.loc[df_unico['ESTDFIMT'] == str(6) and df_unico['DATAOBITO_TRANSF'].isnull() ]
-a
-
-df_unico.head()
-print(ulfpp.tabela_frequencias(df_unico, 'ESTDFIMT'))
-print(ulfpp.tabela_frequencias(df_unico, 'PRITRATH'))
-
-ulfpp.print_count_cat_var_values(df_unico  , ['PRITRATH'] )
-
-
-
-
-a_var = 'IDADE'  #nao consegui resolver a questao do nan e tipo. Tive que colocar -1 como nan
-a = df_unico[a_var].value_counts(dropna=False, normalize=False)
-df_unico[a_var] = df_unico[a_var].apply(lambda x: -1 if x < 0 or x > 110 else -1 if np.isnan(x) else int(x))
-a = df_unico[a_var].value_counts(dropna=False, normalize=False)
-
-df_unico[a_var].info()
 
 
 
