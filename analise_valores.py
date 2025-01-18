@@ -7,15 +7,9 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 
 """
 
-# =============================================================================
-# Analisa os valores das variaveis inserindo uma coluna com o resultado
-# Coluna: Analise<NOMEVARIAVEL> ou Analise<NOMEVARIAVEL>_Tipo
-# Resultados: exato incompleto nulo demais
-# =============================================================================
-
 import pandas as pd
 import numpy as np
-from datetime import *
+from datetime import timedelta
 
 import sys
 sys.path.append("C:/Users/ulf/OneDrive/Python/ia_ml/templates/lib")
@@ -24,8 +18,15 @@ import funcoes as f
 from funcoes import Log
 
 
-# Trocar os valores que representam brancos / nulos (99, 999, ...) por None
 def trocar_valores_nulos(df):
+    """Trocar os valores que representam brancos / nulos (99, 999, ...) por None.
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado
+    """ 
     nan_values = {
         'ALCOOLIS' : ['0' , '9' , '4' ],
         'BASDIAGSP' : ['9'],
@@ -83,20 +84,33 @@ def trocar_valores_nulos(df):
     return df , response_df
 
 def valida_idade(df):
+    """Valida idade entre 0 e 110 anos. Torna o valor -1 se for diferente.
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado
+    """
     # a = df[a_var].value_counts(dropna=False, normalize=False)
     df['IDADE'] = df['IDADE'].apply(lambda x: -1 if x < 0 or x > 110 else -1 if np.isnan(x) else int(x))
     return df
     # a = df_unico[a_var].value_counts(dropna=False, normalize=False)
     # df_unico[a_var].info()
 
-
-# ANALISE LOCAL TUMOR
-# LOCTUDET	Localização primária (Categoria 3d)	Localização primária do tumor pela CID-O, 3 dígitos
-# LOCTUPRI	Localização primária detalhada (Subcategoria 4d)	Localização primária do tumor pela CID-O, 4 dígitos
-# LOCTUPRO	Localização provável do tumor primário	Localização primária provável do tumor pela CID-O, 4 dígitos
-
 def analisa_LOCTUDET(df):
+    """Analisa os valores da variavel LOCTUDET verificando se seguem os formatos padroes.
     
+    LOCTUDET - Localização primária do tumor pela CID-O, 3 dígitos
+    Insere uma nova coluna <AnaliseLOCTUDET> com os resultados: <exato | incompleto | nulo | demais>
+    Insere uma nova coluna <AnaliseLOCTUDET_Tipo> com os resultados: <Hemato | demais>
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado com as colunas inseridas
+    """
     nome_variavel = 'LOCTUDET'
     nome_analise = 'Analise' + nome_variavel
     
@@ -140,7 +154,17 @@ def analisa_LOCTUDET(df):
 
 
 def analisa_LOCTUPRI(df):
+    """Analisa os valores da variavel LOCTUPRI verificando se seguem os formatos padroes.
     
+    LOCTUPRI - Localização primária do tumor pela CID-O, 4 dígitos
+    Insere uma nova coluna <AnaliseLOCTUPRI> com os resultados: <exato | incompleto | nulo | demais>
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado com a coluna inserida
+    """
     nome_variavel = 'LOCTUPRI'
     nome_analise = 'Analise' + nome_variavel
     
@@ -167,7 +191,17 @@ def analisa_LOCTUPRI(df):
     return df , ab_df
 
 def analisa_LOCTUPRO(df):
+    """Analisa os valores da variavel LOCTUPRO verificando se seguem os formatos padroes.
     
+    Localização primária provável do tumor pela CID-O, 4 dígitos
+    Insere uma nova coluna <AnaliseLOCTUPRO> com os resultados: <exato | incompleto | nulo | demais>
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado com a coluna inserida
+    """    
     nome_variavel = 'LOCTUPRO'
     nome_analise = 'Analise' + nome_variavel
     
@@ -194,17 +228,24 @@ def analisa_LOCTUPRO(df):
     return df , ab_df
 
 def analisa_TNM(df):
+    """Analisa os valores da variavel TNM verificando se seguem os formatos padroes.
     
-  # =============================================================================
-  #     # TNM: Codificação do estádio clínico segundo classificação TNM
-  #     # T -a extensão do tumor primário
-  #     # N -a ausência ou presença e a extensão de metástase em linfonodos regionais ,
-  #     # M -a ausência ou presença de metástase à distância
-  # 
-  #     # A adição de números a estes três componentes indica a extensão da doença maligna. Assim temos:
-  #     # T0, TI, T2, T3, T4 - N0, Nl, N2, N3 - M0, Ml
-  #     
-  # =============================================================================
+    TNM: Codificação do estádio clínico segundo classificação TNM
+    T -a extensão do tumor primário
+    N -a ausência ou presença e a extensão de metástase em linfonodos regionais ,
+    M -a ausência ou presença de metástase à distância
+   
+    A adição de números a estes três componentes indica a extensão da doença maligna. Assim temos:
+    T0, TI, T2, T3, T4 - N0, Nl, N2, N3 - M0, Ml
+    
+    Insere uma nova coluna <AnaliseTNM> com os resultados: <exato | incompleto | nao se aplica - Hemato | nao se aplica - Geral | nulo | demais>
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado com a coluna inserida
+    """      
     nome_variavel = 'TNM'
     nome_analise = 'Analise' + nome_variavel
       
@@ -249,15 +290,17 @@ def analisa_TNM(df):
 
 
 def analisa_ESTADIAM(df):
+    """Analisa os valores da variavel ESTADIAM verificando se seguem os formatos padroes.
     
-    # df['AnaliseESTADIAM'] = np.where(df['ESTADIAM'].str.contains(r_est_exato1, regex= True, na=False), 'exato',
-    #                         np.where(df['ESTADIAM'].str.contains(r_est_exato2, regex= True, na=False), 'exato',
-    #                         np.where(df['ESTADIAM'].str.contains(r_est_exato3, regex= True, na=False), 'exato',
-    #                         np.where(df['ESTADIAM'].str.contains(r_est_exato4, regex= True, na=False), 'exato',
-    #                         np.where(df['ESTADIAM'].isnull(), 'nulo',
+    Localização primária provável do tumor pela CID-O, 4 dígitos
+    Insere uma nova coluna <AnaliseESTADIAM> com os resultados: <exato | nulo | demais>
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
 
-    #                                  'demais')))))
-    
+    Returns:
+        (DataFrame): df modificado com a coluna inserida
+    """
     nome_variavel = 'ESTADIAM'
     nome_analise = 'Analise' + nome_variavel
     
@@ -292,13 +335,18 @@ def analisa_ESTADIAM(df):
 
 
 def infere_BASMAIMP():
+    """Tenta inferir os valores corretos para os nulos de BASMAIMP através de outras variaveis. Atualiza a variavel global df_unico.
+    
+    BASMAIMP e BASDIAGSP: informacoes coerentes entre eles. Preencho os valores 0 com os correspondentes preenchidos de BASDIAGSP
+    regras quando BASMAIMP for 0
+    '1' => '1'   REGRA APLICADA
+    '2' => '2' | '3' | '4'
+    '3' => '5' | '6' | '7'
+    
+       
+    """
     # =============================================================================
-    # BASMAIMP e BASDIAGSP: informacoes coerentes entre eles. Preencho os valores 0 com os correspondentes preenchidos de BASDIAGSP
-    # regras quando BASMAIMP for 0
-    # '1' => '1'
-    # '2' => '2' | '3' | '4'
-    # '3' => '5' | '6' | '7'
-    # APlicar apenas a que tem certeza
+
     # =============================================================================
     
     
@@ -312,9 +360,15 @@ def infere_BASMAIMP():
     
 
     
-def infere_ESTDFIMT():
-    dias_entre_DATAINITRT_DATAOBITO = 730
+def infere_ESTDFIMT(dias_entre_DATAINITRT_DATAOBITO = 730):
+    """Tenta inferir os valores corretos para os nulos de ESTDFIMT através de outras variaveis. Atualiza a variavel global df_unico.
     
+    ESTDFIMT nulo e DATAOBITO ate o intervalo de tempo a partir da DATAINITRT 
+    
+    Parameters:
+        dias_entre_DATAINITRT_DATAOBITO (int): intervalo de tempo a ser considerado
+
+    """
     aux_df = df_unico.loc[ (df_unico['ESTDFIMT'].isnull()) &  ~(df_unico['DATAOBITO'].isnull()) & 
                                       (df_unico['DATAOBITO'] < df_unico['DATAINITRT'] + timedelta(days = dias_entre_DATAINITRT_DATAOBITO)  ) ]
     aux_quant = aux_df.shape[0]
@@ -325,13 +379,18 @@ def infere_ESTDFIMT():
     print(log.logar_acao_realizada('Inferir valor' , f'Inferir o valor de ESTDFIMT a partir de DATAOBITO ate {dias_entre_DATAINITRT_DATAOBITO} dias apos o inicio do tratamento' , f'{aux_quant}'))
     
 
-#CARREGAR ANTERIOR PARA CONTINUIDADE
-def main():
+def main(df):
+    """Funcao principal.
     
+    Parameters:
+        df (DataFrame) : df a ser modificado
+    Returns:
+        (DataFrame): df modificado       
+    """     
     # TORNAR VALORES INVALIDOS COMO NULOS - NONE
-    ind_antes=df_unico.isnull().sum()
+    ind_antes=df.isnull().sum()
     
-    df_unico , df_result = trocar_valores_nulos(df_unico)
+    df_unico , df_result = trocar_valores_nulos(df)
     
     ind_depois=df_unico.isnull().sum()
     
@@ -382,8 +441,6 @@ def main():
     log.salvar_log('log_analise_valores') 
     f.salvar_parquet(df_unico , 'analise_valores')
     
-    return df_unico
-
 
 if __name__ == "__main__":
     log = Log()
@@ -392,7 +449,7 @@ if __name__ == "__main__":
     df_unico = f.leitura_arquivo_parquet('BaseAnaliticos')
     print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem analisados - Casos analiticos' , df_unico.shape[0]) )
 
-    main() 
+    main(df_unico) 
 
 
 

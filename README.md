@@ -33,15 +33,15 @@ Arquivos com os dados brutos e tratados - Período de 1985 a 2022
 
 
 ### Dados com tipos definidos (arquivo parquet)
-[**Dados Tipados**](https://drive.google.com/uc?export=download&id=) 
+[**Dados Tipados**](https://drive.google.com/uc?export=download&id=1oNnt1K2yJhk3FzuK1ELUgUlFT-uf0d9x) 
 
 
 ### Dados com resultado das análises e sanitização (arquivo parquet)
-[**Dados Sanitizados**](https://drive.google.com/uc?export=download&id=) 
+[**Dados Sanitizados**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
 
 
 ### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet)
-[**Dados Fonte para Modelos**](https://drive.google.com/uc?export=download&id=) 
+[**Dados Fonte para Modelos**](https://drive.google.com/uc?export=download&id=1Bj0FcA6lO6PJfJs5-i003Ldgag4q_jP-) 
 
 
 ## Analises e Conclusões
