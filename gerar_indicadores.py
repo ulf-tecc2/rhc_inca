@@ -177,7 +177,7 @@ if __name__ == "__main__":
     result_df.reset_index(drop = True , inplace=True)
     
     a_file_name = 'indicadores_variaveis'
-    f.salvar_excel_conclusao(result_df , a_file_name)
+    f.salvar_excel_conclusao(result_df.T , a_file_name)
     
     result_df = pd.DataFrame()
     result_df = main_indicadores_globais()

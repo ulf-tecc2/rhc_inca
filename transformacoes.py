@@ -17,6 +17,7 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 
 import pandas as pd
 import numpy as np
+from datetime import timedelta
 
 import sys
 sys.path.append("C:/Users/ulf/OneDrive/Python/ia_ml/templates/lib")
@@ -43,7 +44,7 @@ def gera_intervalos(df):
     df['_tempo_consulta_tratamento'] = (df['DATAINITRT'] - df['DATAPRICON']).dt.days
     # df['_tempo_consulta_tratamento'].astype(int)
     
-    print(log.logar_acao_realizada('Gerar Dados' , 'Geracao das variaveis _tempo_diagnostico_tratamento e _tempo_consulta_tratamento ' ,''))
+    print(log.logar_acao_realizada('Gerar / Transformar Dados' , 'Geracao das variaveis _tempo_diagnostico_tratamento e _tempo_consulta_tratamento ' ,''))
     
     return df
     
@@ -64,7 +65,7 @@ def  define_valor_esperado(df):
     # gerar variavel dependente binaria => sucesso ou nao
     df['_RESFINAL'] =  np.where((df['ESTDFIMT'] == '1') | (df['ESTDFIMT'] == '2') , True , False)
     
-    print(log.logar_acao_realizada('Gerar Valor' , 'Analise de ESTDFIMT e criacao da variavel dependente _RESFINAL ' , ''))
+    print(log.logar_acao_realizada('Gerar / Transformar Dados' , 'Analise de ESTDFIMT e criacao da variavel dependente _RESFINAL ' , ''))
     
     return df
 
@@ -98,7 +99,7 @@ def transforma_nulos_naoinformados(df):
               'EXDIAG' : '9' , 'LATERALI' : '9'}
     df = df.fillna(value=values , inplace = False)
     
-    print(log.logar_acao_realizada('Dados Nulos' , 'Setar valores nulos para sem informacao' ,f'{values}'))
+    print(log.logar_acao_realizada('Gerar / Transformar Dados' , 'Setar valores nulos para sem informacao' ,f'{values}'))
     
     return df
 
@@ -121,26 +122,69 @@ def PRITRATH_dividir_tratamentos(df):
     
     df['PRITRATH_NrTratamentos'] = df['PRITRATH'].apply(lambda x: len(x)) 
     
-    print(log.logar_acao_realizada('Gerar Valor' , 'Desmembramento de PRITRATH ' , ''))
+    print(log.logar_acao_realizada('Gerar / Transformar Dados' , 'Desmembramento de PRITRATH ' , ''))
     
     return df
 
+# VALIDACOES E INFERENCIAS ENTRE VARIAVEIS - Ver manual pagina 337
 
-#%%
+
+def infere_BASMAIMP(df):
+    """Tenta inferir os valores corretos para os nulos de BASMAIMP através de outras variaveis. Atualiza a variavel global df_unico.
+    
+    BASMAIMP e BASDIAGSP: informacoes coerentes entre eles. Preencho os valores 0 com os correspondentes preenchidos de BASDIAGSP
+    regras quando BASMAIMP for 0
+    '1' => '1'   REGRA APLICADA
+    '2' => '2' | '3' | '4'
+    '3' => '5' | '6' | '7'
+    
+       
+    """
+    # =============================================================================
+
+    # =============================================================================
+    
+    
+    # a = df_unico['BASMAIMP'].value_counts(dropna=False, normalize=False)
+    # b = df_unico['BASDIAGSP'].value_counts(dropna=False, normalize=False)
+    # c = df_unico.groupby(['BASMAIMP' , 'BASDIAGSP'] , observed=True).agg({'TPCASO' : 'count'})
+    aux_df = df.loc[ (df['BASMAIMP'] == '0') & (df['BASDIAGSP'] == '1')  ]
+    aux_quant = aux_df.shape[0]
+    df_unico.loc[ (df['BASMAIMP'] == '0') & (df['BASDIAGSP'] == '1') , 'BASMAIMP' ] = '1'
+    print(log.logar_acao_realizada('Gerar / Transformar Dados' , 'Inferir o valor de BASMAIMP a partir de BASDIAGSP. Regra 0 <= 1. Falta definir outras regras aplicaveis' , f'{aux_quant}'))
+    
+    return df
+
+    
+def infere_ESTDFIMT(df , dias_entre_DATAINITRT_DATAOBITO = 730):
+    """Tenta inferir os valores corretos para os nulos de ESTDFIMT através de outras variaveis. Atualiza a variavel global df_unico.
+    
+    ESTDFIMT nulo e DATAOBITO ate o intervalo de tempo a partir da DATAINITRT 
+    
+    Parameters:
+        dias_entre_DATAINITRT_DATAOBITO (int): intervalo de tempo a ser considerado
+
+    """
+    aux_df = df.loc[ (df['ESTDFIMT'].isnull()) &  ~(df['DATAOBITO'].isnull()) & 
+                                      (df['DATAOBITO'] < df['DATAINITRT'] + timedelta(days = dias_entre_DATAINITRT_DATAOBITO)  ) ]
+    aux_quant = aux_df.shape[0]
+    
+    df.loc[ (df['ESTDFIMT'].isnull()) &  ~(df['DATAOBITO'].isnull()) & 
+                                      (df['DATAOBITO'] < df['DATAINITRT'] + timedelta(days = dias_entre_DATAINITRT_DATAOBITO)  ) , 'ESTDFIMT'] = '6'
+    
+    print(log.logar_acao_realizada('Gerar / Transformar Dados' , f'Inferir o valor de ESTDFIMT a partir de DATAOBITO ate {dias_entre_DATAINITRT_DATAOBITO} dias apos o inicio do tratamento' , f'{aux_quant}'))
+    
+    return df
 
 def main(df_unico):
+    df_unico = infere_BASMAIMP(df_unico)
+    df_unico = infere_ESTDFIMT(df_unico) 
     df_unico = gera_intervalos(df_unico)
     df_unico = define_valor_esperado(df_unico)
     df_unico = transforma_nulos_naoinformados(df_unico)
     df_unico = PRITRATH_dividir_tratamentos(df_unico)
 
     return df_unico
-
-
-# df_unico[['ALCOOLIS' , 'TABAGISM' , 'HISTFAMC' , 'ORIENC']].isnull().sum()
-
-# df_unico.sample(20)[['PRITRATH','PRITRATH_Primeiro' , 'PRITRATH_Seguintes' , 'PRITRATH_NrTratamentos']]
-
 
 if __name__ == "__main__":
     log = Log()
@@ -156,6 +200,9 @@ if __name__ == "__main__":
 
 
 
+# df_unico[['ALCOOLIS' , 'TABAGISM' , 'HISTFAMC' , 'ORIENC']].isnull().sum()
+
+# df_unico.sample(20)[['PRITRATH','PRITRATH_Primeiro' , 'PRITRATH_Seguintes' , 'PRITRATH_NrTratamentos']]
 
 
 
@@ -164,7 +211,7 @@ if __name__ == "__main__":
 # data_inicio = busca_data_sp_iniciou_mais_que_1_trat(df_unico)
 # print(log.logar_acao_realizada('Informacao', 'Data do inicio de envio de mais de um tratamento por SP', data_inicio))
 
-#%%
+
 # df = df_unico.sample(n=50000, random_state=1)
 # df = df.dropna(subset=['DATAINITRT', 'PRITRATH_NrTratamentos'])
 
@@ -185,7 +232,7 @@ if __name__ == "__main__":
 
 # df[a_col] = pd.to_datetime(df[a_col] , format="%d/%m/%Y" , errors= 'coerce')
 
-# In[16]: Fazendo o grafico (Selecionar todos os comandos)
+# Fazendo o grafico (Selecionar todos os comandos)
 # plt.figure(figsize=(10, 6))
 # plt.plot(aux_ts)
 # plt.title("Total de Passageiros no Transporte Aereo BR")

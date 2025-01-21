@@ -22,7 +22,6 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 
 import pandas as pd
 import numpy as np
-from datetime import timedelta
 import re 
 
 import sys
@@ -81,6 +80,10 @@ def trocar_valores_nulos(df):
     Returns:
         (DataFrame): df modificado
     """ 
+    lista_colunas = ['DTDIAGNO', '', 'DATAPRICON', 'DATAOBITO' , 'DATAINITRT']
+    nan_values = ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
+    
+    
     nan_values = {
         'ALCOOLIS' : ['0' , '9' , '4' ],
         'BASDIAGSP' : ['9'],
@@ -89,6 +92,13 @@ def trocar_valores_nulos(df):
         'CLITRAT'	 : ['99' , '0'],
         # 'CNES'	     : [''],
         'DIAGANT'	 : ['9' , '0'],
+        
+        # 'DTDIAGNO' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
+        # 'DTTRIAGE' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
+        # '' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
+        # '' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
+        # '' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
+        
         'ESTADIAM'	 : ['99' , '88' , 'nan'],
         'ESTADRES'	 : ['99' , '77' , 'nan'],
         'ESTADIAG'   : ['0' , 'nan'],
@@ -131,7 +141,7 @@ def trocar_valores_nulos(df):
             } , name=nome_analise)
         a_df = pd.DataFrame(b)
         a_df.index.names = ['Atributo']
-        a_df.columns = [nome_analise]
+        a_df.columns = [a_var]
         
         response_df = pd.concat([response_df , a_df] , axis = 1)
         
@@ -179,12 +189,12 @@ def analisa_LOCTUDET(df):
     a = df[nome_analise].value_counts(dropna=False, normalize=False)
     a_df = pd.DataFrame(a)
     a_df.index.names = ['Atributo']
-    a_df.columns = [nome_analise]
+    a_df.columns = [nome_variavel]
     
     b =  pd.Series({'Regra exata': r_exato , 'Regra incompleta': r_incompleto } , name=nome_analise)
     b_df = pd.DataFrame(b)
     b_df.index.names = ['Atributo']
-    b_df.columns = [nome_analise]
+    b_df.columns = [nome_variavel]
     
     hemato_values = {
         'C81',
@@ -233,12 +243,12 @@ def analisa_LOCTUPRI(df):
     a = df[nome_analise].value_counts(dropna=False, normalize=False)
     a_df = pd.DataFrame(a)
     a_df.index.names = ['Atributo']
-    a_df.columns = [nome_analise]
+    a_df.columns = [nome_variavel]
     
     b =  pd.Series({'Regra exata': r_exato , 'Regra incompleta': r_incompleto } , name=nome_analise)
     b_df = pd.DataFrame(b)
     b_df.index.names = ['Atributo']
-    b_df.columns = [nome_analise]
+    b_df.columns = [nome_variavel]
     
     ab_df = pd.concat([a_df , b_df] , axis = 0)
     
@@ -270,12 +280,12 @@ def analisa_LOCTUPRO(df):
     a = df[nome_analise].value_counts(dropna=False, normalize=False)
     a_df = pd.DataFrame(a)
     a_df.index.names = ['Atributo']
-    a_df.columns = [nome_analise]
+    a_df.columns = [nome_variavel]
     
     b =  pd.Series({'Regra exata': r_exato , 'Regra incompleta': r_incompleto } , name=nome_analise)
     b_df = pd.DataFrame(b)
     b_df.index.names = ['Atributo']
-    b_df.columns = [nome_analise]
+    b_df.columns = [nome_variavel]
     
     ab_df = pd.concat([a_df , b_df] , axis = 0)
     
@@ -323,7 +333,7 @@ def analisa_TNM(df):
     a = df[nome_analise].value_counts(dropna=False, normalize=False)
     a_df = pd.DataFrame(a)
     a_df.index.names = ['Atributo']
-    a_df.columns = [nome_analise]
+    a_df.columns = [nome_variavel]
       
     b =  pd.Series({
         'Regra exata': r_exato , 
@@ -335,7 +345,7 @@ def analisa_TNM(df):
         } , name=nome_analise)
     b_df = pd.DataFrame(b)
     b_df.index.names = ['Atributo']
-    b_df.columns = [nome_analise]
+    b_df.columns = [nome_variavel]
       
     ab_df = pd.concat([a_df , b_df] , axis = 0)
       
@@ -374,64 +384,17 @@ def analisa_ESTADIAM(df):
     a = df[nome_analise].value_counts(dropna=False, normalize=False)
     a_df = pd.DataFrame(a)
     a_df.index.names = ['Atributo']
-    a_df.columns = [nome_analise]
+    a_df.columns = [nome_variavel]
     
     b =  pd.Series({'Regra exata': r_exato  } , name=nome_analise)
     b_df = pd.DataFrame(b)
     b_df.index.names = ['Atributo']
-    b_df.columns = [nome_analise]
+    b_df.columns = [nome_variavel]
     
     ab_df = pd.concat([a_df , b_df] , axis = 0)
     
     return df , ab_df
 
-# VALIDACOES E INFERENCIAS ENTRE VARIAVEIS - Ver manual pagina 337
-
-
-def infere_BASMAIMP():
-    """Tenta inferir os valores corretos para os nulos de BASMAIMP através de outras variaveis. Atualiza a variavel global df_unico.
-    
-    BASMAIMP e BASDIAGSP: informacoes coerentes entre eles. Preencho os valores 0 com os correspondentes preenchidos de BASDIAGSP
-    regras quando BASMAIMP for 0
-    '1' => '1'   REGRA APLICADA
-    '2' => '2' | '3' | '4'
-    '3' => '5' | '6' | '7'
-    
-       
-    """
-    # =============================================================================
-
-    # =============================================================================
-    
-    
-    # a = df_unico['BASMAIMP'].value_counts(dropna=False, normalize=False)
-    # b = df_unico['BASDIAGSP'].value_counts(dropna=False, normalize=False)
-    # c = df_unico.groupby(['BASMAIMP' , 'BASDIAGSP'] , observed=True).agg({'TPCASO' : 'count'})
-    aux_df = df_unico.loc[ (df_unico['BASMAIMP'] == '0') & (df_unico['BASDIAGSP'] == '1')  ]
-    aux_quant = aux_df.shape[0]
-    df_unico.loc[ (df_unico['BASMAIMP'] == '0') & (df_unico['BASDIAGSP'] == '1') , 'BASMAIMP' ] = '1'
-    print(log.logar_acao_realizada('Inferir valor' , 'Inferir o valor de BASMAIMP a partir de BASDIAGSP. Regra 0 <= 1. Falta definir outras regras aplicaveis' , f'{aux_quant}'))
-    
-
-    
-def infere_ESTDFIMT(dias_entre_DATAINITRT_DATAOBITO = 730):
-    """Tenta inferir os valores corretos para os nulos de ESTDFIMT através de outras variaveis. Atualiza a variavel global df_unico.
-    
-    ESTDFIMT nulo e DATAOBITO ate o intervalo de tempo a partir da DATAINITRT 
-    
-    Parameters:
-        dias_entre_DATAINITRT_DATAOBITO (int): intervalo de tempo a ser considerado
-
-    """
-    aux_df = df_unico.loc[ (df_unico['ESTDFIMT'].isnull()) &  ~(df_unico['DATAOBITO'].isnull()) & 
-                                      (df_unico['DATAOBITO'] < df_unico['DATAINITRT'] + timedelta(days = dias_entre_DATAINITRT_DATAOBITO)  ) ]
-    aux_quant = aux_df.shape[0]
-    
-    df_unico.loc[ (df_unico['ESTDFIMT'].isnull()) &  ~(df_unico['DATAOBITO'].isnull()) & 
-                                      (df_unico['DATAOBITO'] < df_unico['DATAINITRT'] + timedelta(days = dias_entre_DATAINITRT_DATAOBITO)  ) , 'ESTDFIMT'] = '6'
-    
-    print(log.logar_acao_realizada('Inferir valor' , f'Inferir o valor de ESTDFIMT a partir de DATAOBITO ate {dias_entre_DATAINITRT_DATAOBITO} dias apos o inicio do tratamento' , f'{aux_quant}'))
-    
 
 def main(df):
     """Funcao principal.
@@ -460,10 +423,6 @@ def main(df):
     
     df_unico = valida_idade(df_unico)
     
-    infere_BASMAIMP()
-    
-    infere_ESTDFIMT() 
-    
     df_unico = tratar_variavel_municipio(df_unico)
     
     df_unico , df_result_aux = analisa_LOCTUDET(df_unico)
@@ -489,7 +448,7 @@ def main(df):
     df_result = df_result.fillna('')
     
     a_nome_arquivo = 'analiseValoresAtributos'
-    f.salvar_excel_conclusao(df_result , a_nome_arquivo)
+    f.salvar_excel_conclusao(df_result.T , a_nome_arquivo)
     
     print(log.logar_acao_realizada('Analise de valores' , 'Resultados consolidados da analise dos valores' , f'ver arquivo {a_nome_arquivo}'))
     

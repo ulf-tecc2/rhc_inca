@@ -125,14 +125,14 @@ def seleciona_DATAS(df):
     #retirar valores que nao sao exatos
     df = df.dropna(subset = ['DATAINITRT'], inplace=False)
     a_dict['DATAINITRT'] = q_inicial - df.shape[0]
-    print(log.logar_acao_realizada('Dados Nulos' , 'Eliminacao de registros com DATAINITRT nulo' ,f'{q_inicial - df.shape[0]}'))
+    print(log.logar_acao_realizada('Selecao Dados' , 'Eliminacao de registros com DATAINITRT nulo' ,f'{q_inicial - df.shape[0]}'))
     
     # remover sem data de diagnostico
     q_inicial = df.shape[0]
     #retirar valores que nao sao exatos
     df = df.dropna(subset = ['DTDIAGNO'], inplace=False)
     a_dict['DTDIAGNO'] = q_inicial - df.shape[0]
-    print(log.logar_acao_realizada('Dados Nulos' , 'Eliminacao de registros com DTDIAGNO nulo' ,f'{q_inicial - df.shape[0]}'))
+    print(log.logar_acao_realizada('Selecao Dados' , 'Eliminacao de registros com DTDIAGNO nulo' ,f'{q_inicial - df.shape[0]}'))
     
     return df , a_dict
     
@@ -156,7 +156,7 @@ def seleciona_naonulos(df , lista_variaveis):
     a_dict = a.to_dict()
 
     df = df.dropna(subset = lista_variaveis, inplace=False)
-    print(log.logar_acao_realizada('Dados Nulos' , f'Eliminacao dos registros {lista_variaveis} com valores nulos' ,f'{q_inicial - df.shape[0]}'))
+    print(log.logar_acao_realizada('Selecao Dados' , f'Eliminacao dos registros {lista_variaveis} com valores nulos' ,f'{q_inicial - df.shape[0]}'))
     
     return df , a_dict
 
@@ -182,7 +182,7 @@ def elimina_sem_tratamento(df):
     a_dict = {}
     a_dict['RZNTR'] = q_inicial - df.shape[0]
    
-    print(log.logar_acao_realizada('Dados Nulos' , f'Eliminacao dos registros de quem nao fez tratamento (RZNTR nao nulo)' ,f'{q_inicial - df.shape[0]}'))
+    print(log.logar_acao_realizada('Selecao Dados' , f'Eliminacao dos registros de quem nao fez tratamento (RZNTR nao nulo)' ,f'{q_inicial - df.shape[0]}'))
     return df ,  a_dict
 
 def remover_colunas_naosignificativas(df):
@@ -208,7 +208,7 @@ def remover_colunas_naosignificativas(df):
     
     df_aux = df.drop(columns=colunas_a_remover , axis=1)
     
-    print(log.logar_acao_realizada('Remocao Registros' , 'Eliminacao de colunas com dados sem significancia' ,f'{colunas_a_remover}'))
+    print(log.logar_acao_realizada('Selecao Dados' , 'Eliminacao de colunas com dados sem significancia' ,f'{colunas_a_remover}'))
     
     return df_aux
 
@@ -245,7 +245,11 @@ def main(df):
     df , aux_dict = seleciona_naonulos(df , lista_variaveis = ['SEXO' , 'TIPOHIST'])    
     a_dict = a_dict | aux_dict
  
+    q_inicial = df.shape[0]
     df = df[df['TPCASO'] == '1']
+    print(log.logar_acao_realizada('Selecao Dados' , f'Eliminacao dos registros nao analiticos' ,f'{q_inicial - df.shape[0]}'))
+
+    
     df = remover_colunas_naosignificativas(df)
     
     an_ind_df = pd.DataFrame([a_dict])

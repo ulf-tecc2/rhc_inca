@@ -127,13 +127,9 @@ def valida_datas_acerta_tipo(df):
 def main():
     """Funcao principal.
     
-    Parameters:
-
     Returns:
         (DataFrame): df carregado       
-    """ 
-
-    
+    """     
     df_unico = f.leitura_arquivo_csv('Consolidado_Integrador_Inca')
     print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base bruta' , df_unico.shape[0]) )
        
