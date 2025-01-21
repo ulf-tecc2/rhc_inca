@@ -15,30 +15,14 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 
 """
 
-import dbfread as db
 import pandas as pd
 import numpy as np
-import re 
-import os
-import glob
-from datetime import date
-import locale
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 
 import sys
 sys.path.append("C:/Users/ulf/OneDrive/Python/ia_ml/templates/lib")
 
-import funcoes_ulf as ulfpp
-import bib_graficos as ug
-
 from funcoes import Log
 import funcoes as f
-
-from tabulate import tabulate
-
 
 def gera_intervalos(df):
     """Geracao de intervalos de tempo e selecao dos registros.
@@ -52,9 +36,7 @@ def gera_intervalos(df):
 
     Returns:
         (DataFrame): df modificado
-    """
-
-    
+    """    
     df['_tempo_diagnostico_tratamento'] = (df['DATAINITRT'] - df['DTDIAGNO']).dt.days
     # df['_tempo_diagnostico_tratamento'].astype(int)
     
@@ -143,68 +125,39 @@ def PRITRATH_dividir_tratamentos(df):
     
     return df
 
-def busca_data_sp_iniciou_mais_que_1_trat(df):
-    aux_sp = df[df['UFUH'] == 'SP']
-    a = aux_sp.loc[aux_sp['PRITRATH_NrTratamentos'] > 1]
-    a.sort_values(by='DATAINITRT' , ascending=[True]).reset_index(drop=True)
-    
-    return  a['DATAINITRT'].iloc[0]
-
-def remover_colunas_naosignificativas(df):
-    """Elimina as variaveis (colunas) que nao possuem significancia .
-
-    Colunas:
-        'ESTDFIMT', 'RZNTR','DTDIAGNO' , 'DTTRIAGE' , 'DATAPRICON' , 'DATAINITRT' , 'DATAOBITO', 
-        'TPCASO', 'LOCALNAS' , 'BASDIAGSP' , 'VALOR_TOT' , 
-        'AnaliseLOCTUDET', 'AnaliseLOCTUDET_tipo', 'AnaliseLOCTUPRI', 'AnaliseLOCTUPRO','AnaliseTNM', 'AnaliseESTADIAM' ,
-        'CLIATEN' , 'CLITRAT' , 'CNES' , 'DTINITRT' , 'LOCTUPRO' , 'ESTADRES', 'OUTROESTA' , 'OCUPACAO' , 'PROCEDEN' , 'ESTADIAG'
-        
-    Parameters:
-        df (DataFrame): DataFrame a ser transformado / analisado
-
-    Returns:
-        (DataFrame): df modificado
-    """
-    #remocao de variaveis nao significativas
-    colunas_a_remover = ['ESTDFIMT', 'RZNTR','DTDIAGNO' , 'DTTRIAGE' , 'DATAPRICON' , 'DATAINITRT' , 'DATAOBITO', 'RZNTR'
-                         'TPCASO', 'LOCALNAS' , 'BASDIAGSP' , 'VALOR_TOT' , 
-                         'AnaliseLOCTUDET', 'AnaliseLOCTUDET_tipo', 'AnaliseLOCTUPRI', 'AnaliseLOCTUPRO','AnaliseTNM', 'AnaliseESTADIAM' ,
-                         'CLIATEN' , 'CLITRAT' , 'CNES' , 'DTINITRT' , 'LOCTUPRO' , 'ESTADRES', 'OUTROESTA' , 'OCUPACAO' , 'PROCEDEN' , 'ESTADIAG' ]
-    
-    df_aux = df.drop(columns=colunas_a_remover , axis=1)
-    
-    print(log.logar_acao_realizada('Remocao Registros' , 'Eliminacao de colunas com dados sem significancia' ,f'{colunas_a_remover}'))
-    
-    return df_aux
-
 
 #%%
 
-log = Log()
-log.carregar_log('log_analise_valores')
-df_unico = f.leitura_arquivo_parquet('analise_valores')
-a=log.asString()
+def main(df_unico):
+    df_unico = gera_intervalos(df_unico)
+    df_unico = define_valor_esperado(df_unico)
+    df_unico = transforma_nulos_naoinformados(df_unico)
+    df_unico = PRITRATH_dividir_tratamentos(df_unico)
+
+    return df_unico
 
 
-df_unico = gera_intervalos(df_unico)
+# df_unico[['ALCOOLIS' , 'TABAGISM' , 'HISTFAMC' , 'ORIENC']].isnull().sum()
 
-df_unico = define_valor_esperado(df_unico)
-
-df_unico = transforma_nulos_naoinformados(df_unico)
-
-df_unico = PRITRATH_dividir_tratamentos(df_unico)
+# df_unico.sample(20)[['PRITRATH','PRITRATH_Primeiro' , 'PRITRATH_Seguintes' , 'PRITRATH_NrTratamentos']]
 
 
+if __name__ == "__main__":
+    log = Log()
+    log.carregar_log('log_analise_valores')
+    df_unico = f.leitura_arquivo_parquet('analise_valores')
+    print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem transformados' , df_unico.shape[0]) )
 
-df_unico[['ALCOOLIS' , 'TABAGISM' , 'HISTFAMC' , 'ORIENC']].isnull().sum()
-
-df_unico.sample(20)[['PRITRATH','PRITRATH_Primeiro' , 'PRITRATH_Seguintes' , 'PRITRATH_NrTratamentos']]
-
-
-
+    df_unico = main(df_unico) 
+    
+    log.salvar_log('log_transformacoes') 
+    f.salvar_parquet(df_unico , 'transformacoes')
 
 
-# df_unico = remover_colunas_naosignificativas(df_unico)
+
+
+
+
 
 
 

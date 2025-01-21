@@ -17,6 +17,7 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 """
 
 import pandas as pd
+from datetime import datetime
 
 import sys
 sys.path.append("C:/Users/ulf/OneDrive/Python/ia_ml/templates/lib")
@@ -81,21 +82,26 @@ def insere_indicador_invalidos(df , response):
     return pd.concat([response , a_df] , axis = 0)
 
 
-def carregar_indicadores_extracao(response):
-    """Carrega os indicadores gerados na extracao e insere no df geral.
+def busca_data_sp_iniciou_mais_que_1_trat(df):
+    """Identifica a data de quando SP iniciou o registro de mais de um tratamento.
     
     Parameters:
-        response (DataFrame): DataFrame com indicadores
+        df (DataFrame): DataFrame a ser pesquisado
 
     Returns:
-        (DataFrame):  DataFrame com indicadores de extracao inseridos
+        (Date):  data do inicio
     """
     
+    aux_sp = df[df['UFUH'] == 'SP']
+    a = aux_sp.loc[aux_sp['PRITRATH_NrTratamentos'] > 1]
+    a.sort_values(by='DATAINITRT' , ascending=[True]).reset_index(drop=True)
     
-    return response
+    return  a['DATAINITRT'].iloc[0]
 
-def main(response_df):
-    """Funcao principal de geracao dos indicadores.
+
+
+def main_indicadores_variaveis(response_df):
+    """Funcao principal de geracao dos indicadores das variaveis.
     
     Parameters:
         response_df (DataFrame): DataFrame com indicadores
@@ -112,15 +118,57 @@ def main(response_df):
     
     return response_df
 
+
+def main_indicadores_globais():
+    """Funcao principal de geracao dos indicadores globais.
+    
+    Returns:
+        (DataFrame):  DataFrame com indicadores globais       
+    """     
+    a_lista = []
+    
+    a_dict = {'Indicador' : 'Quantidade de Registros' ,
+             'Etapa' : 'Carga Inicial - Dados Brutos' ,
+             'Valor' : df_inicial.shape[0]
+             }
+    a_lista.append(a_dict)
+    
+    a_dict = {'Indicador' : 'Quantidade de Registros' ,
+             'Etapa' : 'Final da Analise - Dados Completos' ,
+             'Valor' : df_apos_analise.shape[0]
+             }
+    a_lista.append(a_dict)
+   
+    a_dict = {'Indicador' : 'Quantidade de Registros' ,
+             'Etapa' : 'Extracao - Dados de Casos Analiticos' ,
+             'Valor' : df_apos_extracao.shape[0]
+             }
+    a_lista.append(a_dict)
+    
+    data_sp = busca_data_sp_iniciou_mais_que_1_trat(df_apos_transf)
+
+    a_dict = {'Indicador' : 'Data de Inicio de mais de um trat em SP' ,
+             'Etapa' : 'Final da Analise - Dados Completos' ,
+             'Valor' : data_sp.strftime('%m/%Y')
+             }
+    a_lista.append(a_dict)
+    
+    a_df = pd.DataFrame(a_lista)
+    
+    return a_df
+
 if __name__ == "__main__":
     log = Log()
 
     df_inicial = f.leitura_arquivo_csv('Consolidado_Integrador_Inca')
     df_apos_tipos = f.leitura_arquivo_parquet('BaseCompleta')
     df_apos_analise =  f.leitura_arquivo_parquet('analise_valores')
+    df_apos_transf = f.leitura_arquivo_parquet('transformacoes')
+    df_apos_extracao =  f.leitura_arquivo_parquet('extracao_dados')
+    
  
     result_df = pd.DataFrame()
-    result_df = main(result_df)
+    result_df = main_indicadores_variaveis(result_df)
     
     a_df = f.leitura_arquivo_excel_conclusao('parcial_extracao')
     result_df = pd.concat([result_df , a_df] , axis = 0)
@@ -128,7 +176,16 @@ if __name__ == "__main__":
     result_df = result_df.fillna(0) 
     result_df.reset_index(drop = True , inplace=True)
     
-    a_file_name = 'indicadores'
+    a_file_name = 'indicadores_variaveis'
+    f.salvar_excel_conclusao(result_df , a_file_name)
+    
+    result_df = pd.DataFrame()
+    result_df = main_indicadores_globais()
+    
+    result_df = result_df.fillna(0) 
+    result_df.reset_index(drop = True , inplace=True)
+    
+    a_file_name = 'indicadores_globais'
     f.salvar_excel_conclusao(result_df , a_file_name)
 
 

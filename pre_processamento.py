@@ -17,7 +17,7 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 import dbfread as db
 import pandas as pd
 import numpy as np
-import re 
+
 import os
 
 import funcoes as f
@@ -124,29 +124,6 @@ def valida_datas_acerta_tipo(df):
 
     return df
 
-
-def tratar_codigo_municipio(a_str):
-    """Funcao auxiiar. Verifica se o codigo tem tamanho 7.
-    
-    Parameters:
-        a_str (String): codigo do municipio
-
-    Returns:
-        (String): s_str ou None 
-    """ 
-    a_str = str(a_str)
-    a_str = re.sub("\D", "", a_str)
-    
-    if len(a_str) == 7:
-        return a_str
-    
-    if(len(a_str) > 7):
-        return a_str[0:7]
-        
-    return np.nan
-
-
-
 def main():
     """Funcao principal.
     
@@ -169,8 +146,8 @@ def main():
     f.salvar_parquet(df_unico , 'BaseCompleta')
     log.salvar_log('log_BaseCompleta')
 
-    df_analiticos = df_unico.loc[df_unico['TPCASO'] == '1']
-    f.salvar_parquet(df_analiticos , 'BaseAnaliticos')
+    # df_analiticos = df_unico.loc[df_unico['TPCASO'] == '1']
+    # f.salvar_parquet(df_analiticos , 'BaseAnaliticos')
     return df_unico
 
 

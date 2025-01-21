@@ -14,6 +14,8 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
     4. Elimina registros com TNM nao validos
     5. Elimina registros com DATAS  nao validos
     6. Elimina registros com SEXO ou TIPOHIST nulos
+    7. Elimina registros de casos nao analiticos
+    8. Remove colunas nao significantes
     10. Salvar o arquivo como parquet
 
 """
@@ -183,19 +185,34 @@ def elimina_sem_tratamento(df):
     print(log.logar_acao_realizada('Dados Nulos' , f'Eliminacao dos registros de quem nao fez tratamento (RZNTR nao nulo)' ,f'{q_inicial - df.shape[0]}'))
     return df ,  a_dict
 
+def remover_colunas_naosignificativas(df):
+    """Elimina as variaveis (colunas) que nao possuem significancia .
 
-def coleta_sumario(df):
-    """Insere no log as informacoes dos dados.
-    
+    Colunas:
+        'ESTDFIMT', 'RZNTR','DTDIAGNO' , 'DTTRIAGE' , 'DATAPRICON' , 'DATAINITRT' , 'DATAOBITO', 
+        'TPCASO', 'LOCALNAS' , 'BASDIAGSP' , 'VALOR_TOT' , 
+        'AnaliseLOCTUDET', 'AnaliseLOCTUDET_tipo', 'AnaliseLOCTUPRI', 'AnaliseLOCTUPRO','AnaliseTNM', 'AnaliseESTADIAM' ,
+        'CLIATEN' , 'CLITRAT' , 'CNES' , 'DTINITRT' , 'LOCTUPRO' , 'ESTADRES', 'OUTROESTA' , 'OCUPACAO' , 'PROCEDEN' , 'ESTADIAG'
+        
     Parameters:
         df (DataFrame): DataFrame a ser transformado / analisado
 
     Returns:
         (DataFrame): df modificado
-    """    
-    print(log.logar_acao_realizada('Informacao' , 'Quantidade de registros com valores validos' ,f'{df.shape[0]}'))
-    a = df.isnull().sum()
-    print(log.logar_acao_realizada('Informacao' , 'Quantidade de registros com valores nulos' , a))
+    """
+    #remocao de variaveis nao significativas
+    colunas_a_remover = ['ESTDFIMT', 'RZNTR','DTDIAGNO' , 'DTTRIAGE' , 'DATAPRICON' , 'DATAINITRT' , 'DATAOBITO', 'RZNTR' ,
+                         'TPCASO', 'LOCALNAS' , 'BASDIAGSP' , 'VALOR_TOT' , 
+                         'AnaliseLOCTUDET', 'AnaliseLOCTUDET_tipo', 'AnaliseLOCTUPRI', 'AnaliseLOCTUPRO','AnaliseTNM', 'AnaliseESTADIAM' ,
+                         'CLIATEN' , 'CLITRAT' , 'CNES' , 'DTINITRT' , 'LOCTUPRO' , 'ESTADRES', 'OUTROESTA' , 'OCUPACAO' , 'PROCEDEN' , 'ESTADIAG' ]
+    
+    df_aux = df.drop(columns=colunas_a_remover , axis=1)
+    
+    print(log.logar_acao_realizada('Remocao Registros' , 'Eliminacao de colunas com dados sem significancia' ,f'{colunas_a_remover}'))
+    
+    return df_aux
+
+
 
 
 def main(df):
@@ -228,8 +245,8 @@ def main(df):
     df , aux_dict = seleciona_naonulos(df , lista_variaveis = ['SEXO' , 'TIPOHIST'])    
     a_dict = a_dict | aux_dict
  
-    
-    coleta_sumario(df)
+    df = df[df['TPCASO'] == '1']
+    df = remover_colunas_naosignificativas(df)
     
     an_ind_df = pd.DataFrame([a_dict])
     an_ind_df.astype('int64')
@@ -240,8 +257,8 @@ def main(df):
 
 if __name__ == "__main__":
     log = Log()
-    log.carregar_log('log_analise_valores')
-    df_base = f.leitura_arquivo_parquet('analise_valores')
+    log.carregar_log('log_transformacoes')
+    df_base = f.leitura_arquivo_parquet('transformacoes')
  
     print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados para seleção' , df_base.shape[0]) )
 

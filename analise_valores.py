@@ -23,12 +23,33 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 import pandas as pd
 import numpy as np
 from datetime import timedelta
+import re 
 
 import sys
 sys.path.append("C:/Users/ulf/OneDrive/Python/ia_ml/templates/lib")
 
 import funcoes as f
 from funcoes import Log
+
+def tratar_codigo_municipio(a_str):
+    """Funcao auxiiar. Verifica se o codigo tem tamanho 7.
+    
+    Parameters:
+        a_str (String): codigo do municipio
+
+    Returns:
+        (String): s_str ou None 
+    """ 
+    a_str = str(a_str)
+    a_str = re.sub("\D", "", a_str)
+    
+    if len(a_str) == 7:
+        return a_str
+    
+    if(len(a_str) > 7):
+        return a_str[0:7]
+        
+    return np.nan
 
 def tratar_variavel_municipio(df):
     """Valida os codigos do municipios transformando em None se invalidos.
@@ -476,6 +497,7 @@ def main(df):
 
     
 
+
 if __name__ == "__main__":
     log = Log()
     log.carregar_log('log_BaseCompleta')
@@ -490,7 +512,6 @@ if __name__ == "__main__":
     
     log.salvar_log('log_analise_valores') 
     f.salvar_parquet(df_unico , 'analise_valores')
-
 
 
 
