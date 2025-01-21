@@ -17,7 +17,7 @@ sys.path.append("C:/Users/ulf/OneDrive/Python/ia_ml/templates/lib")
 import funcoes as f
 from funcoes import Log
 
-def seleciona_ESTDFIMT(df , ind_result):
+def seleciona_ESTDFIMT(df):
     """Elimina os valores invalidos ou nulos de ESTDFIMT. .
     
     Regras:
@@ -25,11 +25,10 @@ def seleciona_ESTDFIMT(df , ind_result):
     
     Parameters:
         df (DataFrame): DataFrame a ser transformado / analisado
-        ind_result (DataFrame): DataFrame a ser atualizado com o resultado da selecao
 
     Returns:
         (DataFrame): df modificado
-        (DataFrame):  DataFrame com indicadores atualizados
+        (Dictionary):  dict com indicadores
     """
     q_inicial = df.shape[0]
     #retirar valores 8 e 9
@@ -39,14 +38,11 @@ def seleciona_ESTDFIMT(df , ind_result):
     
     a_dict = {}
     a_dict['ESTDFIMT'] = q_inicial - df.shape[0]
-    a_df = pd.DataFrame([a_dict])
-    a_df.astype('int64')
-    a_df.insert(0, "Indicador", ['Eliminados Invalidos'])
     
     print(log.logar_acao_realizada('Selecao Dados' , 'Eliminacao de registros com ESTDFIMT invalido (8 , 9 e nulos)' ,f'{q_inicial - df.shape[0]}'))
-    return df , pd.concat([ind_result , a_df] , axis = 0)
+    return df , a_dict
 
-def seleciona_ESTADIAM(df , ind_result):
+def seleciona_ESTADIAM(df):
     """Elimina os valores invalidos ou nulos de ESTADIAM. .
     
     ESTADIAM = codificação do grupamento do estádio clínico segundo classificação TNM
@@ -56,11 +52,10 @@ def seleciona_ESTADIAM(df , ind_result):
     
     Parameters:
         df (DataFrame): DataFrame a ser transformado / analisado
-        ind_result (DataFrame): DataFrame a ser atualizado com o resultado da selecao
-
+       
     Returns:
         (DataFrame): df modificado
-        (DataFrame):  DataFrame com indicadores atualizados
+        (Dictionary):  dict com indicadores
     """
     q_inicial = df.shape[0]
     #retirar valores que nao sao exatos
@@ -68,15 +63,12 @@ def seleciona_ESTADIAM(df , ind_result):
     
     a_dict = {}
     a_dict['ESTADIAM'] = q_inicial - df.shape[0]
-    a_df = pd.DataFrame([a_dict])
-    a_df.astype('int64')
-    a_df.insert(0, "Indicador", ['Eliminados Invalidos'])
-    
+      
     print(log.logar_acao_realizada('Selecao Dados' , 'Eliminacao de registros com ESTADIAM que nao sao exatos' ,f'{q_inicial - df.shape[0]}'))
-    return df , pd.concat([ind_result , a_df] , axis = 0)
+    return df , a_dict
 
 
-def seleciona_TNM(df , ind_result):
+def seleciona_TNM(df):
     """Elimina os valores invalidos ou nulos de TNM. .
     
     TNM   <AnaliseTNM>
@@ -87,11 +79,11 @@ def seleciona_TNM(df , ind_result):
         
     Parameters:
         df (DataFrame): DataFrame a ser transformado / analisado
-        ind_result (DataFrame): DataFrame a ser atualizado com o resultado da selecao
+        
 
     Returns:
         (DataFrame): df modificado
-        (DataFrame):  DataFrame com indicadores atualizados
+        (Dictionary):  dict com indicadores
     """
     q_inicial = df.shape[0]
     #retirar valores que nao sao exatos
@@ -99,24 +91,21 @@ def seleciona_TNM(df , ind_result):
     
     a_dict = {}
     a_dict['TNM'] = q_inicial - df.shape[0]
-    a_df = pd.DataFrame([a_dict])
-    a_df.astype('int64')
-    a_df.insert(0, "Indicador", ['Eliminados Invalidos'])
-    
+     
     print(log.logar_acao_realizada('Selecao Dados' , 'Eliminacao de registros com TNM que nao sao exatos ou incompletos. \n  Analisar o que deve ser feito com < nao se aplica - Hemato | nao se aplica - Geral>' ,f'{q_inicial - df.shape[0]}'))
 
-    return df , pd.concat([ind_result , a_df] , axis = 0)
+    return df , a_dict
 
-def seleciona_DATAS(df , ind_result):
+def seleciona_DATAS(df):
     """Selecao de datas () nao nulas.
     
     Parameters:
         df (DataFrame): DataFrame a ser transformado / analisado
-        ind_result (DataFrame): DataFrame a ser atualizado com o resultado da selecao
+       
 
     Returns:
         (DataFrame): df modificado
-        (DataFrame):  DataFrame com indicadores atualizados
+        (Dictionary):  dict com indicadores
     """
     a_dict = {}
     
@@ -133,48 +122,42 @@ def seleciona_DATAS(df , ind_result):
     a_dict['DTDIAGNO'] = q_inicial - df.shape[0]
     print(log.logar_acao_realizada('Dados Nulos' , 'Eliminacao de registros com DTDIAGNO nulo' ,f'{q_inicial - df.shape[0]}'))
     
-    a_df = pd.DataFrame([a_dict])
-    a_df.astype('int64')
-    a_df.insert(0, "Indicador", ['Eliminados Invalidos'])
-    
-    return df ,  pd.concat([ind_result , a_df] , axis = 0)
+    return df , a_dict
     
 
 
-def seleciona_naonulos(df , lista_variaveis , ind_result):
+def seleciona_naonulos(df , lista_variaveis):
     """Elimina os valores nulos das variaveis passadas como parametros.
 
     Parameters:
         df (DataFrame): DataFrame a ser transformado / analisado
         lista_variaveis (list): variaveis cujos valores nulos serão removidos
-        ind_result (DataFrame): DataFrame a ser atualizado com o resultado da selecao
+       
 
     Returns:
         (DataFrame): df modificado
-        (DataFrame):  DataFrame com indicadores atualizados
+        (Dictionary):  dict com indicadores
     """
     q_inicial = df.shape[0]
     
     a = df_base[lista_variaveis].isnull().sum().astype('int64')
-    a_df = pd.DataFrame([a])
-    a_df.insert(0, "Indicador", ['Eliminados Invalidos'])
-    
+    a_dict = a.to_dict()
+
     df = df.dropna(subset = lista_variaveis, inplace=False)
     print(log.logar_acao_realizada('Dados Nulos' , f'Eliminacao dos registros {lista_variaveis} com valores nulos' ,f'{q_inicial - df.shape[0]}'))
     
-    return df ,  pd.concat([ind_result , a_df] , axis = 0)
+    return df , a_dict
 
-
-def elimina_sem_tratamento(df , ind_result):
+def elimina_sem_tratamento(df):
     """Elimina os registros de quem nao fez tratamento (RZNTR de 1 ate 7).
 
     Parameters:
         df (DataFrame): DataFrame a ser transformado / analisado
-        ind_result (DataFrame): DataFrame a ser atualizado com o resultado da selecao
+       
 
     Returns:
         (DataFrame): df modificado
-        (DataFrame):  DataFrame com indicadores atualizados
+        (Dictionary):  dict com indicadores
     """
     
     q_inicial = df.shape[0]
@@ -186,12 +169,9 @@ def elimina_sem_tratamento(df , ind_result):
     
     a_dict = {}
     a_dict['RZNTR'] = q_inicial - df.shape[0]
-    a_df = pd.DataFrame([a_dict])
-    a_df.astype('int64')
-    a_df.insert(0, "Indicador", ['Eliminados Invalidos'])
    
     print(log.logar_acao_realizada('Dados Nulos' , f'Eliminacao dos registros de quem nao fez tratamento (RZNTR nao nulo)' ,f'{q_inicial - df.shape[0]}'))
-    return df ,  pd.concat([ind_result , a_df] , axis = 0)
+    return df ,  a_dict
 
 
 def coleta_sumario(df):
@@ -208,25 +188,45 @@ def coleta_sumario(df):
     print(log.logar_acao_realizada('Informacao' , 'Quantidade de registros com valores nulos' , a))
 
 
-def main(df , result_df):
+def main(df):
     """Funcao principal.
     
     Parameters:
         df (DataFrame): DataFrame a ser transformado / analisado
     Returns:
-        (DataFrame): df modificado       
+        (DataFrame): df modificado     
+        (DataFrame): df indicadores    
     """ 
-    df , result_df = elimina_sem_tratamento(df , result_df)
-    df , result_df = seleciona_ESTDFIMT(df , result_df)
-    df , result_df = seleciona_ESTADIAM(df , result_df)
-    df , result_df = seleciona_TNM(df , result_df)
+    a_dict = {}
     
-    df , result_df = seleciona_DATAS(df , result_df)
-    df , result_df = seleciona_naonulos(df , lista_variaveis = ['SEXO' , 'TIPOHIST'] , ind_result = result_df)    
+
+    df , aux_dict = elimina_sem_tratamento(df)
+    a_dict = a_dict | aux_dict
+    
+    df , aux_dict = seleciona_ESTDFIMT(df)
+    a_dict = a_dict | aux_dict
+    
+    df , aux_dict = seleciona_ESTADIAM(df)
+    a_dict = a_dict | aux_dict
+    
+    df , aux_dict = seleciona_TNM(df)
+    a_dict = a_dict | aux_dict
+    
+    df , aux_dict = seleciona_DATAS(df)
+    a_dict = a_dict | aux_dict
+    
+    df , aux_dict = seleciona_naonulos(df , lista_variaveis = ['SEXO' , 'TIPOHIST'])    
+    a_dict = a_dict | aux_dict
  
     
     coleta_sumario(df)
-    return df , result_df
+    
+    an_ind_df = pd.DataFrame([a_dict])
+    an_ind_df.astype('int64')
+    an_ind_df.insert(0, "Indicador", ['Eliminados Invalidos'])
+    
+    
+    return df , an_ind_df
 
 if __name__ == "__main__":
     log = Log()
@@ -236,7 +236,7 @@ if __name__ == "__main__":
     print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados para seleção' , df_base.shape[0]) )
 
     result_df = pd.DataFrame()
-    df_base , result_df = main(df_base , result_df) 
+    df_base , result_df = main(df_base) 
     
     
     log.salvar_log('log_extracao_dados') 

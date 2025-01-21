@@ -100,7 +100,7 @@ def main(response_df):
         
     response_df = insere_indicador_nulos(df = df_apos_analise, tipo = 'Nulos - Após Analise dos Dados', response = response_df)
     
-    response_df = insere_indicador_invalidos(df = df_apos_analise, tipo = 'Invalidos - Após Analise dos Dados', response = response_df)
+    response_df = insere_indicador_invalidos(df = df_apos_analise, response = response_df)
     
     return response_df
 
@@ -114,8 +114,11 @@ if __name__ == "__main__":
     result_df = pd.DataFrame()
     result_df = main(result_df)
     
-    a_df = leitura_arquivo_excel_conclusao('parcial_extracao')
-    pd.concat([result_df , a_df] , axis = 0)
+    a_df = f.leitura_arquivo_excel_conclusao('parcial_extracao')
+    result_df = pd.concat([result_df , a_df] , axis = 0)
+
+    result_df = result_df.fillna('') 
+    result_df.reset_index(inplace=True)
     
     a_file_name = 'indicadores'
     f.salvar_excel_conclusao(result_df , a_file_name)
