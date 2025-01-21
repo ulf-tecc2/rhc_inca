@@ -6,6 +6,13 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 
 @author: ulf Bergmann
 
+#Roteiro de execucao:
+    1. Leitura dos arquivos isolados
+    2. Validacao das Datas e definição do tipo
+    3. Definir tipos das variáveis / colunas do DataFrame
+    4. Validar os codigos dos municipios
+    5. Salvar o arquivo como parquet
+
 """
 
 import dbfread as db

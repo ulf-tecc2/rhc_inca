@@ -271,6 +271,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gerar_indicadores--roteiro-de-execucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Roteiro de execucao:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gerar_indicadores.carregar_indicadores_extracao" class="md-nav__link">
     <span class="md-ellipsis">
       carregar_indicadores_extracao
@@ -368,6 +377,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gerar_indicadores--roteiro-de-execucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Roteiro de execucao:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gerar_indicadores.carregar_indicadores_extracao" class="md-nav__link">
     <span class="md-ellipsis">
       carregar_indicadores_extracao
@@ -433,6 +451,14 @@
       <p>Registros Hospitalares de Câncer (RHC) - Carregamento e consolidacao inicial dos dados.</p>
 <p>MBA em Data Science e Analytics - USP/Esalq - 2025</p>
 <p>@author: ulf Bergmann</p>
+<h2 id="gerar_indicadores--roteiro-de-execucao">Roteiro de execucao:</h2>
+<pre><code>1. Identifica valores nulos por variavel na Base de Dados inicial 
+2. Identifica valores nulos por variavel apos definicao dos tipos
+3. Identifica valores nulos por variavel apos analise dos dados
+4. Identifica valores invalidos por variavel apos analise dos dados
+5. Registra registros removidos na seleção da base
+6. Salvar o arquivo de indicadores
+</code></pre>
 
 
 
@@ -513,18 +539,18 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">84</span>
 <span class="normal">85</span>
 <span class="normal">86</span>
-<span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">carregar_indicadores_extracao</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">carregar_indicadores_extracao</span><span class="p">(</span><span class="n">response</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Carrega os indicadores gerados na extracao e insere no df geral.</span>
 
 <span class="sd">    Parameters:</span>
@@ -623,15 +649,7 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
@@ -660,7 +678,15 @@
 <span class="normal">70</span>
 <span class="normal">71</span>
 <span class="normal">72</span>
-<span class="normal">73</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insere_indicador_invalidos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insere_indicador_invalidos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gera o indicador de registros invalidos para cada variavel do DataFrame.</span>
 
 <span class="sd">    Parameters:</span>
@@ -799,22 +825,22 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insere_indicador_nulos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">tipo</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insere_indicador_nulos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">tipo</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gera o indicador de registros nulos para cada variavel do DataFrame.</span>
 
 <span class="sd">    Parameters:</span>
@@ -882,15 +908,7 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 97</span>
 <span class="normal"> 98</span>
 <span class="normal"> 99</span>
 <span class="normal">100</span>
@@ -898,7 +916,15 @@
 <span class="normal">102</span>
 <span class="normal">103</span>
 <span class="normal">104</span>
-<span class="normal">105</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">response_df</span><span class="p">):</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">response_df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Funcao principal de geracao dos indicadores.</span>
 
 <span class="sd">    Parameters:</span>

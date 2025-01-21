@@ -6,6 +6,14 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 
 @author: ulf Bergmann
 
+#Roteiro de execucao:
+    1. Identifica valores nulos por variavel na Base de Dados inicial 
+    2. Identifica valores nulos por variavel apos definicao dos tipos
+    3. Identifica valores nulos por variavel apos analise dos dados
+    4. Identifica valores invalidos por variavel apos analise dos dados
+    5. Registra registros removidos na seleção da base
+    6. Salvar o arquivo de indicadores
+
 """
 
 import pandas as pd
@@ -117,8 +125,8 @@ if __name__ == "__main__":
     a_df = f.leitura_arquivo_excel_conclusao('parcial_extracao')
     result_df = pd.concat([result_df , a_df] , axis = 0)
 
-    result_df = result_df.fillna('') 
-    result_df.reset_index(inplace=True)
+    result_df = result_df.fillna(0) 
+    result_df.reset_index(drop = True , inplace=True)
     
     a_file_name = 'indicadores'
     f.salvar_excel_conclusao(result_df , a_file_name)

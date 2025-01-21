@@ -5,6 +5,18 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 
 @author: ulf Bergmann
 
+#Roteiro de execucao:
+    1. Tornar nulos valores invalidos 
+    2. Validar a cariavel IDADE
+    3. Inferir valores para a variável BASMAIMP
+    4. Inferir valores para a variável ESTDFIMT
+    5. Analisar a variavel LOCTUDET
+    6. Analisar a variavel LOCTUPRI
+    7. Analisar a variavel LOCTUPRO
+    8. Analisar a variavel TNM
+    9. Analisar a variavel ESTADIAM
+    10. Salvar o arquivo como parquet
+    
 """
 
 import pandas as pd

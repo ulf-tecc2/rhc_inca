@@ -4,7 +4,17 @@
 
 MBA em Data Science e Analytics - USP/Esalq - 2025
 
-@author: ulf Bergmann
+@author: Ulf Bergmann
+
+
+#Roteiro de execucao:
+    1. Elimina registros sem tratamento 
+    2. Elimina registros com ESTDFIMT nao validos
+    3. Elimina registros com ESTADIAM  nao validos
+    4. Elimina registros com TNM nao validos
+    5. Elimina registros com DATAS  nao validos
+    6. Elimina registros com SEXO ou TIPOHIST nulos
+    10. Salvar o arquivo como parquet
 
 """
 
@@ -223,7 +233,7 @@ def main(df):
     
     an_ind_df = pd.DataFrame([a_dict])
     an_ind_df.astype('int64')
-    an_ind_df.insert(0, "Indicador", ['Eliminados Invalidos'])
+    an_ind_df.insert(0, "Indicador", ['Registros eliminados na seleção dos dados'])
     
     
     return df , an_ind_df
