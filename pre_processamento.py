@@ -10,8 +10,7 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
     1. Leitura dos arquivos isolados
     2. Validacao das Datas e definição do tipo
     3. Definir tipos das variáveis / colunas do DataFrame
-    4. Validar os codigos dos municipios
-    5. Salvar o arquivo como parquet
+    4. Salvar o arquivo como parquet
 
 """
 
@@ -146,26 +145,7 @@ def tratar_codigo_municipio(a_str):
         
     return np.nan
 
-def tratar_variavel_municipio(df):
-    """Valida os codigos do municipios transformando em None se invalidos.
-    
-    Parameters:
-        df (DataFrame): DataFrame a ser transformado / analisado
 
-    Returns:
-        (DataFrame): df modificado 
-    """ 
-    aux_nulos = df['PROCEDEN'].isnull().sum()
-    df['PROCEDEN'] = df['PROCEDEN'].apply(tratar_codigo_municipio)
-    aux_nulos1 = df['PROCEDEN'].isnull().sum()
-    print(log.logar_acao_realizada('Valores Invalidos' , 'Variavel PROCEDEN - Código Municipio invalido ' , aux_nulos1 - aux_nulos ))
-    
-    aux_nulos = df['MUUH'].isnull().sum()
-    df['MUUH'] = df['MUUH'].apply(tratar_codigo_municipio)
-    aux_nulos1 = df['MUUH'].isnull().sum()
-    print(log.logar_acao_realizada('Valores Invalidos' , 'Variavel MUUH - Código Municipio invalido ' , aux_nulos1 - aux_nulos ))
-
-    return df
 
 def main():
     """Funcao principal.
@@ -183,7 +163,7 @@ def main():
     #ACERTOS INICIAIS - TRATAR VALIDACOES A AJUSTES APLICAVEIS A TODA A BASE, SEM SER ESPECIFICO DOS CASOS QUE SERAO ABORDADOS (ANALITICOS)
     df_unico = valida_datas_acerta_tipo(df_unico)
     df_unico = definir_tipos_variaveis(df_unico)
-    df_unico = tratar_variavel_municipio(df_unico)
+    
     
     # ETAPA INICIAL - SALVAR TRATAMENTO INICIAL 
     f.salvar_parquet(df_unico , 'BaseCompleta')
@@ -197,105 +177,6 @@ def main():
 if __name__ == "__main__":
     log = Log()
     df_unico = main()
-
-
-
-#%% ANALISE TNM
-
-# def computa_resultados_TNM(df):
-#     tamanho_base = df.shape[0]
-#     tamanho_base_sp = df[df['UFUH'] == 'SP'].shape[0]
-    
-#     df_resultado = pd.DataFrame(columns=['Formato', 'Descricao', 'Quantidade Total' , 'Quantidade Total %' , "Quantidade SP" , 'Quantidade SP %' ])
-#     df_resultado = df_resultado.astype(dtype={'Formato':'object','Descricao':'object','Quantidade Total':'int' ,  'Quantidade Total %':'float', 'Quantidade SP':'int' , 'Quantidade SP %' : 'float'}  )    
-
-# # r_hemato
-# # r_invalido
-# # r_nao_se_aplica_geral  'nao se aplica - Geral'
-# # r_exato
-# # r_incompleto
-# # r_regrasp
-
-#     a_tipo = 'nao se aplica - Hemato'
-#     q_total =  df[(df['AnaliseTNM'] == a_tipo)].shape[0]
-#     q_sp = df[(df['UFUH'] == 'SP') & (df['AnaliseTNM'] == a_tipo)].shape[0]
-#     aNewDF = pd.DataFrame([{'Formato' : 'CID-O C81 a C85 / C91 a C97', 'Descricao' : 'Não se aplica ao tumor Hemato', 'Quantidade Total' : q_total , 'Quantidade Total %' : f'{q_total/tamanho_base * 100 :.2f}%'  , 'Quantidade SP' : q_sp , 'Quantidade SP %' : f'{q_sp/tamanho_base_sp * 100 :.2f}%'}])
-#     df_resultado = pd.concat([df_resultado , aNewDF ], ignore_index=True)
-
-#     a_tipo = 'invalido'
-#     q_total =  df[(df['AnaliseTNM'] == a_tipo)].shape[0]
-#     q_sp = df[(df['UFUH'] == 'SP') & (df['AnaliseTNM'] == a_tipo)].shape[0]
-#     aNewDF = pd.DataFrame([{'Formato' : r_invalido, 'Descricao' : 'Marcado como inexistente', 'Quantidade Total' : q_total , 'Quantidade Total %' : f'{q_total/tamanho_base * 100 :.2f}%' , 'Quantidade SP' : q_sp , 'Quantidade SP %' : f'{q_sp/tamanho_base_sp * 100 :.2f}%'}])
-#     df_resultado = pd.concat([df_resultado , aNewDF ], ignore_index=True)
-
-#     a_tipo = 'nao se aplica - Geral'
-#     q_total =  df[(df['AnaliseTNM'] == a_tipo)].shape[0]
-#     q_sp = df[(df['UFUH'] == 'SP') & (df['AnaliseTNM'] == a_tipo)].shape[0]
-#     aNewDF = pd.DataFrame([{'Formato' : r_nao_se_aplica_geral, 'Descricao' : 'Marcado como não se aplica', 'Quantidade Total' : q_total , 'Quantidade Total %' : f'{q_total/tamanho_base * 100 :.2f}%' , 'Quantidade SP' : q_sp , 'Quantidade SP %' : f'{q_sp/tamanho_base_sp * 100 :.2f}%'}])
-#     df_resultado = pd.concat([df_resultado , aNewDF ], ignore_index=True)
-
-#     a_tipo = 'exato'
-#     q_total =  df[(df['AnaliseTNM'] == a_tipo)].shape[0]
-#     q_sp = df[(df['UFUH'] == 'SP') & (df['AnaliseTNM'] == a_tipo)].shape[0]
-#     aNewDF = pd.DataFrame([{'Formato' : r_exato, 'Descricao' : 'Possui exatamente 3 digitos conforme especificado', 'Quantidade Total' : q_total , 'Quantidade Total %' : f'{q_total/tamanho_base * 100 :.2f}%' , 'Quantidade SP' : q_sp , 'Quantidade SP %' : f'{q_sp/tamanho_base_sp * 100 :.2f}%'}])
-#     df_resultado = pd.concat([df_resultado , aNewDF ], ignore_index=True)
-    
-#     a_tipo = 'incompleto'
-#     q_total =  df[(df['AnaliseTNM'] == a_tipo)].shape[0]
-#     q_sp = df[(df['UFUH'] == 'SP') & (df['AnaliseTNM'] == a_tipo)].shape[0]
-#     aNewDF = pd.DataFrame([{'Formato' : r_incompleto, 'Descricao' : 'Possui X em algum dos digitos TNM', 'Quantidade Total' : q_total , 'Quantidade Total %' : f'{q_total/tamanho_base * 100 :.2f}%' , 'Quantidade SP' : q_sp , 'Quantidade SP %' : f'{q_sp/tamanho_base_sp * 100 :.2f}%'}])
-#     df_resultado = pd.concat([df_resultado , aNewDF ], ignore_index=True)
-    
-#     a_tipo = 'nao se aplica - regra SP'
-#     q_total =  df[(df['AnaliseTNM'] == a_tipo)].shape[0]
-#     q_sp = df[(df['UFUH'] == 'SP') & (df['AnaliseTNM'] == a_tipo)].shape[0]
-#     aNewDF = pd.DataFrame([{'Formato' : r_regrasp, 'Descricao' : 'Preenchido com YYY ou XXX. Não se aplica ao tumor (Regra SP)', 'Quantidade Total' : q_total , 'Quantidade Total %' : f'{q_total/tamanho_base * 100 :.2f}%'  , 'Quantidade SP' : q_sp , 'Quantidade SP %' : f'{q_sp/tamanho_base_sp * 100 :.2f}%'}])
-#     df_resultado = pd.concat([df_resultado , aNewDF ], ignore_index=True)
-        
-#     a_tipo = 'demais'
-#     q_total =  df[(df['AnaliseTNM'] == a_tipo)].shape[0]
-#     q_sp = df[(df['UFUH'] == 'SP') & (df['AnaliseTNM'] == a_tipo)].shape[0]
-#     aNewDF = pd.DataFrame([{'Formato' : "" ,  'Descricao' : 'Valores indefinidos. Requer aprofundamento', 'Quantidade Total' : q_total , 'Quantidade Total %' : f'{q_total/tamanho_base * 100 :.2f}%'  , 'Quantidade SP' : q_sp , 'Quantidade SP %' : f'{q_sp/tamanho_base_sp * 100 :.2f}%'}])
-#     df_resultado = pd.concat([df_resultado , aNewDF ], ignore_index=True)
-    
-#     a = df.loc[df['AnaliseTNM'] == 'demais']
-#     b = a.groupby('TNM' , observed = True).size()
-#     df_sem_conclusao = b.reset_index()
-#     df_sem_conclusao = df_sem_conclusao.sort_values(by=[0], ascending=[False]).reset_index(drop=True)
-    
-#     return df_resultado , df_sem_conclusao
-
-
-
-
-# df_resultado_analise_tnm, df_sem_conclusao = computa_resultados_TNM(df_unico)
-# tab_df_resultado_analise_tnm = tabulate(df_resultado_analise_tnm, headers='keys', tablefmt='simple_grid', numalign='right' , floatfmt=".0f" )
-# a_nome_arquivo = 'analiseTNM_completo'
-# f.salvar_excel_conclusao(df_resultado_analise_tnm , a_nome_arquivo + '_sumario')
-# f.salvar_excel_conclusao(df_sem_conclusao , a_nome_arquivo + '_fora_padrao')
-
-# print(log.logar_acao_realizada('Analise Variavel' , 'Resultados da analise do TNM - Base completa' , f'ver arquivos {a_nome_arquivo}'))
-
-
-# df_analitico = df_unico[df_unico['TPCASO'] == '1']
-
-# df_analitico.shape[0]
-
-# df_resultado_analise_tnm_analitico, df_sem_conclusao_analitico = computa_resultados_TNM(df_analitico)
-# tab_df_resultado_analise_tnm_analitico = tabulate(df_resultado_analise_tnm_analitico, headers='keys', tablefmt='simple_grid', numalign='right' , floatfmt=".0f" )
-# a_nome_arquivo = 'analiseTNM_analiticos'
-# f.salvar_excel_conclusao(df_resultado_analise_tnm_analitico , a_nome_arquivo + '_sumario')
-# f.salvar_excel_conclusao(df_sem_conclusao_analitico , a_nome_arquivo + '_fora_padrao')
-
-# print(log.logar_acao_realizada('Analise Variavel' , 'Resultados da analise do TNM - Base de casos analiticos' , f'ver arquivos {a_nome_arquivo}'))
-
-
-# # a = pd.DataFrame()
-# # a['teste'] = np.where(df_unico['TNM'].str.contains('XXX', regex= False, na=False) , 'achou YYY', 
-# #              np.where(df_unico['TNM'].str.contains(r"^[0-4XIA][0-4X][0-1X]$", regex= True, na=False) ,'Exato',
-# #             'nao achou'))
-# # b = a.groupby('teste' , observed = True).size()
-
 
 
 

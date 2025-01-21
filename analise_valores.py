@@ -7,15 +7,16 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 
 #Roteiro de execucao:
     1. Tornar nulos valores invalidos 
-    2. Validar a cariavel IDADE
-    3. Inferir valores para a variável BASMAIMP
-    4. Inferir valores para a variável ESTDFIMT
-    5. Analisar a variavel LOCTUDET
-    6. Analisar a variavel LOCTUPRI
-    7. Analisar a variavel LOCTUPRO
-    8. Analisar a variavel TNM
-    9. Analisar a variavel ESTADIAM
-    10. Salvar o arquivo como parquet
+    2. Validar a variavel IDADE
+    3. Validar os codigos de municipios
+    4. Inferir valores para a variável BASMAIMP
+    5. Inferir valores para a variável ESTDFIMT
+    6. Analisar a variavel LOCTUDET
+    7. Analisar a variavel LOCTUPRI
+    8. Analisar a variavel LOCTUPRO
+    9. Analisar a variavel TNM
+    10. Analisar a variavel ESTADIAM
+    11. Salvar o arquivo como parquet
     
 """
 
@@ -29,6 +30,26 @@ sys.path.append("C:/Users/ulf/OneDrive/Python/ia_ml/templates/lib")
 import funcoes as f
 from funcoes import Log
 
+def tratar_variavel_municipio(df):
+    """Valida os codigos do municipios transformando em None se invalidos.
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado 
+    """ 
+    aux_nulos = df['PROCEDEN'].isnull().sum()
+    df['PROCEDEN'] = df['PROCEDEN'].apply(tratar_codigo_municipio)
+    aux_nulos1 = df['PROCEDEN'].isnull().sum()
+    print(log.logar_acao_realizada('Valores Invalidos' , 'Variavel PROCEDEN - Código Municipio invalido ' , aux_nulos1 - aux_nulos ))
+    
+    aux_nulos = df['MUUH'].isnull().sum()
+    df['MUUH'] = df['MUUH'].apply(tratar_codigo_municipio)
+    aux_nulos1 = df['MUUH'].isnull().sum()
+    print(log.logar_acao_realizada('Valores Invalidos' , 'Variavel MUUH - Código Municipio invalido ' , aux_nulos1 - aux_nulos ))
+
+    return df
 
 def trocar_valores_nulos(df):
     """Trocar os valores que representam brancos / nulos (99, 999, ...) por None.
@@ -422,6 +443,8 @@ def main(df):
     
     infere_ESTDFIMT() 
     
+    df_unico = tratar_variavel_municipio(df_unico)
+    
     df_unico , df_result_aux = analisa_LOCTUDET(df_unico)
     df_result = pd.concat([df_result , df_result_aux] , axis = 1)
     print(log.logar_acao_realizada('Analise de valores' , f'Analisar o valor de LOCTUDET' , ''))
@@ -449,9 +472,8 @@ def main(df):
     
     print(log.logar_acao_realizada('Analise de valores' , 'Resultados consolidados da analise dos valores' , f'ver arquivo {a_nome_arquivo}'))
     
-    
-    log.salvar_log('log_analise_valores') 
-    f.salvar_parquet(df_unico , 'analise_valores')
+    return df_unico
+
     
 
 if __name__ == "__main__":
@@ -464,7 +486,10 @@ if __name__ == "__main__":
     df_unico = f.leitura_arquivo_parquet('BaseCompleta')
     print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem analisados - Casos completos' , df_unico.shape[0]) )
 
-    main(df_unico) 
+    df_unico = main(df_unico) 
+    
+    log.salvar_log('log_analise_valores') 
+    f.salvar_parquet(df_unico , 'analise_valores')
 
 
 

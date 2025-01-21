@@ -1,8 +1,18 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Dec 21 18:55:27 2024
+"""Registros Hospitalares de Câncer (RHC) - Transformações dos dados.
 
-@author: ulf
+MBA em Data Science e Analytics - USP/Esalq - 2025
+
+@author: Ulf Bergmann
+
+
+#Roteiro de execucao:
+    1. Gera intervalos de tempo a partir das datas dos eventos 
+    2. Cria uma nova variavel para descrever o resultado (sucesso/insucesso) do tratamento
+    3. Transforma os valores nulos em Não Informados (normalemente 9)
+    4. Desmembra os tratamentos realizados em primeiro trat e seguintes
+    5. Salvar o arquivo como parquet
+
 """
 
 import dbfread as db
@@ -29,16 +39,6 @@ import funcoes as f
 
 from tabulate import tabulate
 
-#%% ETAPA 4 :  CARREGAR ANTERIOR PARA CONTINUIDADE
-# =============================================================================
-log = Log()
-log.carregar_log('log_etapa4')
-df_unico = f.leitura_arquivo_parquet('etapa4')
-a=log.asString()
-
-
-#%% TRANSFORMACOES NOS DADOS E GERACAO DE NOVOS CAMPOS DERIVADOS
-# =============================================================================
 
 def gera_intervalos(df):
     """Geracao de intervalos de tempo e selecao dos registros.
@@ -56,19 +56,15 @@ def gera_intervalos(df):
 
     
     df['_tempo_diagnostico_tratamento'] = (df['DATAINITRT'] - df['DTDIAGNO']).dt.days
-    df['_tempo_diagnostico_tratamento'].astype(int)
+    # df['_tempo_diagnostico_tratamento'].astype(int)
     
     df['_tempo_consulta_tratamento'] = (df['DATAINITRT'] - df['DATAPRICON']).dt.days
-    df['_tempo_consulta_tratamento'].astype(int)
+    # df['_tempo_consulta_tratamento'].astype(int)
     
     print(log.logar_acao_realizada('Gerar Dados' , 'Geracao das variaveis _tempo_diagnostico_tratamento e _tempo_consulta_tratamento ' ,''))
     
     return df
     
-gera_intervalos(df)
-
-
-
 
 def  define_valor_esperado(df):
     """Analisa ESTDFIMT e cria a variavel booleana _RESFINAL com sucesso / insucesso. .
@@ -86,14 +82,9 @@ def  define_valor_esperado(df):
     # gerar variavel dependente binaria => sucesso ou nao
     df['_RESFINAL'] =  np.where((df['ESTDFIMT'] == '1') | (df['ESTDFIMT'] == '2') , True , False)
     
+    print(log.logar_acao_realizada('Gerar Valor' , 'Analise de ESTDFIMT e criacao da variavel dependente _RESFINAL ' , ''))
+    
     return df
-
-
-
-
-
-
-df = define_valor_esperado(df)
 
 def transforma_nulos_naoinformados(df):
     """Transforma os valores nulos para nao informados. .
@@ -129,7 +120,35 @@ def transforma_nulos_naoinformados(df):
     
     return df
 
-df = transforma_nulos_naoinformados(df)
+def PRITRATH_dividir_tratamentos(df):
+    """Analisa PRITRATH e desmembra a sequencia de tratamentos.
+    
+    Cria as colunas:
+        PRITRATH  123 => PRITRATH_Primeiro 1  |  PRITRATH_Seguintes 23  | PRITRATH_NrTratamentos 3
+  
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado
+    """
+    df['PRITRATH_Primeiro'] = df['PRITRATH'].apply(lambda x: x[0]) 
+    
+    df['PRITRATH_Seguintes'] = df['PRITRATH'].apply(lambda x: x[1:])
+    # df['PRITRATH_Seguintes'] = df['PRITRATH'].apply(lambda x: np.nan if (x == '') else x)
+    
+    df['PRITRATH_NrTratamentos'] = df['PRITRATH'].apply(lambda x: len(x)) 
+    
+    print(log.logar_acao_realizada('Gerar Valor' , 'Desmembramento de PRITRATH ' , ''))
+    
+    return df
+
+def busca_data_sp_iniciou_mais_que_1_trat(df):
+    aux_sp = df[df['UFUH'] == 'SP']
+    a = aux_sp.loc[aux_sp['PRITRATH_NrTratamentos'] > 1]
+    a.sort_values(by='DATAINITRT' , ascending=[True]).reset_index(drop=True)
+    
+    return  a['DATAINITRT'].iloc[0]
 
 def remover_colunas_naosignificativas(df):
     """Elimina as variaveis (colunas) que nao possuem significancia .
@@ -158,78 +177,84 @@ def remover_colunas_naosignificativas(df):
     
     return df_aux
 
-df = remover_colunas_naosignificativas(df)
 
-#Dividir PRITRATH em primeiro tratamento e os demais
+#%%
 
-def PRITRATH_dividir_tratamentos(df):
+log = Log()
+log.carregar_log('log_analise_valores')
+df_unico = f.leitura_arquivo_parquet('analise_valores')
+a=log.asString()
 
-    df['PRITRATH_Primeiro'] = df['PRITRATH'].apply(lambda x: x[0]) 
-    
-    df['PRITRATH_Seguintes'] = df['PRITRATH'].apply(lambda x: x[1:])
-    df['PRITRATH_Seguintes'] = df['PRITRATH'].apply(lambda x: np.nan if (x == '') else x)
-    
-    df['PRITRATH_NrTratamentos'] = df['PRITRATH'].apply(lambda x: len(x)) 
-    
-    return df
 
-def busca_data_sp_iniciou_mais_que_1_trat(df):
-    aux_sp = df[df['UFUH'] == 'SP']
-    a = aux_sp.loc[aux_sp['PRITRATH_NrTratamentos'] > 1]
-    a.sort_values(by='DATAINITRT' , ascending=[True]).reset_index(drop=True)
-    
-    return  a['DATAINITRT'].iloc[0]
+df_unico = gera_intervalos(df_unico)
 
+df_unico = define_valor_esperado(df_unico)
+
+df_unico = transforma_nulos_naoinformados(df_unico)
 
 df_unico = PRITRATH_dividir_tratamentos(df_unico)
 
-data_inicio = busca_data_sp_iniciou_mais_que_1_trat(df_unico)
-print(log.logar_acao_realizada('Informacao', 'Data do inicio de envio de mais de um tratamento por SP', data_inicio))
+
+
+df_unico[['ALCOOLIS' , 'TABAGISM' , 'HISTFAMC' , 'ORIENC']].isnull().sum()
+
+df_unico.sample(20)[['PRITRATH','PRITRATH_Primeiro' , 'PRITRATH_Seguintes' , 'PRITRATH_NrTratamentos']]
+
+
+
+
+
+# df_unico = remover_colunas_naosignificativas(df_unico)
+
+
+
+# data_inicio = busca_data_sp_iniciou_mais_que_1_trat(df_unico)
+# print(log.logar_acao_realizada('Informacao', 'Data do inicio de envio de mais de um tratamento por SP', data_inicio))
 
 #%%
-df = df_unico.sample(n=50000, random_state=1)
-df = df.dropna(subset=['DATAINITRT', 'PRITRATH_NrTratamentos'])
+# df = df_unico.sample(n=50000, random_state=1)
+# df = df.dropna(subset=['DATAINITRT', 'PRITRATH_NrTratamentos'])
 
 
-c = df['DATAINITRT']
-c.unique()
+# c = df['DATAINITRT']
+# c.unique()
 
-aux_ts = pd.Series(df['PRITRATH_NrTratamentos'].values , index=df['DATAINITRT'])
+# aux_ts = pd.Series(df['PRITRATH_NrTratamentos'].values , index=df['DATAINITRT'])
 
 
-aux_ts.tail(20)
-aux_ts.unique()
+# aux_ts.tail(20)
+# aux_ts.unique()
 
-df_unico['DATAINITRT'].describe()
-a = df_unico.groupby(['DATAINITRT'] , observed=True).size()
+# df_unico['DATAINITRT'].describe()
+# a = df_unico.groupby(['DATAINITRT'] , observed=True).size()
 
-pd.to_datetime(df_unico['DATAINITRT']).describe()
+# pd.to_datetime(df_unico['DATAINITRT']).describe()
 
-df[a_col] = pd.to_datetime(df[a_col] , format="%d/%m/%Y" , errors= 'coerce')
+# df[a_col] = pd.to_datetime(df[a_col] , format="%d/%m/%Y" , errors= 'coerce')
 
 # In[16]: Fazendo o grafico (Selecionar todos os comandos)
-plt.figure(figsize=(10, 6))
-plt.plot(aux_ts)
-plt.title("Total de Passageiros no Transporte Aereo BR")
-plt.xlabel("Jan/2011 a Mai/2024")
-plt.ylabel("Total de Passageiros Mensal")
-plt.show()
+# plt.figure(figsize=(10, 6))
+# plt.plot(aux_ts)
+# plt.title("Total de Passageiros no Transporte Aereo BR")
+# plt.xlabel("Jan/2011 a Mai/2024")
+# plt.ylabel("Total de Passageiros Mensal")
+# plt.show()
 
 
 
-c.head(100)
+# c.head(100)
 
-b = df_unico.groupby(['PRITRATH_NrTratamentos'] , observed=True).size()
- b = a['DATAINITRT']
- b.iloc[0]
+# b = df_unico.groupby(['PRITRATH_NrTratamentos'] , observed=True).size()
+#  b = a['DATAINITRT']
+#  b.iloc[0]
  
-aux_sp = df_unico[df_unico['UFUH'] == 'SP']
+# aux_sp = df_unico[df_unico['UFUH'] == 'SP']
 
-df_unico.reset_index()
-df_unico.index
-aux_sp.reset_index
-a = df_unico.loc[aux_sp['PRITRATH'].str.len() > 1]
-a1 = df_unico.groupby(['PRITRATH_NrTratamentos'] , observed=True).size()
+# df_unico.reset_index()
+# df_unico.index
+# aux_sp.reset_index
+# a = df_unico.loc[aux_sp['PRITRATH'].str.len() > 1]
+# a1 = df_unico.groupby(['PRITRATH_NrTratamentos'] , observed=True).size()
  
  
  

@@ -11,5 +11,6 @@ repo_url: https://github.com/ulf-tecc2/rhc_inca.git
 nav:
   - Pre Processamento e Carga de Dados: funcoes_pre.md
   - Analise de Dados: funcoes_ana.md
-  - Geracao de Indicadores: gerar_indicadores.md
+  - Transformacoes dos Dados: transformacoes.md
   - Extracao e Selecao de Dados: funcoes_ext.md
+  - Geracao de Indicadores: gerar_indicadores.md

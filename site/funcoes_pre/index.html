@@ -274,15 +274,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pre_processamento.tratar_variavel_municipio" class="md-nav__link">
-    <span class="md-ellipsis">
-      tratar_variavel_municipio
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#pre_processamento.valida_datas_acerta_tipo" class="md-nav__link">
     <span class="md-ellipsis">
       valida_datas_acerta_tipo
@@ -326,11 +317,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../gerar_indicadores/" class="md-nav__link">
+      <a href="../transformacoes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Geracao de Indicadores
+    Transformacoes dos Dados
   </span>
   
 
@@ -351,6 +342,26 @@
   
   <span class="md-ellipsis">
     Extracao e Selecao de Dados
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gerar_indicadores/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Geracao de Indicadores
   </span>
   
 
@@ -438,15 +449,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pre_processamento.tratar_variavel_municipio" class="md-nav__link">
-    <span class="md-ellipsis">
-      tratar_variavel_municipio
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#pre_processamento.valida_datas_acerta_tipo" class="md-nav__link">
     <span class="md-ellipsis">
       valida_datas_acerta_tipo
@@ -489,8 +491,7 @@
 <pre><code>1. Leitura dos arquivos isolados
 2. Validacao das Datas e definição do tipo
 3. Definir tipos das variáveis / colunas do DataFrame
-4. Validar os codigos dos municipios
-5. Salvar o arquivo como parquet
+4. Salvar o arquivo como parquet
 </code></pre>
 
 
@@ -572,7 +573,8 @@
 
             <details class="quote">
               <summary>Source code in <code>pre_processamento.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">63</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">62</span>
+<span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
 <span class="normal">66</span>
@@ -597,8 +599,7 @@
 <span class="normal">85</span>
 <span class="normal">86</span>
 <span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">definir_tipos_variaveis</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">definir_tipos_variaveis</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Definicao dos tipos das variaveis.</span>
 
 <span class="sd">    Parameters:</span>
@@ -699,7 +700,8 @@
 
             <details class="quote">
               <summary>Source code in <code>pre_processamento.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">33</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
+<span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
@@ -724,8 +726,7 @@
 <span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">leitura_inicial_dados</span><span class="p">(</span><span class="n">dir_bases</span> <span class="o">=</span> <span class="s1">&#39;dados</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">):</span>
+<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">leitura_inicial_dados</span><span class="p">(</span><span class="n">dir_bases</span> <span class="o">=</span> <span class="s1">&#39;dados</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Leitura dos arquivos baixados do Integrador RHC - INCA e criacao de um DataFrame unico.</span>
 
 <span class="sd">    Le todos os arquivos do diretorio egerando um df unico</span>
@@ -797,31 +798,31 @@
 
             <details class="quote">
               <summary>Source code in <code>pre_processamento.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">170</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
 <span class="normal">171</span>
 <span class="normal">172</span>
 <span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="normal">174</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Funcao principal.</span>
 
 <span class="sd">    Parameters:</span>
@@ -837,7 +838,7 @@
     <span class="c1">#ACERTOS INICIAIS - TRATAR VALIDACOES A AJUSTES APLICAVEIS A TODA A BASE, SEM SER ESPECIFICO DOS CASOS QUE SERAO ABORDADOS (ANALITICOS)</span>
     <span class="n">df_unico</span> <span class="o">=</span> <span class="n">valida_datas_acerta_tipo</span><span class="p">(</span><span class="n">df_unico</span><span class="p">)</span>
     <span class="n">df_unico</span> <span class="o">=</span> <span class="n">definir_tipos_variaveis</span><span class="p">(</span><span class="n">df_unico</span><span class="p">)</span>
-    <span class="n">df_unico</span> <span class="o">=</span> <span class="n">tratar_variavel_municipio</span><span class="p">(</span><span class="n">df_unico</span><span class="p">)</span>
+
 
     <span class="c1"># ETAPA INICIAL - SALVAR TRATAMENTO INICIAL </span>
     <span class="n">f</span><span class="o">.</span><span class="n">salvar_parquet</span><span class="p">(</span><span class="n">df_unico</span> <span class="p">,</span> <span class="s1">&#39;BaseCompleta&#39;</span><span class="p">)</span>
@@ -919,7 +920,8 @@
 
             <details class="quote">
               <summary>Source code in <code>pre_processamento.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">129</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">128</span>
+<span class="normal">129</span>
 <span class="normal">130</span>
 <span class="normal">131</span>
 <span class="normal">132</span>
@@ -936,8 +938,7 @@
 <span class="normal">143</span>
 <span class="normal">144</span>
 <span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">tratar_codigo_municipio</span><span class="p">(</span><span class="n">a_str</span><span class="p">):</span>
+<span class="normal">146</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">tratar_codigo_municipio</span><span class="p">(</span><span class="n">a_str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Funcao auxiiar. Verifica se o codigo tem tamanho 7.</span>
 
 <span class="sd">    Parameters:</span>
@@ -956,118 +957,6 @@
         <span class="k">return</span> <span class="n">a_str</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="pre_processamento.tratar_variavel_municipio" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">tratar_variavel_municipio</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-      <p>Valida os codigos do municipios transformando em None se invalidos.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>df</code></td>
-            <td>
-                  <code>DataFrame</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>DataFrame a ser transformado / analisado</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code>DataFrame</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>df modificado</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-            <details class="quote">
-              <summary>Source code in <code>pre_processamento.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">tratar_variavel_municipio</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Valida os codigos do municipios transformando em None se invalidos.</span>
-
-<span class="sd">    Parameters:</span>
-<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        (DataFrame): df modificado </span>
-<span class="sd">    &quot;&quot;&quot;</span> 
-    <span class="n">aux_nulos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;PROCEDEN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;PROCEDEN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;PROCEDEN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tratar_codigo_municipio</span><span class="p">)</span>
-    <span class="n">aux_nulos1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;PROCEDEN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Valores Invalidos&#39;</span> <span class="p">,</span> <span class="s1">&#39;Variavel PROCEDEN - Código Municipio invalido &#39;</span> <span class="p">,</span> <span class="n">aux_nulos1</span> <span class="o">-</span> <span class="n">aux_nulos</span> <span class="p">))</span>
-
-    <span class="n">aux_nulos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MUUH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MUUH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MUUH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tratar_codigo_municipio</span><span class="p">)</span>
-    <span class="n">aux_nulos1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MUUH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Valores Invalidos&#39;</span> <span class="p">,</span> <span class="s1">&#39;Variavel MUUH - Código Municipio invalido &#39;</span> <span class="p">,</span> <span class="n">aux_nulos1</span> <span class="o">-</span> <span class="n">aux_nulos</span> <span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">df</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -1141,7 +1030,8 @@
 
             <details class="quote">
               <summary>Source code in <code>pre_processamento.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 93</span>
+<span class="normal"> 94</span>
 <span class="normal"> 95</span>
 <span class="normal"> 96</span>
 <span class="normal"> 97</span>
@@ -1172,8 +1062,7 @@
 <span class="normal">122</span>
 <span class="normal">123</span>
 <span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">valida_datas_acerta_tipo</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="normal">125</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">valida_datas_acerta_tipo</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Define o tipo das variaveis Data e substitui valores invalidos por None.</span>
 
 <span class="sd">    Parameters:</span>
