@@ -105,3 +105,5 @@ def salvar_excel_conclusao(df , nome_arquivo):
     with pd.ExcelWriter('dados/Conclusoes/' + nome_arquivo + '.xlsx') as writer:
         df.to_excel(writer) 
         
+def leitura_arquivo_excel_conclusao(nome_arquivo):
+    return pd.read_excel('dados/Conclusoes/' + nome_arquivo + '.xlsx' , index_col=0)

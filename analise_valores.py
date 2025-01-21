@@ -446,8 +446,11 @@ if __name__ == "__main__":
     log = Log()
     log.carregar_log('log_BaseCompleta')
     
-    df_unico = f.leitura_arquivo_parquet('BaseAnaliticos')
-    print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem analisados - Casos analiticos' , df_unico.shape[0]) )
+    # df_unico = f.leitura_arquivo_parquet('BaseAnaliticos')
+    # print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem analisados - Casos analiticos' , df_unico.shape[0]) )
+
+    df_unico = f.leitura_arquivo_parquet('BaseCompleta')
+    print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem analisados - Casos completos' , df_unico.shape[0]) )
 
     main(df_unico) 
 
