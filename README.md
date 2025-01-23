@@ -26,24 +26,31 @@ b. Utilização da base na construção de modelos de Machine Learning para a pr
 [**Descriçao das Funções do Código Fonte**](https://ulf-tecc2.github.io/rhc_inca/site)
 
 ## Conjunto de Dados
-Arquivos com os dados brutos e tratados - Período de 1985 a 2022 
 
-### Dados brutos consolidados em um arquivo único (CSV)
-[**Dados Brutos - Arquivo Unico**](https://drive.google.com/uc?export=download&id=1Zt2Kv9DtM7IBdAGDdFwvMogPvceG7KYA) 
+**Arquivos com os conjntos de dados gerados - Período de 1985 a 2022** 
 
 
-### Dados com tipos definidos (arquivo parquet)
-[**Dados Tipados**](https://drive.google.com/uc?export=download&id=1oNnt1K2yJhk3FzuK1ELUgUlFT-uf0d9x) 
+#### Dados brutos consolidados em um arquivo único (CSV)
+[**Base Consolidada**](https://drive.google.com/uc?export=download&id=1Zt2Kv9DtM7IBdAGDdFwvMogPvceG7KYA) 
 
 
-### Dados com resultado das análises e sanitização (arquivo parquet)
-[**Dados Sanitizados**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
+#### Dados com tipos definidos (arquivo parquet)
+[**Base Inicial**](https://drive.google.com/uc?export=download&id=1oNnt1K2yJhk3FzuK1ELUgUlFT-uf0d9x) 
 
 
-### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet)
-[**Dados Fonte para Modelos**](https://drive.google.com/uc?export=download&id=1Bj0FcA6lO6PJfJs5-i003Ldgag4q_jP-) 
+#### Dados com resultado das análises e sanitização (arquivo parquet)
+[**Base Sanitizada**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
+
+
+#### Dados com resultado das transformações e inferências (arquivo parquet)
+[**Base Sanitizadas**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
+
+
+#### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet)
+[**Base Modelagems**](https://drive.google.com/uc?export=download&id=1Bj0FcA6lO6PJfJs5-i003Ldgag4q_jP-) 
+
 
 
 ## Analises e Conclusões
-Arquivos com os resultados detalhados das analises e conclusoes 
+**Arquivos com os resultados detalhados das analises e conclusoes**
 
