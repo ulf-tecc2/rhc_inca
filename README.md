@@ -21,6 +21,10 @@ a. Identificar transformações nos dados que possam completar informações aus
 
 b. Utilização da base na construção de modelos de Machine Learning para a predição da resposta ao primeiro tratamento identificando oportunidades de melhoria nas ações de saúde pública no tratamento oncológico.
 
+## Metodologia Utilizada
+![metodo](https://github.com/user-attachments/assets/b8ef489e-3bd4-440e-b553-08db65349e19)
+
+
 ## Documentação
 
 [**Descriçao das Funções do Código Fonte**](https://ulf-tecc2.github.io/rhc_inca/site)
