@@ -60,3 +60,22 @@ A figura abaixo mostra as etapas do processo utilizado na preparação dos dados
 ## Analises e Conclusões
 **Arquivos com os resultados detalhados das analises e conclusoes**
 
+#### Ações executadas ao longo do processo 
+[**Log Ações**](https://drive.google.com/uc?export=download&id=) 
+
+#### Indicadores coletados ao longo do processo 
+[**Log Indicadores**](https://drive.google.com/uc?export=download&id=) 
+
+#### Regras utilizadas nas analises dos dados 
+[**Log Indicadores**](https://drive.google.com/uc?export=download&id=) 
+
+#### Medidas dos Indicadores para as variáveis
+[**Log Indicadores**](https://drive.google.com/uc?export=download&id=) 
+
+#### Medidas dos Indicadores de qualidade
+[**Log Indicadores**](https://drive.google.com/uc?export=download&id=) 
+
+#### Medidas dos Indicadores Globais
+[**Log Indicadores**](https://drive.google.com/uc?export=download&id=) 
+
+
