@@ -24,7 +24,7 @@ b. Utilização da base na construção de modelos de Machine Learning para a pr
 ## Processo Utilizado
 A figura abaixo mostra as etapas do processo utilizado na preparação dos dados obtidos a partir do RHC/INCA
 
-![metodo](https://github.com/user-attachments/assets/b8ef489e-3bd4-440e-b553-08db65349e19)
+![Processo Utilizado](imagens/metodo.png)
 
 
 ## Documentação
