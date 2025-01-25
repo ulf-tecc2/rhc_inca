@@ -42,18 +42,22 @@ A figura abaixo mostra as etapas do processo utilizado na preparação dos dados
 
 #### Dados com tipos definidos (arquivo parquet e CSV)
 [**Base Inicial  (parquet)**](https://drive.google.com/uc?export=download&id=1oNnt1K2yJhk3FzuK1ELUgUlFT-uf0d9x) 
+
 [**Base Inicial  (CSV)**](https://drive.google.com/uc?export=download&id=) 
 
 #### Dados com resultado das análises e sanitização (arquivo parquet e CSV)
 [**Base Sanitizada  (parquet)**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
+
 [**Base Sanitizada  (CSV)**](https://drive.google.com/uc?export=download&id=) 
 
 #### Dados com resultado das transformações e inferências (arquivo parquet e CSV)
 [**Base Transformada  (parquet)**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
+
 [**Base Transformada  (CSV)**](https://drive.google.com/uc?export=download&id=) 
 
 #### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet e CSV)
 [**Base Modelagem (parquet)**](https://drive.google.com/uc?export=download&id=1Bj0FcA6lO6PJfJs5-i003Ldgag4q_jP-) 
+
 [**Base Modelagem  (CSV)**](https://drive.google.com/uc?export=download&id=) 
 
 

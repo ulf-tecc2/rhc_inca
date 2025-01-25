@@ -327,6 +327,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gerar_indicadores.gera_indicador_incompletude" class="md-nav__link">
+    <span class="md-ellipsis">
+      gera_indicador_incompletude
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gerar_indicadores.insere_indicador_invalidos" class="md-nav__link">
     <span class="md-ellipsis">
       insere_indicador_invalidos
@@ -416,6 +425,15 @@
   <a href="#gerar_indicadores.busca_data_sp_iniciou_mais_que_1_trat" class="md-nav__link">
     <span class="md-ellipsis">
       busca_data_sp_iniciou_mais_que_1_trat
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gerar_indicadores.gera_indicador_incompletude" class="md-nav__link">
+    <span class="md-ellipsis">
+      gera_indicador_incompletude
     </span>
   </a>
   
@@ -575,21 +593,21 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span>
-<span class="normal">96</span>
-<span class="normal">97</span>
-<span class="normal">98</span>
-<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">busca_data_sp_iniciou_mais_que_1_trat</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">busca_data_sp_iniciou_mais_que_1_trat</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Identifica a data de quando SP iniciou o registro de mais de um tratamento.</span>
 
 <span class="sd">    Parameters:</span>
@@ -604,6 +622,219 @@
     <span class="n">a</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;DATAINITRT&#39;</span> <span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">return</span>  <span class="n">a</span><span class="p">[</span><span class="s1">&#39;DATAINITRT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="gerar_indicadores.gera_indicador_incompletude" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">gera_indicador_incompletude</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">etapa</span><span class="p">,</span> <span class="n">lista_colunas</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Gera o indicador de INCOMPLETUDE para cada variavel do DataFrame.</p>
+<p>Incompletitude: proporção de informação ignorada, ou seja, os campos em branco e os códigos atribuídos à informação ignorada</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>df</code></td>
+            <td>
+                  <code>DataFrame</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame a ser analisado</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>etapa</code></td>
+            <td>
+                  <code>String</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>momento do calculo do indicador</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>lista_colunas</code></td>
+            <td>
+                  <code>String</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>colunas a serem analisadas</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>response</code></td>
+            <td>
+                  <code>DataFrame</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame com indicadores</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>DataFrame</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame com indicador de Incompletude</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>gerar_indicadores.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">gera_indicador_incompletude</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">etapa</span> <span class="p">,</span> <span class="n">lista_colunas</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gera o indicador de INCOMPLETUDE para cada variavel do DataFrame.</span>
+
+<span class="sd">    Incompletitude: proporção de informação ignorada, ou seja, os campos em branco e os códigos atribuídos à informação ignorada</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser analisado</span>
+<span class="sd">        etapa (String): momento do calculo do indicador</span>
+<span class="sd">        lista_colunas (String):  colunas a serem analisadas</span>
+<span class="sd">        response (DataFrame): DataFrame com indicadores</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame):  DataFrame com indicador de Incompletude</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">informacao_ignorada</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;ALCOOLIS&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;BASDIAGSP&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;4&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;BASMAIMP&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;DIAGANT&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;ESTCONJ&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;ESTDFIMT&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;EXDIAG&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;HISTFAMC&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;INSTRUC&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;LATERALI&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;OCUPACAO&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;999&#39;</span> <span class="p">,</span> <span class="s1">&#39;9999&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;ORIENC&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;PRITRATH&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;PTNM&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;RACACOR&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;RZNTR&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> <span class="p">,</span>
+        <span class="s1">&#39;TABAGISM&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span> 
+        <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">lista_colunas</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="c1"># print((var in informacao_ignorada_por_atributo.keys()) and (row[var] in informacao_ignorada_por_atributo[var] ))</span>
+            <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">:</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="p">((</span><span class="n">var</span> <span class="ow">in</span> <span class="n">informacao_ignorada</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="ow">and</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="ow">in</span> <span class="n">informacao_ignorada</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="p">)):</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Variavel: </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1"> Count:</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">etapa</span> <span class="o">+</span> <span class="s1">&#39; - quantidade incompletos&#39;</span> <span class="p">,</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">etapa</span> <span class="o">+</span> <span class="n">etapa</span> <span class="o">+</span> <span class="s1">&#39; - porcentagem incompletos&#39;</span> <span class="p">,</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -691,8 +922,7 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
-<span class="normal">46</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
@@ -728,7 +958,8 @@
 <span class="normal">79</span>
 <span class="normal">80</span>
 <span class="normal">81</span>
-<span class="normal">82</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insere_indicador_invalidos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+<span class="normal">82</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insere_indicador_invalidos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gera o indicador de registros invalidos para cada variavel do DataFrame.</span>
 
 <span class="sd">    Parameters:</span>
@@ -867,8 +1098,7 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">28</span>
-<span class="normal">29</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
@@ -882,7 +1112,8 @@
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
-<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insere_indicador_nulos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">tipo</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insere_indicador_nulos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">tipo</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gera o indicador de registros nulos para cada variavel do DataFrame.</span>
 
 <span class="sd">    Parameters:</span>
@@ -942,43 +1173,43 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main_indicadores_globais</span><span class="p">():</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main_indicadores_globais</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Funcao principal de geracao dos indicadores globais.</span>
 
 <span class="sd">    Returns:</span>
@@ -1067,23 +1298,23 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main_indicadores_variaveis</span><span class="p">(</span><span class="n">response_df</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main_indicadores_variaveis</span><span class="p">(</span><span class="n">response_df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Funcao principal de geracao dos indicadores das variaveis.</span>
 
 <span class="sd">    Parameters:</span>

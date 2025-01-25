@@ -644,30 +644,32 @@
 
             <details class="quote">
               <summary>Source code in <code>extracaoDados.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">180</span>
 <span class="normal">181</span>
 <span class="normal">182</span>
 <span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span>
-<span class="normal">186</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">elimina_sem_tratamento</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">elimina_sem_tratamento</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Elimina os registros de quem nao fez tratamento (RZNTR de 1 ate 7).</span>
 
 <span class="sd">    Parameters:</span>
@@ -689,7 +691,9 @@
     <span class="n">a_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;RZNTR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Dados Nulos&#39;</span> <span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Eliminacao dos registros de quem nao fez tratamento (RZNTR nao nulo)&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_inicial</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Selecao Dados&#39;</span> <span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Eliminacao dos registros de quem nao fez tratamento (RZNTR nao nulo)&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_inicial</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">logar_indicador</span><span class="p">(</span><span class="s1">&#39;Extracao&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminar Dados&#39;</span>  <span class="p">,</span> <span class="s1">&#39;Eliminacao dos registros de quem nao fez tratamento (RZNTR nao nulo)&#39;</span> <span class="p">,</span> <span class="s1">&#39;RZNTR&#39;</span> <span class="p">,</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+
     <span class="k">return</span> <span class="n">df</span> <span class="p">,</span>  <span class="n">a_dict</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -744,26 +748,7 @@
 
             <details class="quote">
               <summary>Source code in <code>extracaoDados.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">237</span>
 <span class="normal">238</span>
 <span class="normal">239</span>
 <span class="normal">240</span>
@@ -782,7 +767,30 @@
 <span class="normal">253</span>
 <span class="normal">254</span>
 <span class="normal">255</span>
-<span class="normal">256</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Funcao principal.</span>
 
 <span class="sd">    Parameters:</span>
@@ -812,7 +820,11 @@
     <span class="n">df</span> <span class="p">,</span> <span class="n">aux_dict</span> <span class="o">=</span> <span class="n">seleciona_naonulos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">lista_variaveis</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SEXO&#39;</span> <span class="p">,</span> <span class="s1">&#39;TIPOHIST&#39;</span><span class="p">])</span>    
     <span class="n">a_dict</span> <span class="o">=</span> <span class="n">a_dict</span> <span class="o">|</span> <span class="n">aux_dict</span>
 
+    <span class="n">q_inicial</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TPCASO&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Selecao Dados&#39;</span> <span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Eliminacao dos registros nao analiticos&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_inicial</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+
+
     <span class="n">df</span> <span class="o">=</span> <span class="n">remover_colunas_naosignificativas</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 
     <span class="n">an_ind_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">a_dict</span><span class="p">])</span>
@@ -902,32 +914,32 @@
 
             <details class="quote">
               <summary>Source code in <code>extracaoDados.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
 <span class="normal">211</span>
 <span class="normal">212</span>
-<span class="normal">213</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">remover_colunas_naosignificativas</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">remover_colunas_naosignificativas</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Elimina as variaveis (colunas) que nao possuem significancia .</span>
 
 <span class="sd">    Colunas:</span>
@@ -950,7 +962,7 @@
 
     <span class="n">df_aux</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">colunas_a_remover</span> <span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Remocao Registros&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminacao de colunas com dados sem significancia&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">colunas_a_remover</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Selecao Dados&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminacao de colunas com dados sem significancia&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">colunas_a_remover</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">df_aux</span>
 </code></pre></div></td></tr></table></div>
@@ -1036,14 +1048,7 @@
 
             <details class="quote">
               <summary>Source code in <code>extracaoDados.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">118</span>
 <span class="normal">119</span>
 <span class="normal">120</span>
 <span class="normal">121</span>
@@ -1062,7 +1067,16 @@
 <span class="normal">134</span>
 <span class="normal">135</span>
 <span class="normal">136</span>
-<span class="normal">137</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">seleciona_DATAS</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">seleciona_DATAS</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Selecao de datas () nao nulas.</span>
 
 <span class="sd">    Parameters:</span>
@@ -1079,14 +1093,16 @@
     <span class="c1">#retirar valores que nao sao exatos</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;DATAINITRT&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;DATAINITRT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Dados Nulos&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com DATAINITRT nulo&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_inicial</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Selecao Dados&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com DATAINITRT nulo&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_inicial</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">logar_indicador</span><span class="p">(</span><span class="s1">&#39;Extracao&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminar Dados&#39;</span>  <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com DATAINITRT nulo&#39;</span> <span class="p">,</span> <span class="s1">&#39;DATAINITRT&#39;</span> <span class="p">,</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
 
     <span class="c1"># remover sem data de diagnostico</span>
     <span class="n">q_inicial</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="c1">#retirar valores que nao sao exatos</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;DTDIAGNO&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;DTDIAGNO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Dados Nulos&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com DTDIAGNO nulo&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_inicial</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Selecao Dados&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com DTDIAGNO nulo&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_inicial</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">logar_indicador</span><span class="p">(</span><span class="s1">&#39;Extracao&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminar Dados&#39;</span>  <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com DTDIAGNO nulo&#39;</span> <span class="p">,</span> <span class="s1">&#39;DTDIAGNO&#39;</span> <span class="p">,</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">df</span> <span class="p">,</span> <span class="n">a_dict</span>
 </code></pre></div></td></tr></table></div>
@@ -1106,7 +1122,7 @@
 
     <div class="doc doc-contents ">
 
-      <p>Elimina os valores invalidos ou nulos de ESTADIAM. .</p>
+      <p>Elimina os valores invalidos ou nulos de ESTADIAM.</p>
 <p>ESTADIAM = codificação do grupamento do estádio clínico segundo classificação TNM</p>
 
 
@@ -1178,10 +1194,7 @@
 
             <details class="quote">
               <summary>Source code in <code>extracaoDados.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">60</span>
 <span class="normal">61</span>
 <span class="normal">62</span>
 <span class="normal">63</span>
@@ -1201,8 +1214,13 @@
 <span class="normal">77</span>
 <span class="normal">78</span>
 <span class="normal">79</span>
-<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">seleciona_ESTADIAM</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Elimina os valores invalidos ou nulos de ESTADIAM. .</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">seleciona_ESTADIAM</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Elimina os valores invalidos ou nulos de ESTADIAM.</span>
 
 <span class="sd">    ESTADIAM = codificação do grupamento do estádio clínico segundo classificação TNM</span>
 
@@ -1224,6 +1242,8 @@
     <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;ESTADIAM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Selecao Dados&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com ESTADIAM que nao sao exatos&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_inicial</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">logar_indicador</span><span class="p">(</span><span class="s1">&#39;Extracao&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminar Dados&#39;</span>  <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com ESTADIAM fora do padrao ou nulos&#39;</span> <span class="p">,</span> <span class="s1">&#39;ESTADIAM&#39;</span> <span class="p">,</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+
     <span class="k">return</span> <span class="n">df</span> <span class="p">,</span> <span class="n">a_dict</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -1336,7 +1356,10 @@
 <span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span>
-<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">seleciona_ESTDFIMT</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">seleciona_ESTDFIMT</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Elimina os valores invalidos ou nulos de ESTDFIMT. .</span>
 
 <span class="sd">    Regras:</span>
@@ -1359,6 +1382,9 @@
     <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;ESTDFIMT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Selecao Dados&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com ESTDFIMT invalido (8 , 9 e nulos)&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_inicial</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">logar_indicador</span><span class="p">(</span><span class="s1">&#39;Extracao&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminar Dados&#39;</span>  <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com ESTDFIMT invalido (8 , 9 e nulos)&#39;</span> <span class="p">,</span> <span class="s1">&#39;ESTDFIMT&#39;</span> <span class="p">,</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+
+
     <span class="k">return</span> <span class="n">df</span> <span class="p">,</span> <span class="n">a_dict</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -1450,12 +1476,7 @@ Analisar o que deve ser feito com &lt; nao se aplica - Hemato | nao se aplica - 
 
             <details class="quote">
               <summary>Source code in <code>extracaoDados.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 88</span>
 <span class="normal"> 89</span>
 <span class="normal"> 90</span>
 <span class="normal"> 91</span>
@@ -1476,7 +1497,14 @@ Analisar o que deve ser feito com &lt; nao se aplica - Hemato | nao se aplica - 
 <span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
-<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">seleciona_TNM</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">seleciona_TNM</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Elimina os valores invalidos ou nulos de TNM. .</span>
 
 <span class="sd">    TNM   &lt;AnaliseTNM&gt;</span>
@@ -1496,11 +1524,13 @@ Analisar o que deve ser feito com &lt; nao se aplica - Hemato | nao se aplica - 
     <span class="n">q_inicial</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="c1">#retirar valores que nao sao exatos</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;AnaliseTNM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;invalido&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;AnaliseTNM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;demais&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TNM&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="n">a_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;TNM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Selecao Dados&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com TNM que nao sao exatos ou incompletos. </span><span class="se">\n</span><span class="s1">  Analisar o que deve ser feito com &lt; nao se aplica - Hemato | nao se aplica - Geral&gt;&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_inicial</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Selecao Dados&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com TNM  nulos ou que nao sao exatos ou incompletos. </span><span class="se">\n</span><span class="s1">  Analisar o que deve ser feito com &lt; nao se aplica - Hemato | nao se aplica - Geral&gt;&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_inicial</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">logar_indicador</span><span class="p">(</span><span class="s1">&#39;Extracao&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminar Dados&#39;</span>  <span class="p">,</span> <span class="s1">&#39;Eliminacao de registros com TNM  nulos ou que nao sao exatos ou incompletos&#39;</span> <span class="p">,</span> <span class="s1">&#39;TNM&#39;</span> <span class="p">,</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">df</span> <span class="p">,</span> <span class="n">a_dict</span>
 </code></pre></div></td></tr></table></div>
@@ -1600,16 +1630,7 @@ Analisar o que deve ser feito com &lt; nao se aplica - Hemato | nao se aplica - 
 
             <details class="quote">
               <summary>Source code in <code>extracaoDados.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">150</span>
 <span class="normal">151</span>
 <span class="normal">152</span>
 <span class="normal">153</span>
@@ -1620,7 +1641,24 @@ Analisar o que deve ser feito com &lt; nao se aplica - Hemato | nao se aplica - 
 <span class="normal">158</span>
 <span class="normal">159</span>
 <span class="normal">160</span>
-<span class="normal">161</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">seleciona_naonulos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">lista_variaveis</span><span class="p">):</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">seleciona_naonulos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">lista_variaveis</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Elimina os valores nulos das variaveis passadas como parametros.</span>
 
 <span class="sd">    Parameters:</span>
@@ -1632,13 +1670,21 @@ Analisar o que deve ser feito com &lt; nao se aplica - Hemato | nao se aplica - 
 <span class="sd">        (DataFrame): df modificado</span>
 <span class="sd">        (Dictionary):  dict com indicadores</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">q_inicial</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">q_base</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
 
     <span class="n">a</span> <span class="o">=</span> <span class="n">df_base</span><span class="p">[</span><span class="n">lista_variaveis</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span>
+
     <span class="n">a_dict</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
 
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="n">lista_variaveis</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Dados Nulos&#39;</span> <span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Eliminacao dos registros </span><span class="si">{</span><span class="n">lista_variaveis</span><span class="si">}</span><span class="s1"> com valores nulos&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_inicial</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">a_var</span> <span class="ow">in</span> <span class="n">lista_variaveis</span><span class="p">:</span>
+        <span class="n">q_inicial</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">[</span><span class="n">a_var</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">logar_indicador</span><span class="p">(</span><span class="s1">&#39;Extracao&#39;</span> <span class="p">,</span> <span class="s1">&#39;Eliminar Dados&#39;</span>  <span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Eliminacao de registros com </span><span class="si">{</span><span class="n">a_var</span><span class="si">}</span><span class="s1"> nulo&#39;</span> <span class="p">,</span> <span class="n">a_var</span><span class="p">,</span> <span class="n">q_inicial</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Selecao Dados&#39;</span> <span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Eliminacao dos registros </span><span class="si">{</span><span class="n">lista_variaveis</span><span class="si">}</span><span class="s1"> com valores nulos&#39;</span> <span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">q_base</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">df</span> <span class="p">,</span> <span class="n">a_dict</span>
 </code></pre></div></td></tr></table></div>
