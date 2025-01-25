@@ -40,21 +40,21 @@ A figura abaixo mostra as etapas do processo utilizado na preparação dos dados
 [**Base Consolidada**](https://drive.google.com/uc?export=download&id=1Zt2Kv9DtM7IBdAGDdFwvMogPvceG7KYA) 
 
 
-#### Dados com tipos definidos (arquivo parquet)
-[**Base Inicial**](https://drive.google.com/uc?export=download&id=1oNnt1K2yJhk3FzuK1ELUgUlFT-uf0d9x) 
+#### Dados com tipos definidos (arquivo parquet e CSV)
+[**Base Inicial  (parquet)**](https://drive.google.com/uc?export=download&id=1oNnt1K2yJhk3FzuK1ELUgUlFT-uf0d9x) 
+[**Base Inicial  (CSV)**](https://drive.google.com/uc?export=download&id=) 
 
+#### Dados com resultado das análises e sanitização (arquivo parquet e CSV)
+[**Base Sanitizada  (parquet)**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
+[**Base Sanitizada  (CSV)**](https://drive.google.com/uc?export=download&id=) 
 
-#### Dados com resultado das análises e sanitização (arquivo parquet)
-[**Base Sanitizada**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
+#### Dados com resultado das transformações e inferências (arquivo parquet e CSV)
+[**Base Transformada  (parquet)**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
+[**Base Transformada  (CSV)**](https://drive.google.com/uc?export=download&id=) 
 
-
-#### Dados com resultado das transformações e inferências (arquivo parquet)
-[**Base Sanitizadas**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
-
-
-#### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet)
-[**Base Modelagems**](https://drive.google.com/uc?export=download&id=1Bj0FcA6lO6PJfJs5-i003Ldgag4q_jP-) 
-
+#### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet e CSV)
+[**Base Modelagem (parquet)**](https://drive.google.com/uc?export=download&id=1Bj0FcA6lO6PJfJs5-i003Ldgag4q_jP-) 
+[**Base Modelagem  (CSV)**](https://drive.google.com/uc?export=download&id=) 
 
 
 ## Analises e Conclusões
@@ -67,15 +67,15 @@ A figura abaixo mostra as etapas do processo utilizado na preparação dos dados
 [**Log Indicadores**](https://drive.google.com/uc?export=download&id=) 
 
 #### Regras utilizadas nas analises dos dados 
-[**Log Indicadores**](https://drive.google.com/uc?export=download&id=) 
+[**Regras**](https://drive.google.com/uc?export=download&id=) 
 
 #### Medidas dos Indicadores para as variáveis
-[**Log Indicadores**](https://drive.google.com/uc?export=download&id=) 
+[**Indicadores Variaveis**](https://drive.google.com/uc?export=download&id=) 
 
 #### Medidas dos Indicadores de qualidade
-[**Log Indicadores**](https://drive.google.com/uc?export=download&id=) 
+[**Indicadores Qualidade**](https://drive.google.com/uc?export=download&id=) 
 
 #### Medidas dos Indicadores Globais
-[**Log Indicadores**](https://drive.google.com/uc?export=download&id=) 
+[** Indicadores Globais**](https://drive.google.com/uc?export=download&id=) 
 
 

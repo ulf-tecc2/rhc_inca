@@ -18,6 +18,7 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 
 import pandas as pd
 from datetime import datetime
+import numpy as np
 
 import sys
 sys.path.append("C:/Users/ulf/OneDrive/Python/ia_ml/templates/lib")
@@ -82,6 +83,58 @@ def insere_indicador_invalidos(df , response):
     return pd.concat([response , a_df] , axis = 0)
 
 
+def gera_indicador_incompletude(df , etapa , lista_colunas , response):
+    """Gera o indicador de INCOMPLETUDE para cada variavel do DataFrame.
+    
+    Incompletitude: proporção de informação ignorada, ou seja, os campos em branco e os códigos atribuídos à informação ignorada
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser analisado
+        etapa (String): momento do calculo do indicador
+        lista_colunas (String):  colunas a serem analisadas
+        response (DataFrame): DataFrame com indicadores
+
+    Returns:
+        (DataFrame):  DataFrame com indicador de Incompletude
+    """
+    informacao_ignorada = {
+        'ALCOOLIS' : ['9'] ,
+        'BASDIAGSP' : ['4'] ,
+        'BASMAIMP' : ['9'] ,
+        'DIAGANT' : ['9'] ,
+        'ESTCONJ' : ['9'] ,
+        'ESTDFIMT' : ['9'] ,
+        'EXDIAG' : ['9'] ,
+        'HISTFAMC' : ['9'] ,
+        'INSTRUC' : ['9'] ,
+        'LATERALI' : ['9'] ,
+        'OCUPACAO' : ['999' , '9999'] ,
+        'ORIENC' : ['9'] ,
+        'PRITRATH' : ['9'] ,
+        'PTNM' : ['9'] ,
+        'RACACOR' : ['9'] ,
+        'RZNTR' : ['9'] ,
+        'TABAGISM' : ['9'] 
+        }
+    
+    for var in lista_colunas:
+        a = df[var].value_counts(dropna=False, normalize=False).reset_index()
+        count = 0
+        for i, row in a.iterrows():
+            # print((var in informacao_ignorada_por_atributo.keys()) and (row[var] in informacao_ignorada_por_atributo[var] ))
+            if row[var] is np.nan:
+                count = count + row["count"]
+            if ((var in informacao_ignorada.keys()) and (row[var] in informacao_ignorada[var] )):
+                count = count + row["count"]
+                
+        print(f'Variavel: {var} Count:{count}')
+        response.at[etapa + ' - quantidade incompletos' , var] = count
+        response.at[etapa + etapa + ' - porcentagem incompletos' , var] = count * 100 / len(df)
+
+    return response
+        
+        
+
 def busca_data_sp_iniciou_mais_que_1_trat(df):
     """Identifica a data de quando SP iniciou o registro de mais de um tratamento.
     
@@ -98,7 +151,23 @@ def busca_data_sp_iniciou_mais_que_1_trat(df):
     
     return  a['DATAINITRT'].iloc[0]
 
+def main_indicadores_variaveis_qualidade(response_df):
+    # lista_colunas = ['SEXO', 'IDADE', 'ALCOOLIS', 'TABAGISM']
+    
+    # response_df = gera_indicador_incompletude(df_inicial , 'Inicial' , lista_colunas , response_df )
+    # response_df = gera_indicador_incompletude(df_apos_tipos , 'Apos Tipos definidos' , lista_colunas , response_df )
+    # response_df = gera_indicador_incompletude(df_apos_analise , 'Após Analise dos Dados' ,lista_colunas , response_df )
+    # response_df = gera_indicador_incompletude(df_apos_transf , 'Apos Transformacoes' , lista_colunas , response_df )
+    # response_df = gera_indicador_incompletude(df_apos_extracao , 'Apos Extracao' , lista_colunas , response_df )
+    
+    response_df = gera_indicador_incompletude(df_inicial , 'Inicial' , df_inicial.columns , response_df )
+    response_df = gera_indicador_incompletude(df_apos_tipos , 'Apos Tipos definidos' , df_apos_tipos.columns , response_df )
+    response_df = gera_indicador_incompletude(df_apos_analise , 'Após Analise dos Dados' , df_apos_analise.columns , response_df )
+    response_df = gera_indicador_incompletude(df_apos_transf , 'Apos Transformacoes' , df_apos_transf.columns , response_df )
+    response_df = gera_indicador_incompletude(df_apos_extracao , 'Apos Extracao' , df_apos_extracao.columns , response_df )
+    
 
+    return response_df    
 
 def main_indicadores_variaveis(response_df):
     """Funcao principal de geracao dos indicadores das variaveis.
@@ -157,16 +226,27 @@ def main_indicadores_globais():
     
     return a_df
 
+
+
 if __name__ == "__main__":
     log = Log()
 
-    df_inicial = f.leitura_arquivo_csv('Consolidado_Integrador_Inca')
-    df_apos_tipos = f.leitura_arquivo_parquet('BaseCompleta')
-    df_apos_analise =  f.leitura_arquivo_parquet('analise_valores')
-    df_apos_transf = f.leitura_arquivo_parquet('transformacoes')
-    df_apos_extracao =  f.leitura_arquivo_parquet('extracao_dados')
+    df_inicial = f.leitura_arquivo_csv('BaseConsolidada')
+    df_apos_tipos = f.leitura_arquivo_parquet('BaseInicial')
+    df_apos_analise =  f.leitura_arquivo_parquet('BaseSanitizada')
+    df_apos_transf = f.leitura_arquivo_parquet('BaseTransfor')
+    df_apos_extracao =  f.leitura_arquivo_parquet('BaseModelagem')
     
- 
+    result_df = pd.DataFrame()
+    result_df = main_indicadores_variaveis_qualidade(result_df)
+
+    result_df = result_df.fillna(0) 
+    # result_df.reset_index(drop = True , inplace=True)
+    
+    a_file_name = 'indicadores_qualidade'
+    f.salvar_excel_conclusao(result_df , a_file_name)
+    
+    
     result_df = pd.DataFrame()
     result_df = main_indicadores_variaveis(result_df)
     
@@ -198,3 +278,15 @@ if __name__ == "__main__":
 #     variavel = uma_analise.replace('Analise' , '')
 #     variavel = uma_analise.replace('_tipo' , '')
 #     a_dict[variavel] = 100
+
+
+
+
+# df_apos_analise =  f.leitura_arquivo_parquet('analise_valores')
+# df_apos_tipos = f.leitura_arquivo_parquet('BaseCompleta')
+
+# result_df = pd.DataFrame()
+# result_df = main_indicadores_variaveis_qualidade(result_df)
+
+# result_df = result_df.fillna(0) 
+

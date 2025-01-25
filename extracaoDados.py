@@ -50,12 +50,15 @@ def seleciona_ESTDFIMT(df):
     
     a_dict = {}
     a_dict['ESTDFIMT'] = q_inicial - df.shape[0]
-    
+   
     print(log.logar_acao_realizada('Selecao Dados' , 'Eliminacao de registros com ESTDFIMT invalido (8 , 9 e nulos)' ,f'{q_inicial - df.shape[0]}'))
+    log.logar_indicador('Extracao' , 'Eliminar Dados'  , 'Eliminacao de registros com ESTDFIMT invalido (8 , 9 e nulos)' , 'ESTDFIMT' , q_inicial - df.shape[0] )
+
+
     return df , a_dict
 
 def seleciona_ESTADIAM(df):
-    """Elimina os valores invalidos ou nulos de ESTADIAM. .
+    """Elimina os valores invalidos ou nulos de ESTADIAM.
     
     ESTADIAM = codificação do grupamento do estádio clínico segundo classificação TNM
     
@@ -72,11 +75,13 @@ def seleciona_ESTADIAM(df):
     q_inicial = df.shape[0]
     #retirar valores que nao sao exatos
     df = df.drop(df[(df['AnaliseESTADIAM'] == 'nulo') | (df['AnaliseESTADIAM'] == 'demais')].index, inplace = False)
-    
+     
     a_dict = {}
     a_dict['ESTADIAM'] = q_inicial - df.shape[0]
       
     print(log.logar_acao_realizada('Selecao Dados' , 'Eliminacao de registros com ESTADIAM que nao sao exatos' ,f'{q_inicial - df.shape[0]}'))
+    log.logar_indicador('Extracao' , 'Eliminar Dados'  , 'Eliminacao de registros com ESTADIAM fora do padrao ou nulos' , 'ESTADIAM' , q_inicial - df.shape[0] )
+
     return df , a_dict
 
 
@@ -100,11 +105,13 @@ def seleciona_TNM(df):
     q_inicial = df.shape[0]
     #retirar valores que nao sao exatos
     df = df.drop(df[(df['AnaliseTNM'] == 'invalido') | (df['AnaliseTNM'] == 'demais')].index, inplace = False)
+    df = df.dropna(subset = ['TNM'], inplace=False)
     
     a_dict = {}
     a_dict['TNM'] = q_inicial - df.shape[0]
      
-    print(log.logar_acao_realizada('Selecao Dados' , 'Eliminacao de registros com TNM que nao sao exatos ou incompletos. \n  Analisar o que deve ser feito com < nao se aplica - Hemato | nao se aplica - Geral>' ,f'{q_inicial - df.shape[0]}'))
+    print(log.logar_acao_realizada('Selecao Dados' , 'Eliminacao de registros com TNM  nulos ou que nao sao exatos ou incompletos. \n  Analisar o que deve ser feito com < nao se aplica - Hemato | nao se aplica - Geral>' ,f'{q_inicial - df.shape[0]}'))
+    log.logar_indicador('Extracao' , 'Eliminar Dados'  , 'Eliminacao de registros com TNM  nulos ou que nao sao exatos ou incompletos' , 'TNM' , q_inicial - df.shape[0] )
 
     return df , a_dict
 
@@ -126,13 +133,15 @@ def seleciona_DATAS(df):
     df = df.dropna(subset = ['DATAINITRT'], inplace=False)
     a_dict['DATAINITRT'] = q_inicial - df.shape[0]
     print(log.logar_acao_realizada('Selecao Dados' , 'Eliminacao de registros com DATAINITRT nulo' ,f'{q_inicial - df.shape[0]}'))
-    
+    log.logar_indicador('Extracao' , 'Eliminar Dados'  , 'Eliminacao de registros com DATAINITRT nulo' , 'DATAINITRT' , q_inicial - df.shape[0] )
+
     # remover sem data de diagnostico
     q_inicial = df.shape[0]
     #retirar valores que nao sao exatos
     df = df.dropna(subset = ['DTDIAGNO'], inplace=False)
     a_dict['DTDIAGNO'] = q_inicial - df.shape[0]
     print(log.logar_acao_realizada('Selecao Dados' , 'Eliminacao de registros com DTDIAGNO nulo' ,f'{q_inicial - df.shape[0]}'))
+    log.logar_indicador('Extracao' , 'Eliminar Dados'  , 'Eliminacao de registros com DTDIAGNO nulo' , 'DTDIAGNO' , q_inicial - df.shape[0] )
     
     return df , a_dict
     
@@ -150,13 +159,21 @@ def seleciona_naonulos(df , lista_variaveis):
         (DataFrame): df modificado
         (Dictionary):  dict com indicadores
     """
-    q_inicial = df.shape[0]
+    
+    q_base = df.shape[0]
+    
+    
     
     a = df_base[lista_variaveis].isnull().sum().astype('int64')
+    
     a_dict = a.to_dict()
 
-    df = df.dropna(subset = lista_variaveis, inplace=False)
-    print(log.logar_acao_realizada('Selecao Dados' , f'Eliminacao dos registros {lista_variaveis} com valores nulos' ,f'{q_inicial - df.shape[0]}'))
+    for a_var in lista_variaveis:
+        q_inicial = df.shape[0]
+        df = df.dropna(subset = [a_var], inplace=False)
+        log.logar_indicador('Extracao' , 'Eliminar Dados'  , f'Eliminacao de registros com {a_var} nulo' , a_var, q_inicial - df.shape[0] )
+    
+    print(log.logar_acao_realizada('Selecao Dados' , f'Eliminacao dos registros {lista_variaveis} com valores nulos' ,f'{q_base - df.shape[0]}'))
     
     return df , a_dict
 
@@ -183,6 +200,8 @@ def elimina_sem_tratamento(df):
     a_dict['RZNTR'] = q_inicial - df.shape[0]
    
     print(log.logar_acao_realizada('Selecao Dados' , f'Eliminacao dos registros de quem nao fez tratamento (RZNTR nao nulo)' ,f'{q_inicial - df.shape[0]}'))
+    log.logar_indicador('Extracao' , 'Eliminar Dados'  , 'Eliminacao dos registros de quem nao fez tratamento (RZNTR nao nulo)' , 'RZNTR' , q_inicial - df.shape[0] )
+
     return df ,  a_dict
 
 def remover_colunas_naosignificativas(df):
@@ -261,8 +280,8 @@ def main(df):
 
 if __name__ == "__main__":
     log = Log()
-    log.carregar_log('log_transformacoes')
-    df_base = f.leitura_arquivo_parquet('transformacoes')
+    log.carregar_log('log_BaseTransfor')
+    df_base = f.leitura_arquivo_parquet('BaseTransfor')
  
     print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados para seleção' , df_base.shape[0]) )
 
@@ -270,8 +289,8 @@ if __name__ == "__main__":
     df_base , result_df = main(df_base) 
     
     
-    log.salvar_log('log_extracao_dados') 
-    f.salvar_parquet(df_base , 'extracao_dados')
+    log.salvar_log('log_BaseModelagem') 
+    f.salvar_parquet(df_base , 'BaseModelagem')
     f.salvar_excel_conclusao(result_df , 'parcial_extracao')
     
     a = log.asString()

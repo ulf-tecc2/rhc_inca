@@ -62,15 +62,16 @@ def tratar_variavel_municipio(df):
     aux_nulos = df['PROCEDEN'].isnull().sum()
     df['PROCEDEN'] = df['PROCEDEN'].apply(tratar_codigo_municipio)
     aux_nulos1 = df['PROCEDEN'].isnull().sum()
-    print(log.logar_acao_realizada('Valores Invalidos' , 'Variavel PROCEDEN - Código Municipio invalido ' , aux_nulos1 - aux_nulos ))
+    log.logar_indicador('Consistencia' , 'Registros errados'  , 'registros com o Código do Municipio invalido' , 'PROCEDEN' , aux_nulos1 - aux_nulos )
     
     aux_nulos = df['MUUH'].isnull().sum()
     df['MUUH'] = df['MUUH'].apply(tratar_codigo_municipio)
     aux_nulos1 = df['MUUH'].isnull().sum()
-    print(log.logar_acao_realizada('Valores Invalidos' , 'Variavel MUUH - Código Municipio invalido ' , aux_nulos1 - aux_nulos ))
+    log.logar_indicador('Consistencia' , 'Registros errados'  , 'registros com o Código do Municipio invalido' , 'MUUH' , aux_nulos1 - aux_nulos )
 
     return df
 
+    
 def trocar_valores_nulos(df):
     """Trocar os valores que representam brancos / nulos (99, 999, ...) por None.
     
@@ -80,60 +81,48 @@ def trocar_valores_nulos(df):
     Returns:
         (DataFrame): df modificado
     """ 
-    lista_colunas = ['DTDIAGNO', '', 'DATAPRICON', 'DATAOBITO' , 'DATAINITRT']
-    nan_values = ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
-    
-    
     nan_values = {
-        'ALCOOLIS' : ['0' , '9' , '4' ],
-        'BASDIAGSP' : ['9'],
-        'BASMAIMP'	 : ['' , '9'],
+        'ALCOOLIS' : ['0'],
+        'BASDIAGSP' : [''],
+        'BASMAIMP'	 : [''],
         'CLIATEN'	 : ['99','0'],
         'CLITRAT'	 : ['99' , '0'],
-        # 'CNES'	     : [''],
-        'DIAGANT'	 : ['9' , '0'],
-        
-        # 'DTDIAGNO' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
-        # 'DTTRIAGE' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
-        # '' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
-        # '' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
-        # '' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
-        
+        'DIAGANT'	 : ['0'],
+        'DTDIAGNO' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
+        'DTTRIAGE' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
+        'DATAPRICON' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
+        'DATAOBITO' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
+        'DATAINITRT' : ['88/88/8888' , '99/99/9999' , '00/00/0000' , '//'],
         'ESTADIAM'	 : ['99' , '88' , 'nan'],
         'ESTADRES'	 : ['99' , '77' , 'nan'],
-        'ESTADIAG'   : ['0' , 'nan'],
-        'ESTCONJ'	 : ['0','9'],
-        'ESTDFIMT'	 : ['0' , '9'],
-        'EXDIAG'	 : ['0' , '9' , '<NA>'],
-        'HISTFAMC'	 : ['0' , '9'],
-        # 'INSTRUC'	 : [''],
-        'LATERALI'	 : ['0' , '9'],
+        'ESTADIAG'   : ['nan'],
+        'ESTCONJ'	 : ['0'],
+        'ESTDFIMT'	 : ['0'],
+        'EXDIAG'	 : ['0' ,'<NA>'],
+        'HISTFAMC'	 : ['0' ],
+        'INSTRUC'	 : [''],
+        'LATERALI'	 : ['0'],
         'LOCALNAS'	 : ['99' , 'nan'],
         'LOCTUDET'	 : ['nan' , 'D46' , 'E05' , 'N62' , 'C'],
         'LOCTUPRI'	 : ['nan' , 'D46' , 'E05' , 'N62' , 'C .' , 'C .0'],
         'LOCTUPRO'	 : ['' , ',' , '.' , '9' , '9.', 'nan'],
         'MAISUMTU'	 : ['0'],
-        # 'MUUH'	 : [''],
-        'OCUPACAO'	 : ['9999' , '999'],
         'ORIENC'	 : ['0'],
         'OUTROESTA'	 : ['','99','88','nan',',','.','[',']','+','\\',"'",'/','//','='],
-        # 'PRITRATH'	 : [''],
-        # 'PROCEDEN'	 : [''],
         'PTNM'	 : [''],
-        'RACACOR'	 : [''],
-        'RZNTR'	 : ['9'],
+        'RACACOR'	 : ['99'],
+        'RZNTR'	 : [''],
         'SEXO'	 : ['0' , '3'],
         'TABAGISM'	 : ['0'],
-        'TIPOHIST'	 : ['nan' , '/' , '/3)' , '1  /' , '1   /' , '99999' , 'C090/3' ],
-        # 'TNM'	 : [''],
-        # 'TPCASO'	 : [''],
-        # 'UFUH'	 : ['']
+        'TIPOHIST'	 : ['nan' , '/' , '/3)' , '1  /' , '1   /' , '99999' , 'C090/3' ]
         }
     
     response_df = pd.DataFrame()
     
     for a_var in nan_values:
+        q_antes = df[a_var].isnull().sum()
         df[a_var] = df[a_var].apply(lambda x: np.nan if (x in nan_values[a_var]) else x )
+        q_depois = df[a_var].isnull().sum()
         
         nome_analise = 'Analise' + a_var
         b =  pd.Series({
@@ -143,9 +132,55 @@ def trocar_valores_nulos(df):
         a_df.index.names = ['Atributo']
         a_df.columns = [a_var]
         
+        if (q_depois - q_antes) > 0:
+            log.logar_indicador('Consistencia' , 'Registros errados'  , f'registros com codigos inexistentes: {nan_values[a_var]}' , a_var , q_depois - q_antes )
+
         response_df = pd.concat([response_df , a_df] , axis = 1)
-        
+
     return df , response_df
+
+def valida_anos(df):
+    """Substitui valores invalidos por None.
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado
+    """ 
+    lista_colunas = ['ANOPRIDI', 'ANTRI', 'DTPRICON' , 'DTINITRT']
+
+    for a_var in lista_colunas:
+        q_antes = df[a_var].isnull().sum()
+        df[a_var] = df[a_var].apply(lambda x: np.nan if (x < 1900 or x > 2023) else x)
+        q_depois = df[a_var].isnull().sum()
+        if (q_depois - q_antes) > 0:
+            log.logar_indicador('Consistencia' , 'Registros errados'  , 'Valores de anos invalidos (< 1900 ou > 2023)' , a_var , q_depois - q_antes )
+
+    return df
+
+
+def valida_datas(df):
+    """Substitui valores invalidos por None.
+    
+    Parameters:
+        df (DataFrame): DataFrame a ser transformado / analisado
+
+    Returns:
+        (DataFrame): df modificado
+    """ 
+    lista_colunas = ['DTDIAGNO', 'DTTRIAGE', 'DATAPRICON', 'DATAOBITO']
+        
+    for a_var in lista_colunas:
+        q_antes = df[a_var].isnull().sum()
+        # df[a_var] = df[a_var].apply(lambda x: strip_spaces(x) )
+        # df[a_var] = df[a_var].apply(lambda x: np.nan if (strip_spaces(x) in nan_values) else strip_spaces(x))
+        df[a_var] = df[a_var].apply(lambda x: np.nan if (x.year < 1960 or x.year > 2023) else x)
+        q_depois = df[a_var].isnull().sum()
+        if (q_depois - q_antes) > 0:
+            log.logar_indicador('Consistencia' , 'Registros errados'  , 'Valores de datas invalidas (< 1960 ou > 2023)' , a_var , q_depois - q_antes )
+
+    return df
 
 def valida_idade(df):
     """Valida idade entre 0 e 110 anos. Torna o valor -1 se for diferente.
@@ -156,8 +191,13 @@ def valida_idade(df):
     Returns:
         (DataFrame): df modificado
     """
-    # a = df[a_var].value_counts(dropna=False, normalize=False)
-    df['IDADE'] = df['IDADE'].apply(lambda x: -1 if x < 0 or x > 110 else -1 if np.isnan(x) else int(x))
+    q_antes = df['IDADE'].isnull().sum()
+    df['IDADE'] = df['IDADE'].apply(lambda x: np.nan if x < 0 or x > 110 else int(x))
+
+    q_depois = df['IDADE'].isnull().sum()
+    if (q_depois - q_antes) > 0:
+        log.logar_indicador('Consistencia' , 'Registros errados'  , 'Valores de idade invalidas (< 0 ou > 110)' , 'IDADE' , q_depois - q_antes )
+
     return df
     # a = df_unico[a_var].value_counts(dropna=False, normalize=False)
     # df_unico[a_var].info()
@@ -195,6 +235,17 @@ def analisa_LOCTUDET(df):
     b_df = pd.DataFrame(b)
     b_df.index.names = ['Atributo']
     b_df.columns = [nome_variavel]
+    
+    a = a.reset_index()
+    fora_padrao = ['incompleto' , 'demais' ]
+    count_invalidos = 0
+    for i, row in a.iterrows():
+        # print((var in informacao_ignorada_por_atributo.keys()) and (row[var] in informacao_ignorada_por_atributo[var] ))
+        if row['Atributo'] in fora_padrao :
+            count_invalidos = count_invalidos + row["count"]
+    log.logar_indicador('Consistencia' , 'Fora padrao'  , f'registros nao atendem aos padroes definidos : {fora_padrao}' , nome_variavel , count_invalidos )
+
+    
     
     hemato_values = {
         'C81',
@@ -252,6 +303,16 @@ def analisa_LOCTUPRI(df):
     
     ab_df = pd.concat([a_df , b_df] , axis = 0)
     
+    a = a.reset_index()
+    fora_padrao = ['incompleto' , 'demais' ]
+    count_invalidos = 0
+    for i, row in a.iterrows():
+        # print((var in informacao_ignorada_por_atributo.keys()) and (row[var] in informacao_ignorada_por_atributo[var] ))
+        if row['Atributo'] in fora_padrao :
+            count_invalidos = count_invalidos + row["count"]
+    log.logar_indicador('Consistencia' , 'Fora padrao'  , f'registros nao atendem aos padroes definidos : {fora_padrao}' , nome_variavel , count_invalidos )
+
+    
     return df , ab_df
 
 def analisa_LOCTUPRO(df):
@@ -288,6 +349,16 @@ def analisa_LOCTUPRO(df):
     b_df.columns = [nome_variavel]
     
     ab_df = pd.concat([a_df , b_df] , axis = 0)
+    
+    a = a.reset_index()
+    fora_padrao = ['incompleto' , 'demais' ]
+    count_invalidos = 0
+    for i, row in a.iterrows():
+        # print((var in informacao_ignorada_por_atributo.keys()) and (row[var] in informacao_ignorada_por_atributo[var] ))
+        if row['Atributo'] in fora_padrao :
+            count_invalidos = count_invalidos + row["count"]
+    log.logar_indicador('Consistencia' , 'Fora padrao'  , f'registros nao atendem aos padroes definidos : {fora_padrao}' , nome_variavel , count_invalidos )
+
     
     return df , ab_df
 
@@ -349,6 +420,16 @@ def analisa_TNM(df):
       
     ab_df = pd.concat([a_df , b_df] , axis = 0)
       
+    a = a.reset_index()
+    fora_padrao = ['invalido' , 'incompleto' , 'demais' ]
+    count_invalidos = 0
+    for i, row in a.iterrows():
+        # print((var in informacao_ignorada_por_atributo.keys()) and (row[var] in informacao_ignorada_por_atributo[var] ))
+        if row['Atributo'] in fora_padrao :
+            count_invalidos = count_invalidos + row["count"]
+    log.logar_indicador('Consistencia' , 'Fora padrao'  , f'registros nao atendem aos padroes definidos : {fora_padrao}' , nome_variavel , count_invalidos )
+
+    
     return df , ab_df
 
 
@@ -393,6 +474,16 @@ def analisa_ESTADIAM(df):
     
     ab_df = pd.concat([a_df , b_df] , axis = 0)
     
+    a = a.reset_index()
+    fora_padrao = ['incompleto' , 'demais' ]
+    count_invalidos = 0
+    for i, row in a.iterrows():
+        # print((var in informacao_ignorada_por_atributo.keys()) and (row[var] in informacao_ignorada_por_atributo[var] ))
+        if row['Atributo'] in fora_padrao :
+            count_invalidos = count_invalidos + row["count"]
+    log.logar_indicador('Consistencia' , 'Fora padrao'  , f'registros nao atendem aos padroes definidos : {fora_padrao}' , nome_variavel , count_invalidos )
+
+    
     return df , ab_df
 
 
@@ -404,26 +495,29 @@ def main(df):
     Returns:
         (DataFrame): df modificado       
     """     
+    global df_unico
+    
     # TORNAR VALORES INVALIDOS COMO NULOS - NONE
-    ind_antes=df.isnull().sum()
-    
-    df_unico , df_result = trocar_valores_nulos(df)
-    
-    ind_depois=df_unico.isnull().sum()
-    
-    df_aux = pd.DataFrame()
-    df_aux['Nulos antes'] = ind_antes
-    df_aux['Nulos depois'] = ind_depois
-    df_aux['diferenca'] = ind_depois- ind_antes
-    
-    a_file_name = 'valores_tornados_null'
-    f.salvar_excel_conclusao(df_aux , a_file_name)
-    
-    print(log.logar_acao_realizada('Valores Invalidos' , 'Corrigir valores invalidos para null. Ver arquivo valores_tornados_null.xslx' , ""))
+    # ind_antes=df.isnull().sum()
+
+    df_unico , df_result = trocar_valores_nulos(df_unico)
     
     df_unico = valida_idade(df_unico)
-    
+    df_unico = valida_datas(df_unico)
+    df_unico = valida_anos(df_unico)
     df_unico = tratar_variavel_municipio(df_unico)
+    
+    print(log.logar_acao_realizada('Valores Invalidos' , 'Corrigir valores invalidos transformando em null. ' , ""))
+    
+    # ind_depois=df_unico.isnull().sum()
+    
+    # df_aux = pd.DataFrame()
+    # df_aux['Nulos antes'] = ind_antes
+    # df_aux['Nulos depois'] = ind_depois
+    # df_aux['diferenca'] = ind_depois- ind_antes
+    
+    # a_file_name = 'valores_tornados_null'
+    # f.salvar_excel_conclusao(df_aux , a_file_name)
     
     df_unico , df_result_aux = analisa_LOCTUDET(df_unico)
     df_result = pd.concat([df_result , df_result_aux] , axis = 1)
@@ -447,30 +541,27 @@ def main(df):
     
     df_result = df_result.fillna('')
     
-    a_nome_arquivo = 'analiseValoresAtributos'
+    a_nome_arquivo = 'RegrasAnaliseValores'
     f.salvar_excel_conclusao(df_result.T , a_nome_arquivo)
     
     print(log.logar_acao_realizada('Analise de valores' , 'Resultados consolidados da analise dos valores' , f'ver arquivo {a_nome_arquivo}'))
     
     return df_unico
 
-    
-
-
 if __name__ == "__main__":
     log = Log()
-    log.carregar_log('log_BaseCompleta')
+    log.carregar_log('log_BaseInicial')
     
     # df_unico = f.leitura_arquivo_parquet('BaseAnaliticos')
     # print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem analisados - Casos analiticos' , df_unico.shape[0]) )
 
-    df_unico = f.leitura_arquivo_parquet('BaseCompleta')
+    df_unico = f.leitura_arquivo_parquet('BaseInicial')
     print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem analisados - Casos completos' , df_unico.shape[0]) )
 
     df_unico = main(df_unico) 
     
-    log.salvar_log('log_analise_valores') 
-    f.salvar_parquet(df_unico , 'analise_valores')
+    log.salvar_log('log_BaseSanitizada') 
+    f.salvar_parquet(df_unico , 'BaseSanitizada')
 
 
 

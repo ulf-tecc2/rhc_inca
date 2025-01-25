@@ -153,6 +153,8 @@ def infere_BASMAIMP(df):
     df_unico.loc[ (df['BASMAIMP'] == '0') & (df['BASDIAGSP'] == '1') , 'BASMAIMP' ] = '1'
     print(log.logar_acao_realizada('Gerar / Transformar Dados' , 'Inferir o valor de BASMAIMP a partir de BASDIAGSP. Regra 0 <= 1. Falta definir outras regras aplicaveis' , f'{aux_quant}'))
     
+    log.logar_indicador('Correcoes' , 'Inferencia Dados'  , 'Inferir o valor de BASMAIMP a partir de BASDIAGSP. Regra 0 <= 1. ' , 'BASMAIMP' , aux_quant )
+    
     return df
 
     
@@ -174,6 +176,8 @@ def infere_ESTDFIMT(df , dias_entre_DATAINITRT_DATAOBITO = 730):
     
     print(log.logar_acao_realizada('Gerar / Transformar Dados' , f'Inferir o valor de ESTDFIMT a partir de DATAOBITO ate {dias_entre_DATAINITRT_DATAOBITO} dias apos o inicio do tratamento' , f'{aux_quant}'))
     
+    log.logar_indicador('Correcoes' , 'Inferencia Dados'  , f'Inferir o valor de ESTDFIMT a partir da DATAOBITO - {dias_entre_DATAINITRT_DATAOBITO} dias ' , 'ESTDFIMT' , aux_quant )
+
     return df
 
 def main(df_unico):
@@ -188,14 +192,14 @@ def main(df_unico):
 
 if __name__ == "__main__":
     log = Log()
-    log.carregar_log('log_analise_valores')
-    df_unico = f.leitura_arquivo_parquet('analise_valores')
+    log.carregar_log('log_BaseSanitizada')
+    df_unico = f.leitura_arquivo_parquet('BaseSanitizada')
     print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem transformados' , df_unico.shape[0]) )
 
     df_unico = main(df_unico) 
     
-    log.salvar_log('log_transformacoes') 
-    f.salvar_parquet(df_unico , 'transformacoes')
+    log.salvar_log('log_BaseTransfor') 
+    f.salvar_parquet(df_unico , 'BaseTransfor')
 
 
 
