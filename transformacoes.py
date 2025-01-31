@@ -167,13 +167,21 @@ def infere_ESTDFIMT(df , dias_entre_DATAINITRT_DATAOBITO = 730):
         dias_entre_DATAINITRT_DATAOBITO (int): intervalo de tempo a ser considerado
 
     """
-    aux_df = df.loc[ (df['ESTDFIMT'].isnull()) &  ~(df['DATAOBITO'].isnull()) & 
+    aux_df = df.loc[ (((df['ESTDFIMT'] == 8) | (df['ESTDFIMT'] == 9)) &  ~(df['DATAOBITO'].isnull())) & 
                                       (df['DATAOBITO'] < df['DATAINITRT'] + timedelta(days = dias_entre_DATAINITRT_DATAOBITO)  ) ]
+    
+    aux_df = df.loc[((df['ESTDFIMT'] == '8') | (df['ESTDFIMT'] == '9'))
+                & (~(df['DATAOBITO'].isnull())) 
+                & (df['DATAOBITO'] < (df['DATAINITRT'] + timedelta(days = dias_entre_DATAINITRT_DATAOBITO))  )]
+    
+    
     aux_quant = aux_df.shape[0]
     
-    df.loc[ (df['ESTDFIMT'].isnull()) &  ~(df['DATAOBITO'].isnull()) & 
-                                      (df['DATAOBITO'] < df['DATAINITRT'] + timedelta(days = dias_entre_DATAINITRT_DATAOBITO)  ) , 'ESTDFIMT'] = '6'
-    
+    df.loc[((df['ESTDFIMT'] == '8') | (df['ESTDFIMT'] == '9'))
+                & (~(df['DATAOBITO'].isnull())) 
+                & (df['DATAOBITO'] < (df['DATAINITRT'] + timedelta(days = dias_entre_DATAINITRT_DATAOBITO))  ) ,
+                'ESTDFIMT'] = '6'
+     
     print(log.logar_acao_realizada('Gerar / Transformar Dados' , f'Inferir o valor de ESTDFIMT a partir de DATAOBITO ate {dias_entre_DATAINITRT_DATAOBITO} dias apos o inicio do tratamento' , f'{aux_quant}'))
     
     log.logar_indicador('Correcoes' , 'Inferencia Dados'  , f'Inferir o valor de ESTDFIMT a partir da DATAOBITO - {dias_entre_DATAINITRT_DATAOBITO} dias ' , 'ESTDFIMT' , aux_quant )

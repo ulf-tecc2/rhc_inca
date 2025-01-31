@@ -17,7 +17,6 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 """
 
 import pandas as pd
-from datetime import datetime
 import numpy as np
 
 import sys
@@ -53,34 +52,38 @@ def insere_indicador_invalidos(df , response):
     Returns:
         (DataFrame):  DataFrame com indicadores atualizados
     """
-    a_dict = {}
-    
-    a_dict['TNM'] = df_apos_analise[(df_apos_analise['AnaliseTNM'] == 'incompleto') |
+   
+    q_TNM = df_apos_analise[(df_apos_analise['AnaliseTNM'] == 'incompleto') |
                                     (df_apos_analise['AnaliseTNM'] == 'demais') ].shape[0]
     
-    a_dict['LOCTUDET'] = df_apos_analise[(df_apos_analise['AnaliseLOCTUDET'] == 'incompleto') |
+    q_LOCTUDET = df_apos_analise[(df_apos_analise['AnaliseLOCTUDET'] == 'incompleto') |
                                     (df_apos_analise['AnaliseLOCTUDET'] == 'demais') ].shape[0]
     
-    a_dict['LOCTUPRI'] = df_apos_analise[(df_apos_analise['AnaliseLOCTUPRI'] == 'incompleto') |
+    q_LOCTUPRI = df_apos_analise[(df_apos_analise['AnaliseLOCTUPRI'] == 'incompleto') |
                                     (df_apos_analise['AnaliseLOCTUPRI'] == 'demais') ].shape[0]
     
-    a_dict['LOCTUPRO'] = df_apos_analise[(df_apos_analise['AnaliseLOCTUPRO'] == 'incompleto') |
+    q_LOCTUPRO = df_apos_analise[(df_apos_analise['AnaliseLOCTUPRO'] == 'incompleto') |
                                     (df_apos_analise['AnaliseLOCTUPRO'] == 'demais') ].shape[0]
     
-    a_dict['ESTADIAM'] = df_apos_analise[(df_apos_analise['AnaliseESTADIAM'] == 'incompleto') |
+    q_ESTADIAM = df_apos_analise[(df_apos_analise['AnaliseESTADIAM'] == 'incompleto') |
                                     (df_apos_analise['AnaliseESTADIAM'] == 'demais') ].shape[0]
     
-    a_dict['ESTADIAM'] = df_apos_analise[(df_apos_analise['AnaliseESTADIAM'] == 'incompleto') |
-                                    (df_apos_analise['AnaliseESTADIAM'] == 'demais') ].shape[0]
+    q_IDADE = df_apos_analise[df_apos_analise['IDADE'] == -1].shape[0]
     
-    a_dict['IDADE'] = df_apos_analise[df_apos_analise['IDADE'] == -1].shape[0]
+  
+      
+    # a_df = pd.DataFrame([a_dict])
+    # a_df.insert(0, "Indicador", ['Invalidos apos analise'])
     
-        
-    a_df = pd.DataFrame([a_dict])
-    a_df.insert(0, "Indicador", ['Invalidos apos analise'])
+    response.at['Invalidos apos a Analise' , 'TNM'] = q_TNM
+    response.at['Invalidos apos a Analise' , 'LOCTUDET'] = q_LOCTUDET
+    response.at['Invalidos apos a Analise' , 'LOCTUPRI'] = q_LOCTUPRI
+    response.at['Invalidos apos a Analise' , 'LOCTUPRO'] = q_LOCTUPRO
+    response.at['Invalidos apos a Analise' , 'ESTADIAM'] = q_ESTADIAM
+    response.at['Invalidos apos a Analise' , 'IDADE'] = q_IDADE
     
     
-    return pd.concat([response , a_df] , axis = 0)
+    return response
 
 
 def gera_indicador_incompletude(df , etapa , lista_colunas , response):
@@ -119,17 +122,25 @@ def gera_indicador_incompletude(df , etapa , lista_colunas , response):
     
     for var in lista_colunas:
         a = df[var].value_counts(dropna=False, normalize=False).reset_index()
-        count = 0
+        count_nulos = 0
+        count_sem_info = 0
         for i, row in a.iterrows():
             # print((var in informacao_ignorada_por_atributo.keys()) and (row[var] in informacao_ignorada_por_atributo[var] ))
-            if row[var] is np.nan:
-                count = count + row["count"]
-            if ((var in informacao_ignorada.keys()) and (row[var] in informacao_ignorada[var] )):
-                count = count + row["count"]
-                
-        print(f'Variavel: {var} Count:{count}')
-        response.at[etapa + ' - quantidade incompletos' , var] = count
-        response.at[etapa + etapa + ' - porcentagem incompletos' , var] = count * 100 / len(df)
+            
+            if (row.iloc[0] is np.nan) | (row.iloc[0] == 'nan') | (pd.isna(row.iloc[0])):
+                # print(f' nan -> {var} count -> {row.iloc[1]}')
+                count_nulos = count_nulos + row.iloc[1]
+            else:
+                if ((var in informacao_ignorada.keys()) and (row[var] in informacao_ignorada[var] )):
+                    count_sem_info = count_sem_info + row.iloc[1]
+       
+        response.at[etapa + ' - Nr incompletos (nulos)' , var] = count_nulos
+        response.at[etapa + etapa + ' - % incompletos (nulos)' , var] = count_nulos * 100 / len(df)
+        
+        response.at[etapa + ' - Nr incompletos (sem info)' , var] = count_sem_info
+        response.at[etapa + etapa + ' - % incompletos (sem info)' , var] = count_sem_info * 100 / len(df)
+        
+        
 
     return response
         
@@ -143,31 +154,12 @@ def busca_data_sp_iniciou_mais_que_1_trat(df):
 
     Returns:
         (Date):  data do inicio
-    """
-    
+    """    
     aux_sp = df[df['UFUH'] == 'SP']
     a = aux_sp.loc[aux_sp['PRITRATH_NrTratamentos'] > 1]
     a.sort_values(by='DATAINITRT' , ascending=[True]).reset_index(drop=True)
     
     return  a['DATAINITRT'].iloc[0]
-
-def main_indicadores_variaveis_qualidade(response_df):
-    # lista_colunas = ['SEXO', 'IDADE', 'ALCOOLIS', 'TABAGISM']
-    
-    # response_df = gera_indicador_incompletude(df_inicial , 'Inicial' , lista_colunas , response_df )
-    # response_df = gera_indicador_incompletude(df_apos_tipos , 'Apos Tipos definidos' , lista_colunas , response_df )
-    # response_df = gera_indicador_incompletude(df_apos_analise , 'Após Analise dos Dados' ,lista_colunas , response_df )
-    # response_df = gera_indicador_incompletude(df_apos_transf , 'Apos Transformacoes' , lista_colunas , response_df )
-    # response_df = gera_indicador_incompletude(df_apos_extracao , 'Apos Extracao' , lista_colunas , response_df )
-    
-    response_df = gera_indicador_incompletude(df_inicial , 'Inicial' , df_inicial.columns , response_df )
-    response_df = gera_indicador_incompletude(df_apos_tipos , 'Apos Tipos definidos' , df_apos_tipos.columns , response_df )
-    response_df = gera_indicador_incompletude(df_apos_analise , 'Após Analise dos Dados' , df_apos_analise.columns , response_df )
-    response_df = gera_indicador_incompletude(df_apos_transf , 'Apos Transformacoes' , df_apos_transf.columns , response_df )
-    response_df = gera_indicador_incompletude(df_apos_extracao , 'Apos Extracao' , df_apos_extracao.columns , response_df )
-    
-
-    return response_df    
 
 def main_indicadores_variaveis(response_df):
     """Funcao principal de geracao dos indicadores das variaveis.
@@ -177,14 +169,28 @@ def main_indicadores_variaveis(response_df):
     Returns:
         (DataFrame):  DataFrame com indicadores atualizados       
     """ 
-    response_df = insere_indicador_nulos(df = df_inicial, tipo = 'Nulos - Inicial' , response = response_df)
+    # response_df = insere_indicador_nulos(df = df_inicial, tipo = 'Nulos - Inicial' , response = response_df)
     
-    response_df = insere_indicador_nulos(df = df_apos_tipos, tipo = 'Nulos - Após Tipos Definidos', response = response_df)
+    # response_df = insere_indicador_nulos(df = df_apos_tipos, tipo = 'Nulos - Após Tipos Definidos', response = response_df)
         
-    response_df = insere_indicador_nulos(df = df_apos_analise, tipo = 'Nulos - Após Analise dos Dados', response = response_df)
+    # response_df = insere_indicador_nulos(df = df_apos_analise, tipo = 'Nulos - Após Analise dos Dados', response = response_df)
+
+    # print(log.logar_acao_realizada('Indicadores' , 'Calculo dos indicadores de NULOS' , ' '))
+
+    response_df = gera_indicador_incompletude(df_inicial , 'Inicial' , df_inicial.columns , response_df )
+    response_df = gera_indicador_incompletude(df_apos_tipos , 'Apos Tipos definidos' , df_apos_tipos.columns , response_df )
+    response_df = gera_indicador_incompletude(df_apos_analise , 'Após Analise dos Dados' , df_apos_analise.columns , response_df )
+    response_df = gera_indicador_incompletude(df_apos_transf , 'Apos Transformacoes' , df_apos_transf.columns , response_df )
+    response_df = gera_indicador_incompletude(df_apos_extracao , 'Apos Extracao' , df_apos_extracao.columns , response_df )
+    
+    print(log.logar_acao_realizada('Indicadores' , 'Calculo dos indicadores de COMPLETUDE (porcentagem de nulos ou sem informação)' , ' '))
+
     
     response_df = insere_indicador_invalidos(df = df_apos_analise, response = response_df)
     
+    print(log.logar_acao_realizada('Indicadores' , 'Calculo dos indicadores de INVALIDOS' , ' '))
+
+
     return response_df
 
 
@@ -226,34 +232,28 @@ def main_indicadores_globais():
     
     return a_df
 
-
-
 if __name__ == "__main__":
     log = Log()
-
+    log.carregar_log('log_BaseModelagem')
+    
     df_inicial = f.leitura_arquivo_csv('BaseConsolidada')
     df_apos_tipos = f.leitura_arquivo_parquet('BaseInicial')
     df_apos_analise =  f.leitura_arquivo_parquet('BaseSanitizada')
     df_apos_transf = f.leitura_arquivo_parquet('BaseTransfor')
     df_apos_extracao =  f.leitura_arquivo_parquet('BaseModelagem')
-    
-    result_df = pd.DataFrame()
-    result_df = main_indicadores_variaveis_qualidade(result_df)
+    print(log.logar_acao_realizada('Carga Dados' , 'Carregamento dos dados para calculo dos indicadores' , ' '))
 
-    result_df = result_df.fillna(0) 
-    # result_df.reset_index(drop = True , inplace=True)
-    
-    a_file_name = 'indicadores_qualidade'
-    f.salvar_excel_conclusao(result_df , a_file_name)
-    
-    
     result_df = pd.DataFrame()
     result_df = main_indicadores_variaveis(result_df)
     
+    result_df.reset_index(drop = False , inplace=True)
+    result_df.rename(columns={'index':'Indicador'}, inplace=True)
+    
     a_df = f.leitura_arquivo_excel_conclusao('parcial_extracao')
     result_df = pd.concat([result_df , a_df] , axis = 0)
+    print(log.logar_acao_realizada('Indicadores' , 'Registros eliminados na seleção de dados' , ' '))
 
-    result_df = result_df.fillna(0) 
+    result_df = result_df.fillna('nan') 
     result_df.reset_index(drop = True , inplace=True)
     
     a_file_name = 'indicadores_variaveis'
@@ -262,12 +262,13 @@ if __name__ == "__main__":
     result_df = pd.DataFrame()
     result_df = main_indicadores_globais()
     
-    result_df = result_df.fillna(0) 
+    result_df = result_df.fillna('nan') 
     result_df.reset_index(drop = True , inplace=True)
     
     a_file_name = 'indicadores_globais'
     f.salvar_excel_conclusao(result_df , a_file_name)
 
+    log.salvar_log('log_Indicadores') 
 
 
 # df = df_apos_analise.loc[:, df_apos_analise.columns.str.startswith('Analise')]

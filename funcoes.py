@@ -68,7 +68,18 @@ class Log:
         
     def __get_indicador_df(self , tipo):
         if tipo not in list(self.__indicadores.keys()):
-            df = pd.DataFrame()
+            lista_col =  ['TPCASO', 'SEXO', 'IDADE', 'LOCALNAS', 'RACACOR', 'INSTRUC', 'CLIATEN',
+                   'CLITRAT', 'HISTFAMC', 'ALCOOLIS', 'TABAGISM', 'ESTADRES', 'PROCEDEN',
+                   'ANOPRIDI', 'ORIENC', 'EXDIAG', 'ESTCONJ', 'ANTRI', 'DTPRICON',
+                   'DIAGANT', 'BASMAIMP', 'LOCTUDET', 'LOCTUPRI', 'TIPOHIST', 'LATERALI',
+                   'LOCTUPRO', 'MAISUMTU', 'TNM', 'ESTADIAM', 'OUTROESTA', 'PTNM', 'RZNTR',
+                   'DTINITRT', 'PRITRATH', 'ESTDFIMT', 'CNES', 'UFUH', 'MUUH', 'OCUPACAO',
+                   'DTDIAGNO', 'DTTRIAGE', 'DATAPRICON', 'DATAINITRT', 'DATAOBITO',
+                   'VALOR_TOT', 'BASDIAGSP', 'ESTADIAG']
+            
+            lista_col = list(lista_col)
+            lista_col.sort()
+            df = pd.DataFrame( columns = lista_col)
             df.astype('str')
             self.__indicadores = self.__indicadores | { tipo : df }
         return self.__indicadores[tipo]

@@ -92,6 +92,10 @@ def definir_tipos_variaveis(df):
         df[a_col] = df[a_col].apply(lambda x: strip_spaces(x) )
         df[a_col] = pd.to_datetime(df[a_col] , format="%d/%m/%Y" , errors= 'coerce')        
             
+    print( log.logar_acao_realizada('Definicao de Tipos' , 'Colunas do Tipo datas -> datetime' , colunas_datas) )
+    print( log.logar_acao_realizada('Definicao de Tipos' , 'Colunas do Tipo numerico -> int64' , colunas_numericos) )
+    print( log.logar_acao_realizada('Definicao de Tipos' , 'Colunas do Tipo categorica -> category' , colunas_categoricos) )
+
     return df
     
 
@@ -141,7 +145,6 @@ def main():
        
     #ACERTOS INICIAIS - TRATAR VALIDACOES A AJUSTES APLICAVEIS A TODA A BASE, SEM SER ESPECIFICO DOS CASOS QUE SERAO ABORDADOS (ANALITICOS)
     df_unico = definir_tipos_variaveis(df_unico)
-    
     
     # ETAPA INICIAL - SALVAR TRATAMENTO INICIAL 
     f.salvar_parquet(df_unico , 'BaseInicial')

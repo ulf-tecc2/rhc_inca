@@ -22,7 +22,7 @@ a. Identificar transformações nos dados que possam completar informações aus
 b. Utilização da base na construção de modelos de Machine Learning para a predição da resposta ao primeiro tratamento identificando oportunidades de melhoria nas ações de saúde pública no tratamento oncológico.
 
 ## Processo Utilizado
-A figura abaixo mostra as etapas do processo utilizado na preparação dos dados obtidos a partir do RHC/INCA
+A figura abaixo mostra as etapas e artefatos gerados no processo de preparação dos dados obtidos a partir do RHC/INCA
 
 ![Processo Utilizado](imagens/metodo.png)
 
@@ -40,25 +40,25 @@ A figura abaixo mostra as etapas do processo utilizado na preparação dos dados
 [**Base Consolidada**](https://drive.google.com/uc?export=download&id=1Zt2Kv9DtM7IBdAGDdFwvMogPvceG7KYA) 
 
 
-#### Dados com tipos definidos (arquivo parquet e CSV)
+#### Dados com tipos definidos (arquivo parquet)
 [**Base Inicial  (parquet)**](https://drive.google.com/uc?export=download&id=1oNnt1K2yJhk3FzuK1ELUgUlFT-uf0d9x) 
 
-[**Base Inicial  (CSV)**](https://drive.google.com/uc?export=download&id=) 
+ 
 
-#### Dados com resultado das análises e sanitização (arquivo parquet e CSV)
+#### Dados com resultado das análises e sanitização (arquivo parquet)
 [**Base Sanitizada  (parquet)**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
 
-[**Base Sanitizada  (CSV)**](https://drive.google.com/uc?export=download&id=) 
 
-#### Dados com resultado das transformações e inferências (arquivo parquet e CSV)
+
+#### Dados com resultado das transformações e inferências (arquivo parquet)
 [**Base Transformada  (parquet)**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
 
-[**Base Transformada  (CSV)**](https://drive.google.com/uc?export=download&id=) 
 
-#### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet e CSV)
+
+#### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet)
 [**Base Modelagem (parquet)**](https://drive.google.com/uc?export=download&id=1Bj0FcA6lO6PJfJs5-i003Ldgag4q_jP-) 
 
-[**Base Modelagem  (CSV)**](https://drive.google.com/uc?export=download&id=) 
+
 
 
 ## Analises e Conclusões
@@ -80,6 +80,6 @@ A figura abaixo mostra as etapas do processo utilizado na preparação dos dados
 [**Indicadores Qualidade**](https://drive.google.com/uc?export=download&id=) 
 
 #### Medidas dos Indicadores Globais
-[** Indicadores Globais**](https://drive.google.com/uc?export=download&id=) 
+[**Indicadores Globais**](https://drive.google.com/uc?export=download&id=) 
 
 

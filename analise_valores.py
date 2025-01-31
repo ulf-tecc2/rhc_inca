@@ -556,6 +556,12 @@ if __name__ == "__main__":
     # print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem analisados - Casos analiticos' , df_unico.shape[0]) )
 
     df_unico = f.leitura_arquivo_parquet('BaseInicial')
+
+
+    restringir_periodo = False
+    if restringir_periodo: # usar 2000 a 2020 apenas
+        df_unico = df_unico[(df_unico['DATAINITRT'].dt.year > 1999) & (df_unico['DATAINITRT'].dt.year < 2021)]
+        
     print( log.logar_acao_realizada('Carga Dados' , 'Carregamento da base dos dados a serem analisados - Casos completos' , df_unico.shape[0]) )
 
     df_unico = main(df_unico) 
