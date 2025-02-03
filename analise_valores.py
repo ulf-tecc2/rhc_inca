@@ -84,7 +84,7 @@ def trocar_valores_nulos(df):
     nan_values = {
         'ALCOOLIS' : ['0'],
         'BASDIAGSP' : [''],
-        'BASMAIMP'	 : [''],
+        'BASMAIMP'	 : ['0'],
         'CLIATEN'	 : ['99','0'],
         'CLITRAT'	 : ['99' , '0'],
         'DIAGANT'	 : ['0'],

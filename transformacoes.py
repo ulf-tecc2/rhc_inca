@@ -148,9 +148,9 @@ def infere_BASMAIMP(df):
     # a = df_unico['BASMAIMP'].value_counts(dropna=False, normalize=False)
     # b = df_unico['BASDIAGSP'].value_counts(dropna=False, normalize=False)
     # c = df_unico.groupby(['BASMAIMP' , 'BASDIAGSP'] , observed=True).agg({'TPCASO' : 'count'})
-    aux_df = df.loc[ (df['BASMAIMP'] == '0') & (df['BASDIAGSP'] == '1')  ]
+    aux_df = df.loc[ (df['BASMAIMP'].isnull() | (df['BASMAIMP'] == '0') ) & (df['BASDIAGSP'] == '1')  ]
     aux_quant = aux_df.shape[0]
-    df_unico.loc[ (df['BASMAIMP'] == '0') & (df['BASDIAGSP'] == '1') , 'BASMAIMP' ] = '1'
+    df_unico.loc[ (df['BASMAIMP'].isnull() | (df['BASMAIMP'] == '0') ) & (df['BASDIAGSP'] == '1') , 'BASMAIMP' ] = '1'
     print(log.logar_acao_realizada('Gerar / Transformar Dados' , 'Inferir o valor de BASMAIMP a partir de BASDIAGSP. Regra 0 <= 1. Falta definir outras regras aplicaveis' , f'{aux_quant}'))
     
     log.logar_indicador('Correcoes' , 'Inferencia Dados'  , 'Inferir o valor de BASMAIMP a partir de BASDIAGSP. Regra 0 <= 1. ' , 'BASMAIMP' , aux_quant )
