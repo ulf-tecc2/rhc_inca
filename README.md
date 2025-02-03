@@ -64,7 +64,6 @@ A figura abaixo mostra as etapas e artefatos gerados no processo de preparação
 ## Analises e Conclusões
 **Arquivo com os resultados detalhados das analises e conclusoes**
 
-#### Indicadores 
 [**Indicadores**](dados/Publicos/Resultados.xlsx) 
 
 

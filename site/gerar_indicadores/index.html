@@ -593,21 +593,20 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">149</span>
 <span class="normal">150</span>
 <span class="normal">151</span>
-<span class="normal">152</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">busca_data_sp_iniciou_mais_que_1_trat</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">busca_data_sp_iniciou_mais_que_1_trat</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Identifica a data de quando SP iniciou o registro de mais de um tratamento.</span>
 
 <span class="sd">    Parameters:</span>
@@ -615,8 +614,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        (Date):  data do inicio</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
+<span class="sd">    &quot;&quot;&quot;</span>    
     <span class="n">aux_sp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;UFUH&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;SP&#39;</span><span class="p">]</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">aux_sp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">aux_sp</span><span class="p">[</span><span class="s1">&#39;PRITRATH_NrTratamentos&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">a</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;DATAINITRT&#39;</span> <span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -738,10 +736,7 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 89</span>
 <span class="normal"> 90</span>
 <span class="normal"> 91</span>
 <span class="normal"> 92</span>
@@ -786,7 +781,18 @@
 <span class="normal">131</span>
 <span class="normal">132</span>
 <span class="normal">133</span>
-<span class="normal">134</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">gera_indicador_incompletude</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">etapa</span> <span class="p">,</span> <span class="n">lista_colunas</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">gera_indicador_incompletude</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">etapa</span> <span class="p">,</span> <span class="n">lista_colunas</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gera o indicador de INCOMPLETUDE para cada variavel do DataFrame.</span>
 
 <span class="sd">    Incompletitude: proporção de informação ignorada, ou seja, os campos em branco e os códigos atribuídos à informação ignorada</span>
@@ -822,17 +828,25 @@
 
     <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">lista_colunas</span><span class="p">:</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">count_nulos</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">count_sem_info</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
             <span class="c1"># print((var in informacao_ignorada_por_atributo.keys()) and (row[var] in informacao_ignorada_por_atributo[var] ))</span>
-            <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">:</span>
-                <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="p">((</span><span class="n">var</span> <span class="ow">in</span> <span class="n">informacao_ignorada</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="ow">and</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="ow">in</span> <span class="n">informacao_ignorada</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="p">)):</span>
-                <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Variavel: </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1"> Count:</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">etapa</span> <span class="o">+</span> <span class="s1">&#39; - quantidade incompletos&#39;</span> <span class="p">,</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span>
-        <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">etapa</span> <span class="o">+</span> <span class="n">etapa</span> <span class="o">+</span> <span class="s1">&#39; - porcentagem incompletos&#39;</span> <span class="p">,</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;nan&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                <span class="c1"># print(f&#39; nan -&gt; {var} count -&gt; {row.iloc[1]}&#39;)</span>
+                <span class="n">count_nulos</span> <span class="o">=</span> <span class="n">count_nulos</span> <span class="o">+</span> <span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">((</span><span class="n">var</span> <span class="ow">in</span> <span class="n">informacao_ignorada</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="ow">and</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="ow">in</span> <span class="n">informacao_ignorada</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="p">)):</span>
+                    <span class="n">count_sem_info</span> <span class="o">=</span> <span class="n">count_sem_info</span> <span class="o">+</span> <span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">etapa</span> <span class="o">+</span> <span class="s1">&#39; - Nr incompletos (nulos)&#39;</span> <span class="p">,</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_nulos</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">etapa</span> <span class="o">+</span> <span class="n">etapa</span> <span class="o">+</span> <span class="s1">&#39; - </span><span class="si">% i</span><span class="s1">ncompletos (nulos)&#39;</span> <span class="p">,</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_nulos</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+        <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">etapa</span> <span class="o">+</span> <span class="s1">&#39; - Nr incompletos (sem info)&#39;</span> <span class="p">,</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_sem_info</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">etapa</span> <span class="o">+</span> <span class="n">etapa</span> <span class="o">+</span> <span class="s1">&#39; - </span><span class="si">% i</span><span class="s1">ncompletos (sem info)&#39;</span> <span class="p">,</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">count_sem_info</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+
 
     <span class="k">return</span> <span class="n">response</span>
 </code></pre></div></td></tr></table></div>
@@ -922,7 +936,8 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">45</span>
+<span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
@@ -959,7 +974,10 @@
 <span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
-<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insere_indicador_invalidos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insere_indicador_invalidos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gera o indicador de registros invalidos para cada variavel do DataFrame.</span>
 
 <span class="sd">    Parameters:</span>
@@ -969,34 +987,38 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        (DataFrame):  DataFrame com indicadores atualizados</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">a_dict</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;TNM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseTNM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="o">|</span>
+    <span class="n">q_TNM</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseTNM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="o">|</span>
                                     <span class="p">(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseTNM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;demais&#39;</span><span class="p">)</span> <span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;LOCTUDET&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseLOCTUDET&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="o">|</span>
+    <span class="n">q_LOCTUDET</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseLOCTUDET&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="o">|</span>
                                     <span class="p">(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseLOCTUDET&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;demais&#39;</span><span class="p">)</span> <span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;LOCTUPRI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseLOCTUPRI&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="o">|</span>
+    <span class="n">q_LOCTUPRI</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseLOCTUPRI&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="o">|</span>
                                     <span class="p">(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseLOCTUPRI&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;demais&#39;</span><span class="p">)</span> <span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;LOCTUPRO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseLOCTUPRO&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="o">|</span>
+    <span class="n">q_LOCTUPRO</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseLOCTUPRO&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="o">|</span>
                                     <span class="p">(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseLOCTUPRO&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;demais&#39;</span><span class="p">)</span> <span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;ESTADIAM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseESTADIAM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="o">|</span>
+    <span class="n">q_ESTADIAM</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseESTADIAM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="o">|</span>
                                     <span class="p">(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseESTADIAM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;demais&#39;</span><span class="p">)</span> <span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;ESTADIAM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseESTADIAM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="o">|</span>
-                                    <span class="p">(</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;AnaliseESTADIAM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;demais&#39;</span><span class="p">)</span> <span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-    <span class="n">a_dict</span><span class="p">[</span><span class="s1">&#39;IDADE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;IDADE&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">q_IDADE</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">[</span><span class="n">df_apos_analise</span><span class="p">[</span><span class="s1">&#39;IDADE&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 
-    <span class="n">a_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">a_dict</span><span class="p">])</span>
-    <span class="n">a_df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Indicador&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Invalidos apos analise&#39;</span><span class="p">])</span>
+
+    <span class="c1"># a_df = pd.DataFrame([a_dict])</span>
+    <span class="c1"># a_df.insert(0, &quot;Indicador&quot;, [&#39;Invalidos apos analise&#39;])</span>
+
+    <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;Invalidos apos a Analise&#39;</span> <span class="p">,</span> <span class="s1">&#39;TNM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_TNM</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;Invalidos apos a Analise&#39;</span> <span class="p">,</span> <span class="s1">&#39;LOCTUDET&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_LOCTUDET</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;Invalidos apos a Analise&#39;</span> <span class="p">,</span> <span class="s1">&#39;LOCTUPRI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_LOCTUPRI</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;Invalidos apos a Analise&#39;</span> <span class="p">,</span> <span class="s1">&#39;LOCTUPRO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_LOCTUPRO</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;Invalidos apos a Analise&#39;</span> <span class="p">,</span> <span class="s1">&#39;ESTADIAM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_ESTADIAM</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;Invalidos apos a Analise&#39;</span> <span class="p">,</span> <span class="s1">&#39;IDADE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">q_IDADE</span>
 
 
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">response</span> <span class="p">,</span> <span class="n">a_df</span><span class="p">]</span> <span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -1098,7 +1120,8 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">29</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">28</span>
+<span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
@@ -1112,8 +1135,7 @@
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insere_indicador_nulos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">tipo</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">insere_indicador_nulos</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">tipo</span> <span class="p">,</span> <span class="n">response</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gera o indicador de registros nulos para cada variavel do DataFrame.</span>
 
 <span class="sd">    Parameters:</span>
@@ -1173,13 +1195,7 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">197</span>
 <span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
@@ -1209,7 +1225,13 @@
 <span class="normal">224</span>
 <span class="normal">225</span>
 <span class="normal">226</span>
-<span class="normal">227</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main_indicadores_globais</span><span class="p">():</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main_indicadores_globais</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Funcao principal de geracao dos indicadores globais.</span>
 
 <span class="sd">    Returns:</span>
@@ -1298,7 +1320,15 @@
 
             <details class="quote">
               <summary>Source code in <code>gerar_indicadores.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">172</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
 <span class="normal">173</span>
 <span class="normal">174</span>
 <span class="normal">175</span>
@@ -1314,7 +1344,13 @@
 <span class="normal">185</span>
 <span class="normal">186</span>
 <span class="normal">187</span>
-<span class="normal">188</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main_indicadores_variaveis</span><span class="p">(</span><span class="n">response_df</span><span class="p">):</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main_indicadores_variaveis</span><span class="p">(</span><span class="n">response_df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Funcao principal de geracao dos indicadores das variaveis.</span>
 
 <span class="sd">    Parameters:</span>
@@ -1322,13 +1358,27 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        (DataFrame):  DataFrame com indicadores atualizados       </span>
 <span class="sd">    &quot;&quot;&quot;</span> 
-    <span class="n">response_df</span> <span class="o">=</span> <span class="n">insere_indicador_nulos</span><span class="p">(</span><span class="n">df</span> <span class="o">=</span> <span class="n">df_inicial</span><span class="p">,</span> <span class="n">tipo</span> <span class="o">=</span> <span class="s1">&#39;Nulos - Inicial&#39;</span> <span class="p">,</span> <span class="n">response</span> <span class="o">=</span> <span class="n">response_df</span><span class="p">)</span>
+    <span class="c1"># response_df = insere_indicador_nulos(df = df_inicial, tipo = &#39;Nulos - Inicial&#39; , response = response_df)</span>
 
-    <span class="n">response_df</span> <span class="o">=</span> <span class="n">insere_indicador_nulos</span><span class="p">(</span><span class="n">df</span> <span class="o">=</span> <span class="n">df_apos_tipos</span><span class="p">,</span> <span class="n">tipo</span> <span class="o">=</span> <span class="s1">&#39;Nulos - Após Tipos Definidos&#39;</span><span class="p">,</span> <span class="n">response</span> <span class="o">=</span> <span class="n">response_df</span><span class="p">)</span>
+    <span class="c1"># response_df = insere_indicador_nulos(df = df_apos_tipos, tipo = &#39;Nulos - Após Tipos Definidos&#39;, response = response_df)</span>
 
-    <span class="n">response_df</span> <span class="o">=</span> <span class="n">insere_indicador_nulos</span><span class="p">(</span><span class="n">df</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">,</span> <span class="n">tipo</span> <span class="o">=</span> <span class="s1">&#39;Nulos - Após Analise dos Dados&#39;</span><span class="p">,</span> <span class="n">response</span> <span class="o">=</span> <span class="n">response_df</span><span class="p">)</span>
+    <span class="c1"># response_df = insere_indicador_nulos(df = df_apos_analise, tipo = &#39;Nulos - Após Analise dos Dados&#39;, response = response_df)</span>
+
+    <span class="c1"># print(log.logar_acao_realizada(&#39;Indicadores&#39; , &#39;Calculo dos indicadores de NULOS&#39; , &#39; &#39;))</span>
+
+    <span class="n">response_df</span> <span class="o">=</span> <span class="n">gera_indicador_incompletude</span><span class="p">(</span><span class="n">df_inicial</span> <span class="p">,</span> <span class="s1">&#39;Inicial&#39;</span> <span class="p">,</span> <span class="n">df_inicial</span><span class="o">.</span><span class="n">columns</span> <span class="p">,</span> <span class="n">response_df</span> <span class="p">)</span>
+    <span class="n">response_df</span> <span class="o">=</span> <span class="n">gera_indicador_incompletude</span><span class="p">(</span><span class="n">df_apos_tipos</span> <span class="p">,</span> <span class="s1">&#39;Apos Tipos definidos&#39;</span> <span class="p">,</span> <span class="n">df_apos_tipos</span><span class="o">.</span><span class="n">columns</span> <span class="p">,</span> <span class="n">response_df</span> <span class="p">)</span>
+    <span class="n">response_df</span> <span class="o">=</span> <span class="n">gera_indicador_incompletude</span><span class="p">(</span><span class="n">df_apos_analise</span> <span class="p">,</span> <span class="s1">&#39;Após Analise dos Dados&#39;</span> <span class="p">,</span> <span class="n">df_apos_analise</span><span class="o">.</span><span class="n">columns</span> <span class="p">,</span> <span class="n">response_df</span> <span class="p">)</span>
+    <span class="n">response_df</span> <span class="o">=</span> <span class="n">gera_indicador_incompletude</span><span class="p">(</span><span class="n">df_apos_transf</span> <span class="p">,</span> <span class="s1">&#39;Apos Transformacoes&#39;</span> <span class="p">,</span> <span class="n">df_apos_transf</span><span class="o">.</span><span class="n">columns</span> <span class="p">,</span> <span class="n">response_df</span> <span class="p">)</span>
+    <span class="n">response_df</span> <span class="o">=</span> <span class="n">gera_indicador_incompletude</span><span class="p">(</span><span class="n">df_apos_extracao</span> <span class="p">,</span> <span class="s1">&#39;Apos Extracao&#39;</span> <span class="p">,</span> <span class="n">df_apos_extracao</span><span class="o">.</span><span class="n">columns</span> <span class="p">,</span> <span class="n">response_df</span> <span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Indicadores&#39;</span> <span class="p">,</span> <span class="s1">&#39;Calculo dos indicadores de COMPLETUDE (porcentagem de nulos ou sem informação)&#39;</span> <span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">))</span>
+
 
     <span class="n">response_df</span> <span class="o">=</span> <span class="n">insere_indicador_invalidos</span><span class="p">(</span><span class="n">df</span> <span class="o">=</span> <span class="n">df_apos_analise</span><span class="p">,</span> <span class="n">response</span> <span class="o">=</span> <span class="n">response_df</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Indicadores&#39;</span> <span class="p">,</span> <span class="s1">&#39;Calculo dos indicadores de INVALIDOS&#39;</span> <span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">))</span>
+
 
     <span class="k">return</span> <span class="n">response_df</span>
 </code></pre></div></td></tr></table></div>

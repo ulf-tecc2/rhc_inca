@@ -586,7 +586,11 @@
 <span class="normal">92</span>
 <span class="normal">93</span>
 <span class="normal">94</span>
-<span class="normal">95</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">definir_tipos_variaveis</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span>
+<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">definir_tipos_variaveis</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Definicao dos tipos das variaveis.</span>
 
 <span class="sd">    Parameters:</span>
@@ -616,6 +620,10 @@
     <span class="k">for</span> <span class="n">a_col</span> <span class="ow">in</span> <span class="n">colunas_datas</span><span class="p">:</span>
         <span class="n">df</span><span class="p">[</span><span class="n">a_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">a_col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">strip_spaces</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">)</span>
         <span class="n">df</span><span class="p">[</span><span class="n">a_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_col</span><span class="p">]</span> <span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span> <span class="p">,</span> <span class="n">errors</span><span class="o">=</span> <span class="s1">&#39;coerce&#39;</span><span class="p">)</span>        
+
+    <span class="nb">print</span><span class="p">(</span> <span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Definicao de Tipos&#39;</span> <span class="p">,</span> <span class="s1">&#39;Colunas do Tipo datas -&gt; datetime&#39;</span> <span class="p">,</span> <span class="n">colunas_datas</span><span class="p">)</span> <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Definicao de Tipos&#39;</span> <span class="p">,</span> <span class="s1">&#39;Colunas do Tipo numerico -&gt; int64&#39;</span> <span class="p">,</span> <span class="n">colunas_numericos</span><span class="p">)</span> <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Definicao de Tipos&#39;</span> <span class="p">,</span> <span class="s1">&#39;Colunas do Tipo categorica -&gt; category&#39;</span> <span class="p">,</span> <span class="n">colunas_categoricos</span><span class="p">)</span> <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">df</span>
 </code></pre></div></td></tr></table></div>
@@ -789,11 +797,7 @@
 
             <details class="quote">
               <summary>Source code in <code>pre_processamento.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">137</span>
 <span class="normal">138</span>
 <span class="normal">139</span>
 <span class="normal">140</span>
@@ -808,7 +812,10 @@
 <span class="normal">149</span>
 <span class="normal">150</span>
 <span class="normal">151</span>
-<span class="normal">152</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Funcao principal.</span>
 
 <span class="sd">    Returns:</span>
@@ -819,7 +826,6 @@
 
     <span class="c1">#ACERTOS INICIAIS - TRATAR VALIDACOES A AJUSTES APLICAVEIS A TODA A BASE, SEM SER ESPECIFICO DOS CASOS QUE SERAO ABORDADOS (ANALITICOS)</span>
     <span class="n">df_unico</span> <span class="o">=</span> <span class="n">definir_tipos_variaveis</span><span class="p">(</span><span class="n">df_unico</span><span class="p">)</span>
-
 
     <span class="c1"># ETAPA INICIAL - SALVAR TRATAMENTO INICIAL </span>
     <span class="n">f</span><span class="o">.</span><span class="n">salvar_parquet</span><span class="p">(</span><span class="n">df_unico</span> <span class="p">,</span> <span class="s1">&#39;BaseInicial&#39;</span><span class="p">)</span>
@@ -849,12 +855,12 @@
 
             <details class="quote">
               <summary>Source code in <code>pre_processamento.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">157</span>
 <span class="normal">158</span>
-<span class="normal">159</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main_leitura_inicial</span><span class="p">():</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main_leitura_inicial</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Funcao para unir todos os arquivos que estao separados por anos.&quot;&quot;&quot;</span>     
     <span class="n">df_unico</span> <span class="o">=</span> <span class="n">leitura_inicial_dados</span><span class="p">(</span><span class="n">dir_bases</span> <span class="o">=</span> <span class="s1">&#39;dados</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span> <span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="s1">&#39;Carga Dados&#39;</span> <span class="p">,</span> <span class="s1">&#39;Consolidacao dos arquivos separados&#39;</span> <span class="p">,</span> <span class="n">df_unico</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
