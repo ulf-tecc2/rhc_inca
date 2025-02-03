@@ -37,26 +37,26 @@ A figura abaixo mostra as etapas e artefatos gerados no processo de preparação
 
 
 #### Dados brutos consolidados em um arquivo único (CSV)
-[**Base Consolidada**](https://drive.google.com/uc?export=download&id=1Zt2Kv9DtM7IBdAGDdFwvMogPvceG7KYA) 
+[**Base Consolidada**](https://drive.google.com/uc?export=download&id=1cuQM-6iXD0h1iRdbIxkAS8epgMval-E0) 
 
 
 #### Dados com tipos definidos (arquivo parquet)
-[**Base Inicial  (parquet)**](https://drive.google.com/uc?export=download&id=1oNnt1K2yJhk3FzuK1ELUgUlFT-uf0d9x) 
+[**Base Inicial  (parquet)**](https://drive.google.com/uc?export=download&id=1uPpY5HqBnu1Wk4rDjFAJuEATV-LUHJw_) 
 
  
 
 #### Dados com resultado das análises e sanitização (arquivo parquet)
-[**Base Sanitizada  (parquet)**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
+[**Base Sanitizada  (parquet)**](https://drive.google.com/uc?export=download&id=1r1THemc6rytFb_etlB_VF4nLoQrPnnWS) 
 
 
 
 #### Dados com resultado das transformações e inferências (arquivo parquet)
-[**Base Transformada  (parquet)**](https://drive.google.com/uc?export=download&id=1P61hUWlMjr53jvomKmxHuLJkVR8XOuAf) 
+[**Base Transformada  (parquet)**](https://drive.google.com/uc?export=download&id=1EwoECP30XTOj5fbbNQhgYXxElE_hNeKx) 
 
 
 
 #### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet)
-[**Base Modelagem (parquet)**](https://drive.google.com/uc?export=download&id=1Bj0FcA6lO6PJfJs5-i003Ldgag4q_jP-) 
+[**Base Modelagem (parquet)**](https://drive.google.com/uc?export=download&id=1IC6QiskG5XYzO5uKxgYO9nZlppzw0zta) 
 
 
 
