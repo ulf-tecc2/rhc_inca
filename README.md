@@ -62,24 +62,11 @@ A figura abaixo mostra as etapas e artefatos gerados no processo de preparação
 
 
 ## Analises e Conclusões
-**Arquivos com os resultados detalhados das analises e conclusoes**
+**Arquivo com os resultados detalhados das analises e conclusoes**
 
-#### Ações executadas ao longo do processo 
-[**Log Ações**](https://drive.google.com/uc?export=download&id=) 
+#### Indicadores 
+[**Indicadores**](dados/Publicos/Resultados.xlsx) 
 
-#### Indicadores coletados ao longo do processo 
-[**Log Indicadores**](https://drive.google.com/uc?export=download&id=) 
 
-#### Regras utilizadas nas analises dos dados 
-[**Regras**](https://drive.google.com/uc?export=download&id=) 
-
-#### Medidas dos Indicadores para as variáveis
-[**Indicadores Variaveis**](https://drive.google.com/uc?export=download&id=) 
-
-#### Medidas dos Indicadores de qualidade
-[**Indicadores Qualidade**](https://drive.google.com/uc?export=download&id=) 
-
-#### Medidas dos Indicadores Globais
-[**Indicadores Globais**](https://drive.google.com/uc?export=download&id=) 
 
 
