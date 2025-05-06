@@ -1,7 +1,8 @@
-site_name: Registros Hospitalares de Câncer (RHC)
+site_name: Registros Hospitalares de Cancer (RHC)
 
 theme:
   name: "material"
+  toc_label: "Índice"
   
 plugins:
   - mkdocstrings
@@ -9,8 +10,22 @@ plugins:
 repo_url: https://github.com/ulf-tecc2/rhc_inca.git
 
 nav:
-  - Pre Processamento e Carga de Dados: funcoes_pre.md
-  - Analise de Dados: funcoes_ana.md
-  - Transformacoes dos Dados: transformacoes.md
-  - Extracao e Selecao de Dados: funcoes_ext.md
-  - Geracao de Indicadores: gerar_indicadores.md
+  - Home: index.md
+  - Pré-processamento dos Dados:
+      - Carga dos dados: pp1_carga.md
+      - Análise de dados: pp2_analise_dados.md
+      - Gerar indicadores: pp3_gerar_indic.md
+      - Transformações: pp4_transf.md
+      - Extracao de dados: pp5_extracaoDados.md
+      - Ajustes finais: pp6_ajuste_dados.md
+      - Análise PCA: analises_pca.md
+  - Construção modelos preditivos:
+      - Modelo Logístico Binário: mod_logistico.md  
+      - Modelo XGBoosting: mod_XGB.md
+  - Análise de influência das variáveis:
+      - SHAP do modelo logístico: analises_shap_log.md
+      - SHAP do modelo XGB: analises_shap_xgb.md
+  - Biblioteca de Funções:
+      - Funções específicas do contexto: funcoes.md
+      - Funções genéricas: funcoes_ulf.md
+      - Funções gráficas: bib_graficos.md

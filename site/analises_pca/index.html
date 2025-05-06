@@ -9,20 +9,22 @@
       
       
       
+        <link rel="prev" href="../pp6_ajuste_dados/">
       
-        <link rel="next" href="pp1_carga/">
+      
+        <link rel="next" href="../mod_logistico/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>Registros Hospitalares de Cancer (RHC)</title>
+        <title>Análise PCA - Registros Hospitalares de Cancer (RHC)</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
       
       
 
@@ -41,9 +43,9 @@
       
     
     
-      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#registros-hospitalares-de-cancer-rhc" class="md-skip">
+        <a href="#analises_pca" class="md-skip">
           Skip to content
         </a>
       
@@ -78,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Registros Hospitalares de Cancer (RHC)" class="md-header__button md-logo" aria-label="Registros Hospitalares de Cancer (RHC)" data-md-component="logo">
+    <a href=".." title="Registros Hospitalares de Cancer (RHC)" class="md-header__button md-logo" aria-label="Registros Hospitalares de Cancer (RHC)" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Análise PCA
             
           </span>
         </div>
@@ -148,7 +150,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Registros Hospitalares de Cancer (RHC)" class="md-nav__button md-logo" aria-label="Registros Hospitalares de Cancer (RHC)" data-md-component="logo">
+    <a href=".." title="Registros Hospitalares de Cancer (RHC)" class="md-nav__button md-logo" aria-label="Registros Hospitalares de Cancer (RHC)" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -175,32 +177,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Home
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -211,35 +191,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#roteiro-de-execucao-do-codigo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Roteiro de Execucao do Codigo
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -248,18 +199,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -275,7 +228,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Pré-processamento dos Dados
@@ -289,7 +242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="pp1_carga/" class="md-nav__link">
+      <a href="../pp1_carga/" class="md-nav__link">
         
   
   
@@ -312,7 +265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="pp2_analise_dados/" class="md-nav__link">
+      <a href="../pp2_analise_dados/" class="md-nav__link">
         
   
   
@@ -335,7 +288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="pp3_gerar_indic/" class="md-nav__link">
+      <a href="../pp3_gerar_indic/" class="md-nav__link">
         
   
   
@@ -358,7 +311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="pp4_transf/" class="md-nav__link">
+      <a href="../pp4_transf/" class="md-nav__link">
         
   
   
@@ -381,7 +334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="pp5_extracaoDados/" class="md-nav__link">
+      <a href="../pp5_extracaoDados/" class="md-nav__link">
         
   
   
@@ -404,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="pp6_ajuste_dados/" class="md-nav__link">
+      <a href="../pp6_ajuste_dados/" class="md-nav__link">
         
   
   
@@ -424,10 +377,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="analises_pca/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Análise PCA
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -438,6 +411,57 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analises_pca" class="md-nav__link">
+    <span class="md-ellipsis">
+      analises_pca
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analises_pca.plot_loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      plot_loading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="plot_loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analises_pca.plot_loading--returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -495,7 +519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mod_logistico/" class="md-nav__link">
+      <a href="../mod_logistico/" class="md-nav__link">
         
   
   
@@ -518,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mod_XGB/" class="md-nav__link">
+      <a href="../mod_XGB/" class="md-nav__link">
         
   
   
@@ -586,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="analises_shap_log/" class="md-nav__link">
+      <a href="../analises_shap_log/" class="md-nav__link">
         
   
   
@@ -609,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="analises_shap_xgb/" class="md-nav__link">
+      <a href="../analises_shap_xgb/" class="md-nav__link">
         
   
   
@@ -677,7 +701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="funcoes/" class="md-nav__link">
+      <a href="../funcoes/" class="md-nav__link">
         
   
   
@@ -700,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="funcoes_ulf/" class="md-nav__link">
+      <a href="../funcoes_ulf/" class="md-nav__link">
         
   
   
@@ -723,7 +747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="bib_graficos/" class="md-nav__link">
+      <a href="../bib_graficos/" class="md-nav__link">
         
   
   
@@ -763,8 +787,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -773,11 +795,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#roteiro-de-execucao-do-codigo" class="md-nav__link">
+  <a href="#analises_pca" class="md-nav__link">
     <span class="md-ellipsis">
-      Roteiro de Execucao do Codigo
+      analises_pca
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analises_pca.plot_loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      plot_loading
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="plot_loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analises_pca.plot_loading--returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -800,16 +846,135 @@
   
 
 
-<h1 id="registros-hospitalares-de-cancer-rhc">Registros Hospitalares de Cancer (RHC)</h1>
+  <h1>Análise PCA</h1>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="analises_pca"></a>
+    <div class="doc doc-contents first">
+
+        <p>Registros Hospitalares de Câncer (RHC) - Modelo Logistico.</p>
 <p>MBA em Data Science e Analytics - USP/Esalq - 2025</p>
-<h2 id="roteiro-de-execucao-do-codigo">Roteiro de Execucao do Codigo</h2>
-<ul>
-<li>Pre Processamento e Carga de Dados</li>
-<li>Analise de Dados</li>
-<li>Transformacoes dos Dados</li>
-<li>Extracao e Selecao de Dados</li>
-<li>Geracao de Indicadores</li>
-</ul>
+<p>@author: Ulf Bergmann</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="analises_pca.plot_loading" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_loading</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">var_list</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Plot loading factors.
+Parameters</p>
+<hr />
+<p>df(DataFrame) : data to be ploted.
+var_list(list) : variable column name in df.</p>
+<h4 id="analises_pca.plot_loading--returns">Returns</h4>
+<p>None.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>analises_pca.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_loading</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">var_list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Plot loading factors.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df(DataFrame) : data to be ploted.</span>
+<span class="sd">    var_list(list) : variable column name in df.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="n">df_chart</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_chart</span><span class="p">[</span><span class="n">var_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">df_chart</span><span class="p">[</span><span class="n">var_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+
+
+    <span class="n">label_point</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">df_chart</span><span class="p">[</span><span class="n">var_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">df_chart</span><span class="p">[</span><span class="n">var_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">df_chart</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">],</span>
+                <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span> 
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Loading Plot&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">var_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">var_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
 
 
 
@@ -858,10 +1023,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

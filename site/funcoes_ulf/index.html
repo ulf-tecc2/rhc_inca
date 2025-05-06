@@ -1,0 +1,2305 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../funcoes/">
+      
+      
+        <link rel="next" href="../bib_graficos/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Funções genéricas - Registros Hospitalares de Cancer (RHC)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#funcoes_ulf" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Registros Hospitalares de Cancer (RHC)" class="md-header__button md-logo" aria-label="Registros Hospitalares de Cancer (RHC)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Registros Hospitalares de Cancer (RHC)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Funções genéricas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ulf-tecc2/rhc_inca.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Registros Hospitalares de Cancer (RHC)" class="md-nav__button md-logo" aria-label="Registros Hospitalares de Cancer (RHC)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Registros Hospitalares de Cancer (RHC)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ulf-tecc2/rhc_inca.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Pré-processamento dos Dados
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Pré-processamento dos Dados
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp1_carga/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Carga dos dados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp2_analise_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Análise de dados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp3_gerar_indic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gerar indicadores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp4_transf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transformações
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp5_extracaoDados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Extracao de dados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp6_ajuste_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ajustes finais
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analises_pca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Análise PCA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Construção modelos preditivos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Construção modelos preditivos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod_logistico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modelo Logístico Binário
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod_XGB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modelo XGBoosting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Análise de influência das variáveis
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Análise de influência das variáveis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analises_shap_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SHAP do modelo logístico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analises_shap_xgb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SHAP do modelo XGB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Biblioteca de Funções
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Biblioteca de Funções
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../funcoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funções específicas do contexto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Funções genéricas
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funções genéricas
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf" class="md-nav__link">
+    <span class="md-ellipsis">
+      funcoes_ulf
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.analyse_correlation_continuos_variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      analyse_correlation_continuos_variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.count_categorical_variables_values" class="md-nav__link">
+    <span class="md-ellipsis">
+      count_categorical_variables_values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.fill_categoric_field_with_value" class="md-nav__link">
+    <span class="md-ellipsis">
+      fill_categoric_field_with_value
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.print_count_cat_var_values" class="md-nav__link">
+    <span class="md-ellipsis">
+      print_count_cat_var_values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.search_for_categorical_variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      search_for_categorical_variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.stepwise_mod" class="md-nav__link">
+    <span class="md-ellipsis">
+      stepwise_mod
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="stepwise_mod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcoes_ulf.stepwise_mod--parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcoes_ulf.stepwise_mod--returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcoes_ulf.stepwise_mod--references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.stepwise_ols" class="md-nav__link">
+    <span class="md-ellipsis">
+      stepwise_ols
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bib_graficos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funções gráficas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf" class="md-nav__link">
+    <span class="md-ellipsis">
+      funcoes_ulf
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.analyse_correlation_continuos_variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      analyse_correlation_continuos_variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.count_categorical_variables_values" class="md-nav__link">
+    <span class="md-ellipsis">
+      count_categorical_variables_values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.fill_categoric_field_with_value" class="md-nav__link">
+    <span class="md-ellipsis">
+      fill_categoric_field_with_value
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.print_count_cat_var_values" class="md-nav__link">
+    <span class="md-ellipsis">
+      print_count_cat_var_values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.search_for_categorical_variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      search_for_categorical_variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.stepwise_mod" class="md-nav__link">
+    <span class="md-ellipsis">
+      stepwise_mod
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="stepwise_mod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcoes_ulf.stepwise_mod--parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcoes_ulf.stepwise_mod--returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcoes_ulf.stepwise_mod--references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes_ulf.stepwise_ols" class="md-nav__link">
+    <span class="md-ellipsis">
+      stepwise_ols
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Funções genéricas</h1>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="funcoes_ulf"></a>
+    <div class="doc doc-contents first">
+
+        <p>Provide several general ML functions.</p>
+<p>This module allows the user to reuse common functions allow ML projects.</p>
+<p>The module contains the following functions:</p>
+<ul>
+<li>'plot_boxplot_for_variables - Plot a boxplot for all variables in variables_list.</li>
+<li>'def search_for_categorical_variables' - Identify how many unique values exists in each column from df.</li>
+<li>'plot_frequencias_valores_atributos' - Plot the frequency graphic for the attribute values for each variable in lista_atributos.</li>
+<li>'plot_correlation_heatmap' = Plot the correlation betwenn pairs of continuos variables.</li>
+<li>'def analyse_correlation_continuos_variables' - Analyse and plot the correlation betwenn pairs of continuos variables.</li>
+<li>'analyse_plot_correlation_categorical_variables' - Analyse and plot the correlation betwenn pairs of categorical variables. </li>
+</ul>
+<p>@author: ulf Bergmann</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes_ulf.analyse_correlation_continuos_variables" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">analyse_correlation_continuos_variables</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lista_variaveis</span><span class="p">,</span> <span class="n">quant_maximos</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Analyse and plot the correlation betwenn pairs of continuos variables.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>df</code>
+            </td>
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame to be analysed</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>lista_variaveis</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>variable list </p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>quant_maximos</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>number of maximum values</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>top_pairs_df</code></td>            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>sorted DataFrame with Variable1 | Variable 2 | Correlation</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+<td><code>corr_matrix</code></td>            <td>
+                  <code><span title="Array">Array</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Correlation matrix with p-values on the   upper triangle</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes_ulf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">analyse_correlation_continuos_variables</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lista_variaveis</span> <span class="p">,</span> <span class="n">quant_maximos</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Analyse and plot the correlation betwenn pairs of continuos variables.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame to be analysed</span>
+
+<span class="sd">        lista_variaveis (list): variable list </span>
+
+<span class="sd">        quant_maximos : number of maximum values</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        top_pairs_df (DataFrame): sorted DataFrame with Variable1 | Variable 2 | Correlation</span>
+
+<span class="sd">        corr_matrix (Array): Correlation matrix with p-values on the   upper triangle </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cv_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">lista_variaveis</span><span class="p">]</span>
+
+    <span class="c1"># metodos: &#39;pearson&#39;, &#39;kendall&#39;, &#39;spearman&#39; correlations.</span>
+    <span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">cv_df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Gera uma matriz de correlação onde a parte superior contem os p-valor</span>
+    <span class="c1"># da correlação entre as variaveis considerando o nivel de significancia</span>
+    <span class="n">matriz_corr_with_pvalues</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">rcorr</span><span class="p">(</span><span class="n">cv_df</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;pearson&#39;</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="s1">&#39;pval&#39;</span><span class="p">,</span> <span class="n">decimals</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">pval_stars</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.01</span><span class="p">:</span> <span class="s1">&#39;***&#39;</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">:</span> <span class="s1">&#39;**&#39;</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span><span class="p">})</span>
+
+    <span class="c1"># Get the top n pairs with the highest correlation</span>
+    <span class="n">top_pairs</span> <span class="o">=</span> <span class="n">corr_matrix</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span>
+        <span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="n">quant_maximos</span><span class="o">*</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="c1"># Create a list to store the top pairs without duplicates</span>
+    <span class="n">unique_pairs</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Iterate over the top pairs and add only unique pairs to the list</span>
+    <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">top_pairs</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">unique_pairs</span><span class="p">:</span>
+            <span class="n">unique_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
+
+    <span class="c1"># Create a dataframe with the top pairs and their correlation coefficients</span>
+    <span class="n">top_pairs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;feature_1&#39;</span><span class="p">,</span> <span class="s1">&#39;feature_2&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_coef&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pair</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">unique_pairs</span><span class="p">[:</span><span class="n">quant_maximos</span><span class="p">]):</span>
+        <span class="n">top_pairs_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                               <span class="n">corr_matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]]]</span>
+
+    <span class="k">return</span> <span class="n">top_pairs_df</span> <span class="p">,</span> <span class="n">matriz_corr_with_pvalues</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes_ulf.count_categorical_variables_values" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">count_categorical_variables_values</span><span class="p">(</span><span class="n">a_serie</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Count how many instances of each values exists in the serie.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>a_serie</code>
+            </td>
+            <td>
+                  <code><span title="Series">Series</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>serie to be analysed.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>cat_stats</code></td>            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Result DataFrame with</p>
+<ul>
+<li>Coluna =&gt; the variable name</li>
+<li>Valores =&gt; list os values</li>
+<li>Contagem de Categorias =&gt; count of unique values</li>
+</ul>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes_ulf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">count_categorical_variables_values</span><span class="p">(</span><span class="n">a_serie</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Count how many instances of each values exists in the serie.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        a_serie (Series): serie to be analysed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        cat_stats (DataFrame): Result DataFrame with</span>
+
+<span class="sd">            - Coluna =&gt; the variable name</span>
+<span class="sd">            - Valores =&gt; list os values</span>
+<span class="sd">            - Contagem de Categorias =&gt; count of unique values</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cat_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">,])</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+    <span class="n">a_values</span> <span class="o">=</span> <span class="n">a_serie</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">a_values</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Valores&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()]</span>
+        <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Contagem de Categorias&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">cat_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">cat_stats</span><span class="p">,</span> <span class="n">tmp</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cat_stats</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes_ulf.fill_categoric_field_with_value" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">fill_categoric_field_with_value</span><span class="p">(</span><span class="n">serie</span><span class="p">,</span> <span class="n">replace_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Replace categorical value with int value.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>serie</code>
+            </td>
+            <td>
+                  <code><span title="Series">Series</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>data to be replace categorical with int</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>replace_nan</code>
+            </td>
+            <td>
+                  <code><span title="Boolean">Boolean</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>flag to replace nan with an index</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="Series">Series</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>replaced values</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes_ulf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fill_categoric_field_with_value</span><span class="p">(</span><span class="n">serie</span><span class="p">,</span> <span class="n">replace_nan</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Replace categorical value with int value.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        serie (Series): data to be replace categorical with int</span>
+<span class="sd">        replace_nan (Boolean): flag to replace nan with an index</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (Series): replaced values</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># falta testar </span>
+
+    <span class="n">label_encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">serie</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">a</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes_ulf.print_count_cat_var_values" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">print_count_cat_var_values</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lista_atributos</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Print the attribute values for each categorical variable in lista_atributos.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>df</code>
+            </td>
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame to be analysed</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>lista_atributos</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>variable list </p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes_ulf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">print_count_cat_var_values</span><span class="p">(</span><span class="n">df</span>  <span class="p">,</span> <span class="n">lista_atributos</span> <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Print the attribute values for each categorical variable in lista_atributos.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame to be analysed</span>
+
+<span class="sd">        lista_atributos (list): variable list </span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (None):</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lista_atributos</span><span class="p">):</span>
+        <span class="c1"># percent = df[j].value_counts( normalize=True)</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Count values for Variable </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2"> ==&gt; </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes_ulf.search_for_categorical_variables" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">search_for_categorical_variables</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lista_colunas</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Identify how many unique values exists in each column.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>df</code>
+            </td>
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame to be analysed.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>cat_stats</code></td>            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Result DataFrame with</p>
+<ul>
+<li>Coluna =&gt; the variable name</li>
+<li>Valores =&gt; list os values</li>
+<li>Contagem de Categorias =&gt; count of unique values</li>
+</ul>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes_ulf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">search_for_categorical_variables</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">lista_colunas</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Identify how many unique values exists in each column.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame to be analysed.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        cat_stats (DataFrame): Result DataFrame with</span>
+
+<span class="sd">            - Coluna =&gt; the variable name</span>
+<span class="sd">            - Valores =&gt; list os values</span>
+<span class="sd">            - Contagem de Categorias =&gt; count of unique values</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cat_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Coluna&#39;</span><span class="p">,</span> <span class="s1">&#39;Valores&#39;</span><span class="p">,</span> <span class="s1">&#39;Contagem de Categorias&#39;</span><span class="p">])</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+    <span class="n">a_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">lista_colunas</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lista_colunas</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">lista_colunas</span><span class="p">:</span>
+        <span class="n">a_dict</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+        <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Coluna&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">]</span>
+        <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Valores&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">categories</span><span class="p">)</span>
+        <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Contagem de Categorias&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">cat_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">cat_stats</span><span class="p">,</span> <span class="n">tmp</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cat_stats</span> <span class="p">,</span> <span class="n">a_dict</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes_ulf.stepwise_mod" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">stepwise_mod</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">pvalue_limit</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Stepwise process for Statsmodels regression models</p>
+<p>Usage example</p>
+<p>.. ipython:: python</p>
+<pre><code>import statsmodels.api as sm
+from statstests.datasets import empresas
+from statstests.process import stepwise
+
+# import empresas dataset
+df = empresas.get_data()
+
+# Estimate and fit model
+model = sm.OLS.from_formula("retorno ~ disclosure + endividamento + ativos + liquidez", df).fit()
+
+# Print summary
+print(model.summary())
+
+# Stepwise process
+stepwise(model, pvalue_limit=0.05)
+</code></pre>
+<h4 id="funcoes_ulf.stepwise_mod--parameters">Parameters</h4>
+<p>model : Statsmodels model</p>
+<p>pvalue_limit : float</p>
+<h4 id="funcoes_ulf.stepwise_mod--returns">Returns</h4>
+<p>model : Stepwised model</p>
+<h4 id="funcoes_ulf.stepwise_mod--references">References</h4>
+<p>.. [1] Reference</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes_ulf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1011</span>
+<span class="normal">1012</span>
+<span class="normal">1013</span>
+<span class="normal">1014</span>
+<span class="normal">1015</span>
+<span class="normal">1016</span>
+<span class="normal">1017</span>
+<span class="normal">1018</span>
+<span class="normal">1019</span>
+<span class="normal">1020</span>
+<span class="normal">1021</span>
+<span class="normal">1022</span>
+<span class="normal">1023</span>
+<span class="normal">1024</span>
+<span class="normal">1025</span>
+<span class="normal">1026</span>
+<span class="normal">1027</span>
+<span class="normal">1028</span>
+<span class="normal">1029</span>
+<span class="normal">1030</span>
+<span class="normal">1031</span>
+<span class="normal">1032</span>
+<span class="normal">1033</span>
+<span class="normal">1034</span>
+<span class="normal">1035</span>
+<span class="normal">1036</span>
+<span class="normal">1037</span>
+<span class="normal">1038</span>
+<span class="normal">1039</span>
+<span class="normal">1040</span>
+<span class="normal">1041</span>
+<span class="normal">1042</span>
+<span class="normal">1043</span>
+<span class="normal">1044</span>
+<span class="normal">1045</span>
+<span class="normal">1046</span>
+<span class="normal">1047</span>
+<span class="normal">1048</span>
+<span class="normal">1049</span>
+<span class="normal">1050</span>
+<span class="normal">1051</span>
+<span class="normal">1052</span>
+<span class="normal">1053</span>
+<span class="normal">1054</span>
+<span class="normal">1055</span>
+<span class="normal">1056</span>
+<span class="normal">1057</span>
+<span class="normal">1058</span>
+<span class="normal">1059</span>
+<span class="normal">1060</span>
+<span class="normal">1061</span>
+<span class="normal">1062</span>
+<span class="normal">1063</span>
+<span class="normal">1064</span>
+<span class="normal">1065</span>
+<span class="normal">1066</span>
+<span class="normal">1067</span>
+<span class="normal">1068</span>
+<span class="normal">1069</span>
+<span class="normal">1070</span>
+<span class="normal">1071</span>
+<span class="normal">1072</span>
+<span class="normal">1073</span>
+<span class="normal">1074</span>
+<span class="normal">1075</span>
+<span class="normal">1076</span>
+<span class="normal">1077</span>
+<span class="normal">1078</span>
+<span class="normal">1079</span>
+<span class="normal">1080</span>
+<span class="normal">1081</span>
+<span class="normal">1082</span>
+<span class="normal">1083</span>
+<span class="normal">1084</span>
+<span class="normal">1085</span>
+<span class="normal">1086</span>
+<span class="normal">1087</span>
+<span class="normal">1088</span>
+<span class="normal">1089</span>
+<span class="normal">1090</span>
+<span class="normal">1091</span>
+<span class="normal">1092</span>
+<span class="normal">1093</span>
+<span class="normal">1094</span>
+<span class="normal">1095</span>
+<span class="normal">1096</span>
+<span class="normal">1097</span>
+<span class="normal">1098</span>
+<span class="normal">1099</span>
+<span class="normal">1100</span>
+<span class="normal">1101</span>
+<span class="normal">1102</span>
+<span class="normal">1103</span>
+<span class="normal">1104</span>
+<span class="normal">1105</span>
+<span class="normal">1106</span>
+<span class="normal">1107</span>
+<span class="normal">1108</span>
+<span class="normal">1109</span>
+<span class="normal">1110</span>
+<span class="normal">1111</span>
+<span class="normal">1112</span>
+<span class="normal">1113</span>
+<span class="normal">1114</span>
+<span class="normal">1115</span>
+<span class="normal">1116</span>
+<span class="normal">1117</span>
+<span class="normal">1118</span>
+<span class="normal">1119</span>
+<span class="normal">1120</span>
+<span class="normal">1121</span>
+<span class="normal">1122</span>
+<span class="normal">1123</span>
+<span class="normal">1124</span>
+<span class="normal">1125</span>
+<span class="normal">1126</span>
+<span class="normal">1127</span>
+<span class="normal">1128</span>
+<span class="normal">1129</span>
+<span class="normal">1130</span>
+<span class="normal">1131</span>
+<span class="normal">1132</span>
+<span class="normal">1133</span>
+<span class="normal">1134</span>
+<span class="normal">1135</span>
+<span class="normal">1136</span>
+<span class="normal">1137</span>
+<span class="normal">1138</span>
+<span class="normal">1139</span>
+<span class="normal">1140</span>
+<span class="normal">1141</span>
+<span class="normal">1142</span>
+<span class="normal">1143</span>
+<span class="normal">1144</span>
+<span class="normal">1145</span>
+<span class="normal">1146</span>
+<span class="normal">1147</span>
+<span class="normal">1148</span>
+<span class="normal">1149</span>
+<span class="normal">1150</span>
+<span class="normal">1151</span>
+<span class="normal">1152</span>
+<span class="normal">1153</span>
+<span class="normal">1154</span>
+<span class="normal">1155</span>
+<span class="normal">1156</span>
+<span class="normal">1157</span>
+<span class="normal">1158</span>
+<span class="normal">1159</span>
+<span class="normal">1160</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">stepwise_mod</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">pvalue_limit</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Stepwise process for Statsmodels regression models</span>
+
+<span class="sd">    Usage example</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        import statsmodels.api as sm</span>
+<span class="sd">        from statstests.datasets import empresas</span>
+<span class="sd">        from statstests.process import stepwise</span>
+
+<span class="sd">        # import empresas dataset</span>
+<span class="sd">        df = empresas.get_data()</span>
+
+<span class="sd">        # Estimate and fit model</span>
+<span class="sd">        model = sm.OLS.from_formula(&quot;retorno ~ disclosure + endividamento + ativos + liquidez&quot;, df).fit()</span>
+
+<span class="sd">        # Print summary</span>
+<span class="sd">        print(model.summary())</span>
+
+<span class="sd">        # Stepwise process</span>
+<span class="sd">        stepwise(model, pvalue_limit=0.05)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : Statsmodels model</span>
+
+<span class="sd">    pvalue_limit : float</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    model : Stepwised model</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Reference</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># dictionary that identifies the type of the inputed model</span>
+    <span class="n">models_types</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;&lt;class &#39;statsmodels.regression.linear_model.OLS&#39;&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;OLS&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;&lt;class &#39;statsmodels.discrete.discrete_model.Logit&#39;&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;Logit&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;&lt;class &#39;statsmodels.genmod.generalized_linear_model.GLM&#39;&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;GLM&quot;</span><span class="p">}</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># identify model type</span>
+        <span class="n">model_type</span> <span class="o">=</span> <span class="n">models_types</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="p">))]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;The model is not yet supported...&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Suported types: &quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">models_types</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regression type:&quot;</span><span class="p">,</span> <span class="n">model_type</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+<span class="c1">#retirada a insercao de Q() nos nomes das variaveis</span>
+        <span class="c1"># formula = model.model.data.ynames + &quot; ~ &quot; + \</span>
+        <span class="c1">#     &#39; + &#39;.join([&quot;Q(&#39;&quot; + name + &quot;&#39;)&quot; for name in  model.model.data.xnames[1:]])</span>
+        <span class="n">formula</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ynames</span> <span class="o">+</span> <span class="s2">&quot; ~ &quot;</span> <span class="o">+</span> \
+            <span class="s1">&#39; + &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span>  <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">xnames</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">orig_endog</span><span class="p">,</span>
+                       <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">orig_exog</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">atributes_discarded</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimating model...: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s1">&#39;OLS&#39;</span><span class="p">:</span>
+
+                <span class="c1"># return OLS model</span>
+                <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="o">.</span><span class="n">from_formula</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+            <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s1">&#39;Logit&#39;</span><span class="p">:</span>
+
+                <span class="c1"># return Logit model</span>
+                <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="o">.</span><span class="n">from_formula</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+            <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s1">&#39;GLM&#39;</span><span class="p">:</span>
+
+                <span class="c1"># dictionary that identifies the family type of the inputed glm model</span>
+                <span class="n">glm_families_types</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;&lt;class &#39;statsmodels.genmod.families.family.Poisson&#39;&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;Poisson&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;&lt;class &#39;statsmodels.genmod.families.family.NegativeBinomial&#39;&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;Negative Binomial&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;&lt;class &#39;statsmodels.genmod.families.family.Binomial&#39;&gt;&quot;</span><span class="p">:</span> <span class="s2">&quot;Binomial&quot;</span><span class="p">}</span>
+
+                <span class="c1"># identify family type</span>
+                <span class="n">family_type</span> <span class="o">=</span> <span class="n">glm_families_types</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">family</span><span class="p">))]</span>
+
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Family type...: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">family_type</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">family_type</span> <span class="o">==</span> <span class="s2">&quot;Poisson&quot;</span><span class="p">:</span>
+                    <span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">glm</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+                                    <span class="n">family</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">Poisson</span><span class="p">())</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+                <span class="k">elif</span> <span class="n">family_type</span> <span class="o">==</span> <span class="s2">&quot;Negative Binomial&quot;</span><span class="p">:</span>
+                    <span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">glm</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+                                    <span class="n">family</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">NegativeBinomial</span><span class="p">())</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+                <span class="k">elif</span> <span class="n">family_type</span> <span class="o">==</span> <span class="s2">&quot;Binomial&quot;</span><span class="p">:</span>
+                    <span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">glm</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+                                    <span class="n">family</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">Binomial</span><span class="p">())</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+            <span class="n">atributes</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">xnames</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+            <span class="c1"># find atribute with the worst p-value</span>
+            <span class="n">worst_pvalue</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+            <span class="n">worst_atribute</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+
+            <span class="c1"># identify if the atribute with the worst p-value is higher than p-value limit</span>
+            <span class="k">if</span> <span class="n">worst_pvalue</span> <span class="o">&gt;</span> <span class="n">pvalue_limit</span><span class="p">:</span>
+
+                <span class="c1"># exclude atribute higher than p-value limit from atributes list</span>
+                <span class="n">atributes</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">element</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">atributes</span> <span class="k">if</span> <span class="n">element</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">worst_atribute</span><span class="p">]</span>
+
+                <span class="c1"># declare the new formula without the atribute</span>
+                <span class="n">formula</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ynames</span> <span class="o">+</span> \
+                    <span class="s2">&quot; ~ &quot;</span> <span class="o">+</span> <span class="s1">&#39; + &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">atributes</span><span class="p">)</span>
+
+                <span class="c1"># append the atribute to the atributes_discarded list</span>
+                <span class="n">atributes_discarded</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">{</span><span class="s1">&#39;atribute&#39;</span><span class="p">:</span> <span class="n">worst_atribute</span><span class="p">,</span> <span class="s1">&#39;p-value&#39;</span><span class="p">:</span> <span class="n">worst_pvalue</span><span class="p">})</span>
+
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Discarding atribute &quot;</span><span class="si">{}</span><span class="s1">&quot; with p-value equal to </span><span class="si">{}</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">worst_atribute</span><span class="p">,</span> <span class="n">worst_pvalue</span><span class="p">))</span>
+
+            <span class="k">else</span><span class="p">:</span>
+
+                <span class="c1"># print that the loop is finished and there are not more atributes to discard</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> No more atributes with p-value higher than </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pvalue_limit</span><span class="p">))</span>
+
+                <span class="k">break</span>
+
+        <span class="c1"># print model summary after stepwised process</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Atributes discarded on the process...: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># print all the discarded atributes from the atributes_discarded list</span>
+        <span class="p">[</span><span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">atributes_discarded</span><span class="p">]</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Model after stepwise process...: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">formula</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+
+        <span class="c1"># return stepwised model</span>
+        <span class="k">return</span> <span class="n">model</span> <span class="p">,</span> <span class="n">atributes_discarded</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">e</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes_ulf.stepwise_ols" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">stepwise_ols</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">initial_list</span><span class="o">=</span><span class="p">[],</span> <span class="n">threshold_in</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">threshold_out</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Perform a forward-backward feature selection 
+based on p-value from statsmodels.api.OLS
+Arguments:
+    X - pandas.DataFrame with candidate features
+    y - list-like with the target
+    initial_list - list of features to start with (column names of X)
+    threshold_in - include a feature if its p-value &lt; threshold_in
+    threshold_out - exclude a feature if its p-value &gt; threshold_out
+    verbose - whether to print the sequence of inclusions and exclusions
+Returns: list of selected features 
+Always set threshold_in &lt; threshold_out to avoid infinite looping.
+See https://en.wikipedia.org/wiki/Stepwise_regression for the details</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes_ulf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 960</span>
+<span class="normal"> 961</span>
+<span class="normal"> 962</span>
+<span class="normal"> 963</span>
+<span class="normal"> 964</span>
+<span class="normal"> 965</span>
+<span class="normal"> 966</span>
+<span class="normal"> 967</span>
+<span class="normal"> 968</span>
+<span class="normal"> 969</span>
+<span class="normal"> 970</span>
+<span class="normal"> 971</span>
+<span class="normal"> 972</span>
+<span class="normal"> 973</span>
+<span class="normal"> 974</span>
+<span class="normal"> 975</span>
+<span class="normal"> 976</span>
+<span class="normal"> 977</span>
+<span class="normal"> 978</span>
+<span class="normal"> 979</span>
+<span class="normal"> 980</span>
+<span class="normal"> 981</span>
+<span class="normal"> 982</span>
+<span class="normal"> 983</span>
+<span class="normal"> 984</span>
+<span class="normal"> 985</span>
+<span class="normal"> 986</span>
+<span class="normal"> 987</span>
+<span class="normal"> 988</span>
+<span class="normal"> 989</span>
+<span class="normal"> 990</span>
+<span class="normal"> 991</span>
+<span class="normal"> 992</span>
+<span class="normal"> 993</span>
+<span class="normal"> 994</span>
+<span class="normal"> 995</span>
+<span class="normal"> 996</span>
+<span class="normal"> 997</span>
+<span class="normal"> 998</span>
+<span class="normal"> 999</span>
+<span class="normal">1000</span>
+<span class="normal">1001</span>
+<span class="normal">1002</span>
+<span class="normal">1003</span>
+<span class="normal">1004</span>
+<span class="normal">1005</span>
+<span class="normal">1006</span>
+<span class="normal">1007</span>
+<span class="normal">1008</span>
+<span class="normal">1009</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">stepwise_ols</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> 
+                       <span class="n">initial_list</span><span class="o">=</span><span class="p">[],</span> 
+                       <span class="n">threshold_in</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> 
+                       <span class="n">threshold_out</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span> 
+                       <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Perform a forward-backward feature selection </span>
+<span class="sd">    based on p-value from statsmodels.api.OLS</span>
+<span class="sd">    Arguments:</span>
+<span class="sd">        X - pandas.DataFrame with candidate features</span>
+<span class="sd">        y - list-like with the target</span>
+<span class="sd">        initial_list - list of features to start with (column names of X)</span>
+<span class="sd">        threshold_in - include a feature if its p-value &lt; threshold_in</span>
+<span class="sd">        threshold_out - exclude a feature if its p-value &gt; threshold_out</span>
+<span class="sd">        verbose - whether to print the sequence of inclusions and exclusions</span>
+<span class="sd">    Returns: list of selected features </span>
+<span class="sd">    Always set threshold_in &lt; threshold_out to avoid infinite looping.</span>
+<span class="sd">    See https://en.wikipedia.org/wiki/Stepwise_regression for the details</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">included</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">initial_list</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">changed</span><span class="o">=</span><span class="kc">False</span>
+        <span class="c1"># forward step</span>
+        <span class="n">excluded</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">-</span><span class="nb">set</span><span class="p">(</span><span class="n">included</span><span class="p">))</span>
+        <span class="n">new_pval</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">excluded</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">new_column</span> <span class="ow">in</span> <span class="n">excluded</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">included</span><span class="o">+</span><span class="p">[</span><span class="n">new_column</span><span class="p">]])))</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+            <span class="n">new_pval</span><span class="p">[</span><span class="n">new_column</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="p">[</span><span class="n">new_column</span><span class="p">]</span>
+        <span class="n">best_pval</span> <span class="o">=</span> <span class="n">new_pval</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">best_pval</span> <span class="o">&lt;</span> <span class="n">threshold_in</span><span class="p">:</span>
+            <span class="n">best_feature</span> <span class="o">=</span> <span class="n">new_pval</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span>  
+            <span class="n">included</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_pval</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">best_feature</span><span class="p">])</span>
+            <span class="n">changed</span><span class="o">=</span><span class="kc">True</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Add  </span><span class="si">{:30}</span><span class="s1"> with p-value </span><span class="si">{:.6}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_pval</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">best_feature</span><span class="p">],</span> <span class="n">best_pval</span><span class="p">))</span>
+
+        <span class="c1"># backward step</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">included</span><span class="p">])))</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+        <span class="c1"># use all coefs except intercept</span>
+        <span class="n">pvalues</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">pvalues</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">worst_pval</span> <span class="o">=</span> <span class="n">pvalues</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="c1"># null if pvalues is empty</span>
+        <span class="k">if</span> <span class="n">worst_pval</span> <span class="o">&gt;</span> <span class="n">threshold_out</span><span class="p">:</span>
+            <span class="n">changed</span><span class="o">=</span><span class="kc">True</span>
+            <span class="n">worst_feature</span> <span class="o">=</span> <span class="n">pvalues</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
+
+            <span class="n">included</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pvalues</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">worst_feature</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Drop </span><span class="si">{:30}</span><span class="s1"> with p-value </span><span class="si">{:.6}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pvalues</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">worst_feature</span><span class="p">],</span> <span class="n">worst_pval</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">changed</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">return</span> <span class="n">included</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

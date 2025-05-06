@@ -1,2 +1,0 @@
-::: analise_valores
-

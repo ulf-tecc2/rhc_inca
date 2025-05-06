@@ -1,0 +1,2454 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../analises_shap_xgb/">
+      
+      
+        <link rel="next" href="../funcoes_ulf/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Funções específicas do contexto - Registros Hospitalares de Cancer (RHC)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#funcoes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Registros Hospitalares de Cancer (RHC)" class="md-header__button md-logo" aria-label="Registros Hospitalares de Cancer (RHC)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Registros Hospitalares de Cancer (RHC)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Funções específicas do contexto
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ulf-tecc2/rhc_inca.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Registros Hospitalares de Cancer (RHC)" class="md-nav__button md-logo" aria-label="Registros Hospitalares de Cancer (RHC)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Registros Hospitalares de Cancer (RHC)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ulf-tecc2/rhc_inca.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Pré-processamento dos Dados
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Pré-processamento dos Dados
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp1_carga/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Carga dos dados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp2_analise_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Análise de dados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp3_gerar_indic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gerar indicadores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp4_transf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transformações
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp5_extracaoDados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Extracao de dados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp6_ajuste_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ajustes finais
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analises_pca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Análise PCA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Construção modelos preditivos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Construção modelos preditivos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod_logistico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modelo Logístico Binário
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod_XGB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modelo XGBoosting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Análise de influência das variáveis
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Análise de influência das variáveis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analises_shap_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SHAP do modelo logístico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analises_shap_xgb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SHAP do modelo XGB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Biblioteca de Funções
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Biblioteca de Funções
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Funções específicas do contexto
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funções específicas do contexto
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      funcoes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.Log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcoes.Log.asString" class="md-nav__link">
+    <span class="md-ellipsis">
+      asString
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcoes.Log.logar_acao_realizada" class="md-nav__link">
+    <span class="md-ellipsis">
+      logar_acao_realizada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcoes.Log.salvar_log" class="md-nav__link">
+    <span class="md-ellipsis">
+      salvar_log
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.filtrar_registros_validos" class="md-nav__link">
+    <span class="md-ellipsis">
+      filtrar_registros_validos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.load_objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_objects
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.salvar_csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      salvar_csv
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.salvar_excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      salvar_excel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.salvar_parquet" class="md-nav__link">
+    <span class="md-ellipsis">
+      salvar_parquet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.save_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      save_model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.save_objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      save_objects
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../funcoes_ulf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funções genéricas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bib_graficos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funções gráficas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      funcoes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.Log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcoes.Log.asString" class="md-nav__link">
+    <span class="md-ellipsis">
+      asString
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcoes.Log.logar_acao_realizada" class="md-nav__link">
+    <span class="md-ellipsis">
+      logar_acao_realizada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcoes.Log.salvar_log" class="md-nav__link">
+    <span class="md-ellipsis">
+      salvar_log
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.filtrar_registros_validos" class="md-nav__link">
+    <span class="md-ellipsis">
+      filtrar_registros_validos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.load_objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_objects
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.salvar_csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      salvar_csv
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.salvar_excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      salvar_excel
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.salvar_parquet" class="md-nav__link">
+    <span class="md-ellipsis">
+      salvar_parquet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.save_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      save_model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcoes.save_objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      save_objects
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Funções específicas do contexto</h1>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="funcoes"></a>
+    <div class="doc doc-contents first">
+
+        <p>Created on Sun Dec 22 07:46:21 2024</p>
+<p>@author: ulf</p>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="funcoes.Log" class="doc doc-heading">
+            <code>Log</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>funcoes.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Log</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__acoes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tipo&quot;</span><span class="p">,</span> <span class="s2">&quot;descricao&quot;</span><span class="p">,</span> <span class="s2">&quot;indicador&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__indicadores</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># key: tipo value: DataFrame</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">logar_acao_realizada</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">,</span> <span class="n">descricao</span><span class="p">,</span> <span class="n">indicador</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Registra no Log uma acao realizada.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            tipo (String): tipo da acao</span>
+<span class="sd">            descricao (String): descricao da acao</span>
+<span class="sd">            indicador (Object): valores ou detalhamento da acao</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            (String): acao no formato de tabela</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">aNewDF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">[{</span><span class="s2">&quot;tipo&quot;</span><span class="p">:</span> <span class="n">tipo</span><span class="p">,</span> <span class="s2">&quot;descricao&quot;</span><span class="p">:</span> <span class="n">descricao</span><span class="p">,</span> <span class="s2">&quot;indicador&quot;</span><span class="p">:</span> <span class="n">indicador</span><span class="p">}]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__acoes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">__acoes</span><span class="p">,</span> <span class="n">aNewDF</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tabulate</span><span class="p">(</span>
+            <span class="n">aNewDF</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="s2">&quot;keys&quot;</span><span class="p">,</span>
+            <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;simple_grid&quot;</span><span class="p">,</span>
+            <span class="n">numalign</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
+            <span class="n">floatfmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">asString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mostra o log como string.</span>
+
+<span class="sd">        Parameters:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            (String): log no formato de tabela</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">aTab</span> <span class="o">=</span> <span class="n">tabulate</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__acoes</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="s2">&quot;keys&quot;</span><span class="p">,</span>
+            <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;simple_grid&quot;</span><span class="p">,</span>
+            <span class="n">numalign</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
+            <span class="n">floatfmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span>
+        <span class="p">)</span>  <span class="c1"># gera um string com a tabela</span>
+        <span class="k">return</span> <span class="n">aTab</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">salvar_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Salva o log em arquivo excel.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            file_name (String): nome do arquivo sem extensao</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s2">&quot;dados/conclusoes/&quot;</span> <span class="o">+</span> <span class="n">file_name</span> <span class="o">+</span> <span class="s2">&quot;.xlsx&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__acoes</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_indicadores_excel</span><span class="p">(</span>
+            <span class="n">dir_name</span><span class="o">=</span><span class="s2">&quot;dados/Conclusoes/&quot;</span><span class="p">,</span> <span class="n">new_folder_name</span><span class="o">=</span><span class="n">file_name</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">carregar_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__acoes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
+            <span class="s2">&quot;dados/conclusoes/&quot;</span> <span class="o">+</span> <span class="n">file_name</span> <span class="o">+</span> <span class="s2">&quot;.xlsx&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">carregar_indicadores</span><span class="p">(</span><span class="s2">&quot;dados/conclusoes/&quot;</span> <span class="o">+</span> <span class="n">file_name</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__get_indicador_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">tipo</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__indicadores</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="n">lista_col</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s2">&quot;TPCASO&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;SEXO&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;IDADE&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;LOCALNAS&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;RACACOR&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;INSTRUC&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;CLIATEN&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;CLITRAT&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;HISTFAMC&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ALCOOLIS&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;TABAGISM&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ESTADRES&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;PROCEDEN&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ANOPRIDI&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ORIENC&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;EXDIAG&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ESTCONJ&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ANTRI&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DTPRICON&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DIAGANT&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;BASMAIMP&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_Gerada_BASMAIMP&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_Gerada_BASMAIMP&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;LOCTUDET&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;LOCTUPRI&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;TIPOHIST&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;LATERALI&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;LOCTUPRO&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;MAISUMTU&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;TNM&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ESTADIAM&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;OUTROESTA&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;PTNM&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;RZNTR&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DTINITRT&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;PRITRATH&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ESTDFIMT&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;_Gerada_ESTDFIMT&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;CNES&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;UFUH&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;MUUH&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;OCUPACAO&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DTDIAGNO&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DTTRIAGE&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DATAPRICON&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DATAINITRT&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;DATAOBITO&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;VALOR_TOT&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;BASDIAGSP&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ESTADIAG&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+
+            <span class="n">lista_col</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lista_col</span><span class="p">)</span>
+            <span class="n">lista_col</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">lista_col</span><span class="p">)</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__indicadores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__indicadores</span> <span class="o">|</span> <span class="p">{</span><span class="n">tipo</span><span class="p">:</span> <span class="n">df</span><span class="p">}</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__indicadores</span><span class="p">[</span><span class="n">tipo</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">logar_indicador</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">,</span> <span class="n">indicador</span><span class="p">,</span> <span class="n">desc</span><span class="p">,</span> <span class="n">var_col_name</span><span class="p">,</span> <span class="n">valor</span><span class="p">):</span>
+        <span class="n">a_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_indicador_df</span><span class="p">(</span><span class="n">tipo</span><span class="p">)</span>
+        <span class="n">a_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">indicador</span><span class="p">,</span> <span class="n">var_col_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">valor</span><span class="p">)</span>
+        <span class="n">a_df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">indicador</span> <span class="o">+</span> <span class="s2">&quot; descricao&quot;</span><span class="p">,</span> <span class="n">var_col_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">desc</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="n">indicador</span><span class="p">,</span> <span class="n">var_col_name</span> <span class="o">+</span> <span class="s2">&quot; -&gt; &quot;</span> <span class="o">+</span> <span class="n">desc</span><span class="p">,</span> <span class="n">valor</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_indicador_asstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">):</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_indicador_df</span><span class="p">(</span><span class="n">tipo</span><span class="p">)</span>
+        <span class="n">aTab</span> <span class="o">=</span> <span class="n">tabulate</span><span class="p">(</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+            <span class="n">headers</span><span class="o">=</span><span class="s2">&quot;keys&quot;</span><span class="p">,</span>
+            <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;simple_grid&quot;</span><span class="p">,</span>
+            <span class="n">numalign</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
+            <span class="n">floatfmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span>
+        <span class="p">)</span>  <span class="c1"># gera um string com a tabela</span>
+        <span class="k">return</span> <span class="n">aTab</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_indicadores_excel</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">dir_name</span><span class="o">=</span><span class="s2">&quot;dados/Conclusoes/&quot;</span><span class="p">,</span> <span class="n">new_folder_name</span><span class="o">=</span><span class="s2">&quot;log_indicadores&quot;</span>
+    <span class="p">):</span>
+        <span class="n">root_dir_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_name</span><span class="p">,</span> <span class="n">new_folder_name</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">root_dir_name</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">tipo_ind</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__indicadores</span><span class="p">:</span>
+            <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir_name</span><span class="p">,</span> <span class="n">tipo_ind</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.xlsx&quot;</span>
+            <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__indicadores</span><span class="p">[</span><span class="n">tipo_ind</span><span class="p">]</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">carregar_indicadores</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dir_name</span><span class="p">):</span>
+        <span class="c1"># ver se diretorio existe</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">dir_name</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">F_OK</span><span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="c1"># abrir cada arquivo do diretorio</span>
+        <span class="k">for</span> <span class="n">a_dir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">lista_arquivos</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span>
+            <span class="n">dir_name</span>
+        <span class="p">):</span>  <span class="c1"># percorre toda a estrutura olhando os subdiretorios</span>
+            <span class="k">for</span> <span class="n">nome_arquivo</span> <span class="ow">in</span> <span class="n">lista_arquivos</span><span class="p">:</span>  <span class="c1"># para cada subdiretorio</span>
+                <span class="n">arquivo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a_dir</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">)</span>
+                <span class="n">ind_name</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">arquivo</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span>
+                <span class="c1"># print(&quot;Processando arquivo: &quot; + arquivo + &#39; para ind &#39; + ind_name  )</span>
+                <span class="n">a_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">arquivo</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__indicadores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__indicadores</span> <span class="o">|</span> <span class="p">{</span><span class="n">ind_name</span><span class="p">:</span> <span class="n">a_df</span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="funcoes.Log.asString" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">asString</span><span class="p">()</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Mostra o log como string.</p>
+<p>Parameters:</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="String">String</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>log no formato de tabela</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">asString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mostra o log como string.</span>
+
+<span class="sd">    Parameters:</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (String): log no formato de tabela</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aTab</span> <span class="o">=</span> <span class="n">tabulate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__acoes</span><span class="p">,</span>
+        <span class="n">headers</span><span class="o">=</span><span class="s2">&quot;keys&quot;</span><span class="p">,</span>
+        <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;simple_grid&quot;</span><span class="p">,</span>
+        <span class="n">numalign</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
+        <span class="n">floatfmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span>
+    <span class="p">)</span>  <span class="c1"># gera um string com a tabela</span>
+    <span class="k">return</span> <span class="n">aTab</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="funcoes.Log.logar_acao_realizada" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">logar_acao_realizada</span><span class="p">(</span><span class="n">tipo</span><span class="p">,</span> <span class="n">descricao</span><span class="p">,</span> <span class="n">indicador</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Registra no Log uma acao realizada.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tipo</code>
+            </td>
+            <td>
+                  <code><span title="String">String</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>tipo da acao</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>descricao</code>
+            </td>
+            <td>
+                  <code><span title="String">String</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>descricao da acao</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>indicador</code>
+            </td>
+            <td>
+                  <code><span title="Object">Object</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>valores ou detalhamento da acao</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="String">String</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>acao no formato de tabela</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">logar_acao_realizada</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">,</span> <span class="n">descricao</span><span class="p">,</span> <span class="n">indicador</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Registra no Log uma acao realizada.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        tipo (String): tipo da acao</span>
+<span class="sd">        descricao (String): descricao da acao</span>
+<span class="sd">        indicador (Object): valores ou detalhamento da acao</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (String): acao no formato de tabela</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aNewDF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">[{</span><span class="s2">&quot;tipo&quot;</span><span class="p">:</span> <span class="n">tipo</span><span class="p">,</span> <span class="s2">&quot;descricao&quot;</span><span class="p">:</span> <span class="n">descricao</span><span class="p">,</span> <span class="s2">&quot;indicador&quot;</span><span class="p">:</span> <span class="n">indicador</span><span class="p">}]</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__acoes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">__acoes</span><span class="p">,</span> <span class="n">aNewDF</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tabulate</span><span class="p">(</span>
+        <span class="n">aNewDF</span><span class="p">,</span>
+        <span class="n">headers</span><span class="o">=</span><span class="s2">&quot;keys&quot;</span><span class="p">,</span>
+        <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;simple_grid&quot;</span><span class="p">,</span>
+        <span class="n">numalign</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
+        <span class="n">floatfmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="funcoes.Log.salvar_log" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">salvar_log</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Salva o log em arquivo excel.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>file_name</code>
+            </td>
+            <td>
+                  <code><span title="String">String</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>nome do arquivo sem extensao</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+        <p>Returns:</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">salvar_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Salva o log em arquivo excel.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        file_name (String): nome do arquivo sem extensao</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s2">&quot;dados/conclusoes/&quot;</span> <span class="o">+</span> <span class="n">file_name</span> <span class="o">+</span> <span class="s2">&quot;.xlsx&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__acoes</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">save_indicadores_excel</span><span class="p">(</span>
+        <span class="n">dir_name</span><span class="o">=</span><span class="s2">&quot;dados/Conclusoes/&quot;</span><span class="p">,</span> <span class="n">new_folder_name</span><span class="o">=</span><span class="n">file_name</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes.filtrar_registros_validos" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">filtrar_registros_validos</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Responde apenas os registros validos para a modelagem: Casos Analiticos e com Tratamento</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>df</code>
+            </td>
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>dados a serem filtrados</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+        <p>Returns:</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">filtrar_registros_validos</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Responde apenas os registros validos para a modelagem: Casos Analiticos e com Tratamento</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): dados a serem filtrados</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;_TeveTratamento&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;_TeveTratamento&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TPCASO&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;1&#39;</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRITRATH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^[1-8]+$&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TPCASO&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;1&#39;</span><span class="p">)]</span>
+
+    <span class="n">df_validos</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+
+
+    <span class="k">return</span> <span class="n">df_validos</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes.load_objects" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">load_objects</span><span class="p">(</span><span class="n">dir_name</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>carrega os objetos de dir_name em um dicionario
+key: nome do objeto
+value: objeto carregado</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>dir_name</code>
+            </td>
+            <td>
+                  <code><span title="String">String</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>diretorio de destino</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>a_dict</code></td>            <td>
+                  <code><span title="Dictionary">Dictionary</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>dicionario com pares nome / objeto carregados</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_objects</span><span class="p">(</span><span class="n">dir_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;carrega os objetos de dir_name em um dicionario</span>
+<span class="sd">    key: nome do objeto</span>
+<span class="sd">    value: objeto carregado</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        dir_name (String): diretorio de destino</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        a_dict (Dictionary): dicionario com pares nome / objeto carregados</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">dir_padrao</span> <span class="o">=</span> <span class="s2">&quot;dados/workdir/&quot;</span>
+    <span class="n">root_dir_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_padrao</span><span class="p">,</span> <span class="n">dir_name</span><span class="p">)</span>
+
+     <span class="c1"># ver se diretorio existe</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">root_dir_name</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">F_OK</span><span class="p">):</span>
+         <span class="k">return</span>
+    <span class="n">a_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">a_name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">root_dir_name</span><span class="p">):</span>
+        <span class="n">a_file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir_name</span><span class="p">,</span> <span class="n">a_name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a_file_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">a_file_name</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">a_file_name</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>  
+                <span class="n">an_obj</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            <span class="n">a_dict</span><span class="p">[</span><span class="n">a_name</span><span class="o">.</span><span class="n">removesuffix</span><span class="p">(</span><span class="s1">&#39;.pkl&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">an_obj</span>
+
+    <span class="k">return</span> <span class="n">a_dict</span>    
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes.salvar_csv" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">salvar_csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Salva o df em arquivo CSV.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>nome_arquivo</code>
+            </td>
+            <td>
+                  <code><span title="String">String</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>nome do arquivo sem extensao</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+        <p>Returns:</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">salvar_csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Salva o df em arquivo CSV.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        nome_arquivo (String): nome do arquivo sem extensao</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;dados/consolidado/&quot;</span> <span class="o">+</span> <span class="n">nome_arquivo</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes.salvar_excel" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">salvar_excel</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Salva o df em arquivo excel no diretorio padrao de dados consolidados.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>nome_arquivo</code>
+            </td>
+            <td>
+                  <code><span title="String">String</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>nome do arquivo sem extensao</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+        <p>Returns:</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">salvar_excel</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Salva o df em arquivo excel no diretorio padrao de dados consolidados.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        nome_arquivo (String): nome do arquivo sem extensao</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s2">&quot;dados/consolidado/&quot;</span> <span class="o">+</span> <span class="n">nome_arquivo</span> <span class="o">+</span> <span class="s2">&quot;.xlsx&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes.salvar_parquet" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">salvar_parquet</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Salva o df em arquivo parquet.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>nome_arquivo</code>
+            </td>
+            <td>
+                  <code><span title="String">String</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>nome do arquivo sem extensao</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+        <p>Returns:</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">salvar_parquet</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Salva o df em arquivo parquet.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        nome_arquivo (String): nome do arquivo sem extensao</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;dados/consolidado/&quot;</span> <span class="o">+</span> <span class="n">nome_arquivo</span> <span class="o">+</span> <span class="s2">&quot;.parquet&quot;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;gzip&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes.save_model" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Salva o modelo.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>model_name</code>
+            </td>
+            <td>
+                  <code><span title="String">String</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>nome do modelo para gerar o nome do arquivo pkl</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model</code>
+            </td>
+            <td>
+                  <code><span title="Modelo">Modelo</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>modelo a ser salvo</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">save_model</span><span class="p">(</span><span class="n">model_name</span> <span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Salva o modelo.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        model_name (String): nome do modelo para gerar o nome do arquivo pkl</span>
+<span class="sd">        model (Modelo): modelo a ser salvo</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dir_padrao</span> <span class="o">=</span> <span class="s2">&quot;dados/models/&quot;</span>
+
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_padrao</span><span class="p">,</span> <span class="n">model_name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.pkl&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>  
+        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="funcoes.save_objects" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">save_objects</span><span class="p">(</span><span class="n">a_dict</span><span class="p">,</span> <span class="n">dir_name</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Salva os objetos definidos no dicionario.</p>
+<p>key: nome do objeto
+value: objeto a ser salvo
+nomes dos arquivos serao dir_padrao/dir_name/nome_objeto.pkl </p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>a_dict</code>
+            </td>
+            <td>
+                  <code><span title="Dictionary">Dictionary</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>dicionario com pares nome / objeto a serem salvos</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dir_name</code>
+            </td>
+            <td>
+                  <code><span title="String">String</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>diretorio de destino</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>funcoes.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">save_objects</span><span class="p">(</span><span class="n">a_dict</span> <span class="p">,</span> <span class="n">dir_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Salva os objetos definidos no dicionario.</span>
+
+<span class="sd">    key: nome do objeto</span>
+<span class="sd">    value: objeto a ser salvo</span>
+<span class="sd">    nomes dos arquivos serao dir_padrao/dir_name/nome_objeto.pkl </span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        a_dict (Dictionary): dicionario com pares nome / objeto a serem salvos</span>
+<span class="sd">        dir_name (String): diretorio de destino</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dir_padrao</span> <span class="o">=</span> <span class="s2">&quot;dados/workdir/&quot;</span>
+    <span class="n">root_dir_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_padrao</span><span class="p">,</span> <span class="n">dir_name</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">root_dir_name</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">a_key</span> <span class="ow">in</span> <span class="n">a_dict</span><span class="p">:</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir_name</span><span class="p">,</span> <span class="n">a_key</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.pkl&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>  
+            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">a_dict</span><span class="p">[</span><span class="n">a_key</span><span class="p">],</span> <span class="n">file</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

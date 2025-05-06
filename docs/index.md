@@ -1,4 +1,4 @@
-# Registros Hospitalares de Câncer (RHC)
+# Registros Hospitalares de Cancer (RHC)
 
 
 MBA em Data Science e Analytics - USP/Esalq - 2025

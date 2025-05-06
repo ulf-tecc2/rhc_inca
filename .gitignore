@@ -1,7 +1,10 @@
 # ULF
 untitled*
-dados/Conclusoes
-dados/consolidado/
+dados
+manage.py
+rhc_ulf
+templates
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

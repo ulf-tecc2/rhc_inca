@@ -1,0 +1,3122 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../pp3_gerar_indic/">
+      
+      
+        <link rel="next" href="../pp5_extracaoDados/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Transformações - Registros Hospitalares de Cancer (RHC)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pp4_transf" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Registros Hospitalares de Cancer (RHC)" class="md-header__button md-logo" aria-label="Registros Hospitalares de Cancer (RHC)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Registros Hospitalares de Cancer (RHC)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Transformações
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ulf-tecc2/rhc_inca.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Registros Hospitalares de Cancer (RHC)" class="md-nav__button md-logo" aria-label="Registros Hospitalares de Cancer (RHC)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Registros Hospitalares de Cancer (RHC)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ulf-tecc2/rhc_inca.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Pré-processamento dos Dados
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Pré-processamento dos Dados
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp1_carga/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Carga dos dados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp2_analise_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Análise de dados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp3_gerar_indic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gerar indicadores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Transformações
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transformações
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf" class="md-nav__link">
+    <span class="md-ellipsis">
+      pp4_transf
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf--roteiro-de-execucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Roteiro de execucao:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.PRITRATH_dividir_tratamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      PRITRATH_dividir_tratamentos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.TIPOHIST_dividir" class="md-nav__link">
+    <span class="md-ellipsis">
+      TIPOHIST_dividir
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TIPOHIST_dividir">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pp4_transf.TIPOHIST_dividir--1-digito-o-grau-de-diferenciacao-ou-fenotipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 dígito o grau de diferenciação ou fenótipo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.TNM_PTNM_dividir" class="md-nav__link">
+    <span class="md-ellipsis">
+      TNM_PTNM_dividir
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.define_valor_esperado" class="md-nav__link">
+    <span class="md-ellipsis">
+      define_valor_esperado
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.gera_distancias" class="md-nav__link">
+    <span class="md-ellipsis">
+      gera_distancias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.gera_intervalos" class="md-nav__link">
+    <span class="md-ellipsis">
+      gera_intervalos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.infere_BASMAIMP" class="md-nav__link">
+    <span class="md-ellipsis">
+      infere_BASMAIMP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.infere_ESTDFIMT" class="md-nav__link">
+    <span class="md-ellipsis">
+      infere_ESTDFIMT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_ALCOOLIS" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_ALCOOLIS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_BASMAIMP" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_BASMAIMP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_DIAGANT" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_DIAGANT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_EXDIAG" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_EXDIAG
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_HISTFAMC" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_HISTFAMC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_LATERALI" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_LATERALI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_MAISUMTU" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_MAISUMTU
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_ORIENC" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_ORIENC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_TABAGISM" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_TABAGISM
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp5_extracaoDados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Extracao de dados
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pp6_ajuste_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ajustes finais
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analises_pca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Análise PCA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Construção modelos preditivos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Construção modelos preditivos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod_logistico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modelo Logístico Binário
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod_XGB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modelo XGBoosting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Análise de influência das variáveis
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Análise de influência das variáveis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analises_shap_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SHAP do modelo logístico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../analises_shap_xgb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SHAP do modelo XGB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Biblioteca de Funções
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Biblioteca de Funções
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../funcoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funções específicas do contexto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../funcoes_ulf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funções genéricas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bib_graficos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Funções gráficas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf" class="md-nav__link">
+    <span class="md-ellipsis">
+      pp4_transf
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf--roteiro-de-execucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Roteiro de execucao:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.PRITRATH_dividir_tratamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      PRITRATH_dividir_tratamentos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.TIPOHIST_dividir" class="md-nav__link">
+    <span class="md-ellipsis">
+      TIPOHIST_dividir
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TIPOHIST_dividir">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pp4_transf.TIPOHIST_dividir--1-digito-o-grau-de-diferenciacao-ou-fenotipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 dígito o grau de diferenciação ou fenótipo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.TNM_PTNM_dividir" class="md-nav__link">
+    <span class="md-ellipsis">
+      TNM_PTNM_dividir
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.define_valor_esperado" class="md-nav__link">
+    <span class="md-ellipsis">
+      define_valor_esperado
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.gera_distancias" class="md-nav__link">
+    <span class="md-ellipsis">
+      gera_distancias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.gera_intervalos" class="md-nav__link">
+    <span class="md-ellipsis">
+      gera_intervalos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.infere_BASMAIMP" class="md-nav__link">
+    <span class="md-ellipsis">
+      infere_BASMAIMP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.infere_ESTDFIMT" class="md-nav__link">
+    <span class="md-ellipsis">
+      infere_ESTDFIMT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_ALCOOLIS" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_ALCOOLIS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_BASMAIMP" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_BASMAIMP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_DIAGANT" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_DIAGANT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_EXDIAG" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_EXDIAG
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_HISTFAMC" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_HISTFAMC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_LATERALI" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_LATERALI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_MAISUMTU" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_MAISUMTU
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_ORIENC" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_ORIENC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pp4_transf.trata_TABAGISM" class="md-nav__link">
+    <span class="md-ellipsis">
+      trata_TABAGISM
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Transformações</h1>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="pp4_transf"></a>
+    <div class="doc doc-contents first">
+
+        <p>Registros Hospitalares de Câncer (RHC) - Transformações dos dados.</p>
+<p>MBA em Data Science e Analytics - USP/Esalq - 2025</p>
+<p>@author: Ulf Bergmann</p>
+<h2 id="pp4_transf--roteiro-de-execucao">Roteiro de execucao:</h2>
+<pre><code>1. Gera intervalos de tempo a partir das datas dos eventos 
+2. Cria uma nova variavel para descrever o resultado (sucesso/insucesso) do tratamento
+3. Transforma os valores nulos em Não Informados (normalemente 9)
+4. Desmembra os tratamentos realizados em primeiro trat e seguintes
+5. Salvar o arquivo como parquet
+</code></pre>
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.PRITRATH_dividir_tratamentos" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">PRITRATH_dividir_tratamentos</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Analisa PRITRATH e desmembra a sequencia de tratamentos.</p>
+
+
+<details class="cria-as-colunas" open>
+  <summary>Cria as colunas</summary>
+  <p>PRITRATH  123 =&gt; _Gerada_PRITRATH_Primeiro 1  |  _Gerada_PRITRATH_Seguintes 23  | _Gerada_PRITRATH_NrTratamentos 3
+_Gerada_Fez ... =&gt; para cada tratamento</p>
+</details>
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>df</code>
+            </td>
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame a ser transformado / analisado</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">PRITRATH_dividir_tratamentos</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analisa PRITRATH e desmembra a sequencia de tratamentos.</span>
+
+<span class="sd">    Cria as colunas:</span>
+<span class="sd">        PRITRATH  123 =&gt; _Gerada_PRITRATH_Primeiro 1  |  _Gerada_PRITRATH_Seguintes 23  | _Gerada_PRITRATH_NrTratamentos 3</span>
+<span class="sd">        _Gerada_Fez ... =&gt; para cada tratamento</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># df[&quot;PRITRATH_Primeiro&quot;] = df[&quot;PRITRATH&quot;].apply(lambda x: x[0])</span>
+
+    <span class="c1"># df[&quot;PRITRATH_Seguintes&quot;] = df[&quot;PRITRATH&quot;].apply(lambda x: x[1:])</span>
+    <span class="c1"># # df[&#39;PRITRATH_Seguintes&#39;] = df[&#39;PRITRATH&#39;].apply(lambda x: np.nan if (x == &#39;&#39;) else x)</span>
+
+    <span class="c1"># df[&quot;PRITRATH_NrTratamentos&quot;] = df[&quot;PRITRATH&quot;].apply(lambda x: len(x))</span>
+
+
+    <span class="c1">#gerar campo adicional </span>
+    <span class="c1"># 2. Cirurgia; 3.Radioterapia; 4.Quimioterapia; 5.Hormonioterapia; 6.Transplante de medula óssea;7.Imunoterapia;8 .Outras</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_Fez_Cirurgia&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRITRATH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_Fez_Radioterapia&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRITRATH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_Fez_Quimioterapia&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRITRATH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_Fez_Hormonioterapia&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRITRATH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_Fez_Transplante&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRITRATH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;6&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_Fez_Imunoterapia&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRITRATH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;7&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_Fez_OutroTrat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRITRATH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;8&#39;</span><span class="p">)</span>  <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>   
+
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_PRITRATH_NrTratamentos&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRITRATH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+
+    <span class="n">max_length</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRITRATH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_length</span><span class="p">):</span>
+        <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="s2">&quot;_Gerada_PRITRATH&quot;</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRITRATH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span>
+            <span class="s2">&quot;Gerar / Transformar Dados&quot;</span><span class="p">,</span> <span class="s2">&quot;Desmembramento de PRITRATH &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.TIPOHIST_dividir" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">TIPOHIST_dividir</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Analisa TIPOHIST e desmembra.</p>
+
+
+<details class="cria-as-colunas" open>
+  <summary>Cria as colunas</summary>
+  <p>_TIPOHIST_CELULAR: 4 dígitos do tipo celular (histologia)
+_TIPOHIST_BIOLOGICO: 1 dígito comportamento biológico</p>
+<h3 id="pp4_transf.TIPOHIST_dividir--1-digito-o-grau-de-diferenciacao-ou-fenotipo">1 dígito o grau de diferenciação ou fenótipo</h3>
+</details>
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>df</code>
+            </td>
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame a ser transformado / analisado</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">TIPOHIST_dividir</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analisa TIPOHIST e desmembra.</span>
+
+<span class="sd">    Cria as colunas:</span>
+<span class="sd">        _TIPOHIST_CELULAR: 4 dígitos do tipo celular (histologia)</span>
+<span class="sd">        _TIPOHIST_BIOLOGICO: 1 dígito comportamento biológico</span>
+<span class="sd">        # 1 dígito o grau de diferenciação ou fenótipo</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="c1"># Aplicando a função para criar novas colunas</span>
+    <span class="n">df_aux</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;_AnaliseTIPOHIST&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;exato&#39;</span><span class="p">]</span>
+
+
+    <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;_Gerada_TIPOHIST_CELULAR&#39;</span><span class="p">,</span> <span class="s1">&#39;_Gerada_TIPOHIST_BIOLOGICO&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;TIPOHIST&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">pat</span> <span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span> <span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.TNM_PTNM_dividir" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">TNM_PTNM_dividir</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">a_var</span><span class="o">=</span><span class="s1">&#39;TNM&#39;</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Analisa TNM e desmembra em T  N  e   M</p>
+
+
+<details class="cria-as-colunas" open>
+  <summary>Cria as colunas</summary>
+  <p>_Gerada_TNM_T   _Gerada_TNM_N   _Gerada_TNM_M</p>
+</details>
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>df</code>
+            </td>
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame a ser transformado / analisado</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">TNM_PTNM_dividir</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">a_var</span> <span class="o">=</span> <span class="s1">&#39;TNM&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analisa TNM e desmembra em T  N  e   M</span>
+
+<span class="sd">    Cria as colunas:</span>
+<span class="sd">        _Gerada_TNM_T   _Gerada_TNM_N   _Gerada_TNM_M</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a_analise</span> <span class="o">=</span> <span class="s1">&#39;_Analise&#39;</span> <span class="o">+</span> <span class="n">a_var</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="n">a_analise</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;exato&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_analise</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="s1">&#39;_Gerada_&#39;</span> <span class="o">+</span> <span class="n">a_var</span> <span class="o">+</span> <span class="s1">&#39;_T&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">a_var</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="n">a_analise</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;exato&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_analise</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="s1">&#39;_Gerada_&#39;</span> <span class="o">+</span> <span class="n">a_var</span> <span class="o">+</span> <span class="s1">&#39;_N&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">a_var</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="n">a_analise</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;exato&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_analise</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;incompleto&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="s1">&#39;_Gerada_&#39;</span> <span class="o">+</span> <span class="n">a_var</span> <span class="o">+</span> <span class="s1">&#39;_M&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">a_var</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span>
+            <span class="s2">&quot;Gerar / Transformar Dados&quot;</span><span class="p">,</span> <span class="s2">&quot;Desmembramento de &quot;</span> <span class="o">+</span> <span class="n">a_var</span> <span class="p">,</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.define_valor_esperado" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">define_valor_esperado</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Analisa ESTDFIMT e cria a variavel categorica _RESFINAL com resposta / sem resposta / sem informacao</p>
+<p>Resultado esperado.  ESTDFIMT ==&gt;&gt; Variável dependente _RESFINAL
+1.Sem evidência da doença (remissão completa); 2.Remissão parcial; ===&gt;&gt;&gt; com resposta
+3.Doença estável; 4.Doença em progressão; 5.Suporte terapêutico oncológico; 6. Óbito;  ===&gt;&gt;&gt; sem resposta
+8. Não se aplica; 9. Sem informação ===&gt;&gt;&gt; sem informacao</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>df</code>
+            </td>
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame a ser transformado / analisado</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">define_valor_esperado</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analisa ESTDFIMT e cria a variavel categorica _RESFINAL com resposta / sem resposta / sem informacao</span>
+
+<span class="sd">    Resultado esperado.  ESTDFIMT ==&gt;&gt; Variável dependente _RESFINAL</span>
+<span class="sd">    1.Sem evidência da doença (remissão completa); 2.Remissão parcial; ===&gt;&gt;&gt; com resposta</span>
+<span class="sd">    3.Doença estável; 4.Doença em progressão; 5.Suporte terapêutico oncológico; 6. Óbito;  ===&gt;&gt;&gt; sem resposta</span>
+<span class="sd">    8. Não se aplica; 9. Sem informação ===&gt;&gt;&gt; sem informacao</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># gerar variavel dependente binaria =&gt; sucesso ou nao</span>
+    <span class="n">com</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span> <span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">]</span>
+    <span class="n">sem</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;3&quot;</span> <span class="p">,</span> <span class="s2">&quot;4&quot;</span> <span class="p">,</span> <span class="s2">&quot;5&quot;</span> <span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">]</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_RESFINAL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_ESTDFIMT&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">com</span><span class="p">),</span> <span class="s1">&#39;com resposta&#39;</span><span class="p">,</span> 
+                               <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_ESTDFIMT&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">sem</span><span class="p">)</span> <span class="p">,</span> <span class="s1">&#39;sem resposta&#39;</span> <span class="p">,</span> <span class="s1">&#39;sem informacao&#39;</span> <span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span>
+            <span class="s2">&quot;Gerar / Transformar Dados&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Analise de ESTDFIMT e criacao da variavel dependente _Gerada_RESFINAL &quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.gera_distancias" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">gera_distancias</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Geracao da distancia entre a residencia e o local de tratamento - MUUH - PROCEDEN</p>
+<p>Gerar intervalos:
+    _distancia_tratamento = km entre MUUH - PROCEDEN</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>df</code>
+            </td>
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame a ser transformado / analisado</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">gera_distancias</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Geracao da distancia entre a residencia e o local de tratamento - MUUH - PROCEDEN</span>
+
+<span class="sd">      Gerar intervalos:</span>
+<span class="sd">        _distancia_tratamento = km entre MUUH - PROCEDEN</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">tabela_distancias</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;dados/consolidado/&quot;</span> <span class="o">+</span> <span class="s1">&#39;tab_distancias&#39;</span> <span class="o">+</span> <span class="s2">&quot;.parquet&quot;</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_distancia_tratamento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">linha</span><span class="p">:</span> <span class="n">calcular_distancia</span><span class="p">(</span><span class="n">linha</span> <span class="p">,</span> <span class="n">tabela_distancias</span><span class="p">)</span> <span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">del</span> <span class="n">tabela_distancias</span>
+    <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span>
+            <span class="s2">&quot;Gerar / Transformar Dados&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Geracao de distancias entre PROCEDEN e MUUH &quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.gera_intervalos" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">gera_intervalos</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Geracao de intervalos de tempo e selecao dos registros.</p>
+<p>Gerar intervalos:
+    _Gerada_tempo_para_diagnostico = dias desde DATAPRICON ate DTDIAGNO
+    _Gerada_tempo_para_inicio_tratamento = dias desde DATAPRICON e DATAINITRT</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>df</code>
+            </td>
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame a ser transformado / analisado</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">gera_intervalos</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Geracao de intervalos de tempo e selecao dos registros.</span>
+
+<span class="sd">      Gerar intervalos:</span>
+<span class="sd">        _Gerada_tempo_para_diagnostico = dias desde DATAPRICON ate DTDIAGNO</span>
+<span class="sd">        _Gerada_tempo_para_inicio_tratamento = dias desde DATAPRICON e DATAINITRT</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="c1"># _tempo_para_diagnostico =&gt; Tempo para o diagnóstico: Tempo em dias da data da 1a consulta até a data do diagnóstico = pode ser positiva, quando o paciente fez o diagnóstico já no hospital; negativa, quando o paciente já chegou com o diagnóstico. Para fins de indicador, devem ser usados os tempos ≥ 0.</span>
+    <span class="n">a_var_analise_datapricon</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">get_nome_coluna_indicador_variavel</span><span class="p">(</span><span class="s1">&#39;DATAPRICON&#39;</span><span class="p">)</span>
+    <span class="n">a_var_analise_dtdiagno</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">get_nome_coluna_indicador_variavel</span><span class="p">(</span><span class="s1">&#39;DTDIAGNO&#39;</span><span class="p">)</span>
+    <span class="n">a_var_analise_datainitrt</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">get_nome_coluna_indicador_variavel</span><span class="p">(</span><span class="s1">&#39;DATAINITRT&#39;</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_tempo_para_diagnostico&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> 
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DTDIAGNO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">|</span>  <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DATAPRICON&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">|</span>
+            <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_var_analise_datapricon</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span>
+            <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_var_analise_dtdiagno</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="p">,</span>     <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DTDIAGNO&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DATAPRICON&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">days</span><span class="p">)</span>
+
+    <span class="c1"># _temp_para_inicio_tratamento =&gt; Tempo em dias entre a data do diagnóstico (ou data da consulta (DATAPRICON)), na ausência da data do diagnóstico) até o início do tratamento: deve ser ≥ 0     </span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_tempo_para_inicio_tratamento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DATAINITRT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_var_analise_datainitrt</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>   <span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="p">,</span>
+                                         <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DATAINITRT&#39;</span><span class="p">]</span> <span class="o">-</span> 
+                                              <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DTDIAGNO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">())</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_var_analise_dtdiagno</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">,</span> 
+                                                       <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DTDIAGNO&#39;</span><span class="p">],</span> 
+                                                       <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DATAPRICON&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">days</span><span class="p">)</span>
+
+    <span class="c1"># Para sabermos o tempo para óbito, seria o tempo em anos da data do diagnóstico (quando não houver usar DATAPRICON) até a data do óbito. Assim, podemos considerar os mesmos critérios acima: tempo para o diagnóstico ≥ 0 e tempo para início do tratamento ≥ 0, somente dos casos sem diagnóstico e sem tratamento anterior. </span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_tempo_para_obito&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DATAOBITO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>   <span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="p">,</span>
+                                         <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DATAOBITO&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DTDIAGNO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DTDIAGNO&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DATAPRICON&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">days</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span>
+            <span class="s2">&quot;Gerar / Transformar Dados&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Geracao das variaveis de tempo &lt;_Gerada_tempo_para_diagnostico&gt; &lt;_Gerada_tempo_para_inicio_tratamento&gt;  &lt;_Gerada_tempo_para_obito&gt;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.infere_BASMAIMP" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">infere_BASMAIMP</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Tenta inferir os valores corretos para os nulos de BASMAIMP através de outras variaveis. Atualiza a variavel global df_unico.</p>
+<p>BASMAIMP e BASDIAGSP: informacoes coerentes entre eles. Preencho os valores 0 com os correspondentes preenchidos de BASDIAGSP
+regras quando BASMAIMP for 0
+'1' =&gt; '1'   REGRA APLICADA
+'2' =&gt; '2' | '3' | '4'
+'3' =&gt; '5' | '6' | '7'</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">infere_BASMAIMP</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tenta inferir os valores corretos para os nulos de BASMAIMP através de outras variaveis. Atualiza a variavel global df_unico.</span>
+
+<span class="sd">    BASMAIMP e BASDIAGSP: informacoes coerentes entre eles. Preencho os valores 0 com os correspondentes preenchidos de BASDIAGSP</span>
+<span class="sd">    regras quando BASMAIMP for 0</span>
+<span class="sd">    &#39;1&#39; =&gt; &#39;1&#39;   REGRA APLICADA</span>
+<span class="sd">    &#39;2&#39; =&gt; &#39;2&#39; | &#39;3&#39; | &#39;4&#39;</span>
+<span class="sd">    &#39;3&#39; =&gt; &#39;5&#39; | &#39;6&#39; | &#39;7&#39;</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># =============================================================================</span>
+
+    <span class="c1"># =============================================================================</span>
+
+    <span class="c1"># a = df_unico[&#39;BASMAIMP&#39;].value_counts(dropna=False, normalize=False)</span>
+    <span class="c1"># b = df_unico[&#39;BASDIAGSP&#39;].value_counts(dropna=False, normalize=False)</span>
+    <span class="c1"># c = df_unico.groupby([&#39;BASMAIMP&#39; , &#39;BASDIAGSP&#39;] , observed=True).agg({&#39;TPCASO&#39; : &#39;count&#39;})</span>
+    <span class="n">aux_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;BASMAIMP&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;BASMAIMP&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;BASDIAGSP&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="n">aux_quant</span> <span class="o">=</span> <span class="n">aux_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;BASMAIMP&#39;</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;BASMAIMP&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;BASMAIMP&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;BASDIAGSP&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;_Gerada_BASMAIMP&quot;</span><span class="p">,</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;1&quot;</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span>
+            <span class="s2">&quot;Gerar / Transformar Dados&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Gerar a variavel _Gerada_BASMAIMP com o valor inferido de BASMAIMP a partir de BASDIAGSP. Regra 0 &lt;= 1. Falta definir outras regras aplicaveis&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">aux_quant</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="n">logar_indicador</span><span class="p">(</span>
+        <span class="s2">&quot;Correcoes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Inferencia Dados&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Inferir o valor de BASMAIMP a partir de BASDIAGSP. Regra 0 &lt;= 1. &quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BASMAIMP&quot;</span><span class="p">,</span>
+        <span class="n">aux_quant</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.infere_ESTDFIMT" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">infere_ESTDFIMT</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dias_para_obito</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Tenta inferir os valores corretos para os nulos de ESTDFIMT através de outras variaveis. Atualiza a variavel global df_unico.</p>
+<p>ESTDFIMT nulo e DATAOBITO ate o intervalo de tempo a partir da DATAINITRT</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>df</code>
+            </td>
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>dataframe com os dados a serem analisados</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>dias_para_obito</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>intervalo de tempo a ser considerado</p>
+              </div>
+            </td>
+            <td>
+                  <code>365</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">infere_ESTDFIMT</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dias_para_obito</span><span class="o">=</span><span class="mi">365</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tenta inferir os valores corretos para os nulos de ESTDFIMT através de outras variaveis. Atualiza a variavel global df_unico.</span>
+
+<span class="sd">    ESTDFIMT nulo e DATAOBITO ate o intervalo de tempo a partir da DATAINITRT</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): dataframe com os dados a serem analisados</span>
+<span class="sd">        dias_para_obito (int): intervalo de tempo a ser considerado</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="n">aux_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ESTDFIMT&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;8&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ESTDFIMT&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;9&quot;</span><span class="p">))</span>
+        <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;DATAOBITO&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()))</span>
+        <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_tempo_para_obito&quot;</span><span class="p">]</span> <span class="o">&lt;</span>  <span class="n">dias_para_obito</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="n">aux_quant</span> <span class="o">=</span> <span class="n">aux_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_ESTDFIMT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ESTDFIMT&#39;</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ESTDFIMT&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;8&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ESTDFIMT&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;9&quot;</span><span class="p">))</span>
+        <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;DATAOBITO&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()))</span>
+        <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;_Gerada_tempo_para_obito&quot;</span><span class="p">]</span> <span class="o">&lt;</span>  <span class="n">dias_para_obito</span><span class="p">),</span>
+        <span class="s2">&quot;_Gerada_ESTDFIMT&quot;</span><span class="p">,</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;6&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">logar_acao_realizada</span><span class="p">(</span>
+            <span class="s2">&quot;Gerar / Transformar Dados&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;Gerar a variavel _Gerada_ESTDFIMT com o valor de ESTDFIMT inferido a partir do intervalo de </span><span class="si">{</span><span class="n">dias_para_obito</span><span class="si">}</span><span class="s2"> do obito&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">aux_quant</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">log</span><span class="o">.</span><span class="n">logar_indicador</span><span class="p">(</span>
+        <span class="s2">&quot;Correcoes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Inferencia Dados&quot;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s2">&quot;Inferir o valor de ESTDFIMT a partir da DATAOBITO - </span><span class="si">{</span><span class="n">dias_para_obito</span><span class="si">}</span><span class="s2"> dias &quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ESTDFIMT&quot;</span><span class="p">,</span>
+        <span class="n">aux_quant</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.trata_ALCOOLIS" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">trata_ALCOOLIS</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Trata a coluna ALCOOLIS gerando a coluna _Gerada_ALCOOLIS .
+ALCOOLIS = 3 ==&gt;&gt; _Gerada_ALCOOLIS = True
+Parameters:
+    df (DataFrame): DataFrame a ser transformado / analisado</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">trata_ALCOOLIS</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trata a coluna ALCOOLIS gerando a coluna _Gerada_ALCOOLIS .</span>
+<span class="sd">    ALCOOLIS = 3 ==&gt;&gt; _Gerada_ALCOOLIS = True</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a_var</span> <span class="o">=</span> <span class="s1">&#39;ALCOOLIS&#39;</span>
+    <span class="n">a_new_col</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;_Gerada_</span><span class="si">{</span><span class="n">a_var</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">a_new_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_var</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.trata_BASMAIMP" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">trata_BASMAIMP</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Trata a coluna BASMAIMP gerando as colunas especificas para cada tipo.
+    _Gerada_BASMAIMP_CLIN: 1.Clínica;
+    _Gerada_BASMAIMP_PESQ: 2.Pesquisa clínica;
+    _Gerada_BASMAIMP_IMG: 3.Exame por imagem;
+    _Gerada_BASMAIMP_MARTUM: 4.Marcadores tumorais;
+    _Gerada_BASMAIMP_CIT: 5.Citologia; 
+    _Gerada_BASMAIMP_MET: 6.Histologia da metástase;
+    _Gerada_BASMAIMP_TUMPRIM: 7.Histologia do tumor primário;
+Parameters:
+    df (DataFrame): DataFrame a ser transformado / analisado</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">trata_BASMAIMP</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trata a coluna BASMAIMP gerando as colunas especificas para cada tipo.</span>
+<span class="sd">        _Gerada_BASMAIMP_CLIN: 1.Clínica;</span>
+<span class="sd">        _Gerada_BASMAIMP_PESQ: 2.Pesquisa clínica;</span>
+<span class="sd">        _Gerada_BASMAIMP_IMG: 3.Exame por imagem;</span>
+<span class="sd">        _Gerada_BASMAIMP_MARTUM: 4.Marcadores tumorais;</span>
+<span class="sd">        _Gerada_BASMAIMP_CIT: 5.Citologia; </span>
+<span class="sd">        _Gerada_BASMAIMP_MET: 6.Histologia da metástase;</span>
+<span class="sd">        _Gerada_BASMAIMP_TUMPRIM: 7.Histologia do tumor primário;</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP_CLIN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP_PESQ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP_IMG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP_MARTUM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;4&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP_CIT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;5&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP_MET&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;6&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP_TUMPRIM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_BASMAIMP&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;7&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.trata_DIAGANT" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">trata_DIAGANT</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Trata a coluna DIAGANT gerando as colunas especificas para cada tipo.
+    _Gerada_DIAGANT_DIAG: 2  ou  3
+    _Gerada_DIAGANT_TRAT: 3
+Parameters:
+    df (DataFrame): DataFrame a ser transformado / analisado</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">trata_DIAGANT</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trata a coluna DIAGANT gerando as colunas especificas para cada tipo.</span>
+<span class="sd">        _Gerada_DIAGANT_DIAG: 2  ou  3</span>
+<span class="sd">        _Gerada_DIAGANT_TRAT: 3</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_DIAGANT_DIAG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DIAGANT&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DIAGANT&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_DIAGANT_TRAT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DIAGANT&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.trata_EXDIAG" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">trata_EXDIAG</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Trata a coluna EXDIAG gerando as colunas especificas para cada tipo.
+    _Gerada_EXDIAG_EXCLIN: 1.Exame clínico e patologia clínica; 
+    _Gerada_EXDIAG_IMG: 2.Exames por imagem;
+    _Gerada_EXDIAG_END_CIR: 3.Endoscopia e cirurgia exploradora;
+    _Gerada_EXDIAG_PAT; 4. Patologia
+    _Gerada_EXDIAG_MARC: 5.Marcadores tumorais;
+Parameters:
+    df (DataFrame): DataFrame a ser transformado / analisado</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">trata_EXDIAG</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trata a coluna EXDIAG gerando as colunas especificas para cada tipo.</span>
+<span class="sd">        _Gerada_EXDIAG_EXCLIN: 1.Exame clínico e patologia clínica; </span>
+<span class="sd">        _Gerada_EXDIAG_IMG: 2.Exames por imagem;</span>
+<span class="sd">        _Gerada_EXDIAG_END_CIR: 3.Endoscopia e cirurgia exploradora;</span>
+<span class="sd">        _Gerada_EXDIAG_PAT; 4. Patologia</span>
+<span class="sd">        _Gerada_EXDIAG_MARC: 5.Marcadores tumorais;</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_EXDIAG_EXCLIN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;EXDIAG&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_EXDIAG_IMG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;EXDIAG&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_EXDIAG_END_CIR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;EXDIAG&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_EXDIAG_PAT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;EXDIAG&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;4&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_EXDIAG_MARC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;EXDIAG&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;5&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.trata_HISTFAMC" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">trata_HISTFAMC</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Trata a coluna HISTFAMC gerando a coluna _Gerada_ALCOOLIS .
+HISTFAMC = 1 ==&gt;&gt; _Gerada_HISTFAMC = True
+Parameters:
+    df (DataFrame): DataFrame a ser transformado / analisado</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">trata_HISTFAMC</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trata a coluna HISTFAMC gerando a coluna _Gerada_ALCOOLIS .</span>
+<span class="sd">    HISTFAMC = 1 ==&gt;&gt; _Gerada_HISTFAMC = True</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a_var</span> <span class="o">=</span> <span class="s1">&#39;HISTFAMC&#39;</span>
+    <span class="n">a_new_col</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;_Gerada_</span><span class="si">{</span><span class="n">a_var</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">a_new_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_var</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.trata_LATERALI" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">trata_LATERALI</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Trata a coluna LATERALI gerando a coluna _Gerada_LATERALI_ESQ ou _Gerada_LATERALI_DIR.
+LATERALI = 2 ou 3 ==&gt;&gt; _Gerada_LATERALI_ESQ
+LATERALI = 1 ou 3 ==&gt;&gt; _Gerada_LATERALI_DIR
+Parameters:
+    df (DataFrame): DataFrame a ser transformado / analisado</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span>
+<span class="normal">574</span>
+<span class="normal">575</span>
+<span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">trata_LATERALI</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trata a coluna LATERALI gerando a coluna _Gerada_LATERALI_ESQ ou _Gerada_LATERALI_DIR.</span>
+<span class="sd">    LATERALI = 2 ou 3 ==&gt;&gt; _Gerada_LATERALI_ESQ</span>
+<span class="sd">    LATERALI = 1 ou 3 ==&gt;&gt; _Gerada_LATERALI_DIR</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_LATERALI_ESQ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;LATERALI&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;LATERALI&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;_Gerada_LATERALI_DIR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;LATERALI&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;LATERALI&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.trata_MAISUMTU" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">trata_MAISUMTU</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Trata a coluna MAISUMTU gerando a coluna _Gerada_MAISUMTU .
+MAISUMTU = 2 ==&gt;&gt; True
+Parameters:
+    df (DataFrame): DataFrame a ser transformado / analisado</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">585</span>
+<span class="normal">586</span>
+<span class="normal">587</span>
+<span class="normal">588</span>
+<span class="normal">589</span>
+<span class="normal">590</span>
+<span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">trata_MAISUMTU</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trata a coluna MAISUMTU gerando a coluna _Gerada_MAISUMTU .</span>
+<span class="sd">    MAISUMTU = 2 ==&gt;&gt; True</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a_var</span> <span class="o">=</span> <span class="s1">&#39;MAISUMTU&#39;</span>
+    <span class="n">a_new_col</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;_Gerada_</span><span class="si">{</span><span class="n">a_var</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">a_new_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_var</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.trata_ORIENC" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">trata_ORIENC</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Trata a coluna TABAGISM gerando a coluna _Gerada__ORIENC_SUS .
+ORIENC = 1 ==&gt;&gt; True
+Parameters:
+    df (DataFrame): DataFrame a ser transformado / analisado</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">601</span>
+<span class="normal">602</span>
+<span class="normal">603</span>
+<span class="normal">604</span>
+<span class="normal">605</span>
+<span class="normal">606</span>
+<span class="normal">607</span>
+<span class="normal">608</span>
+<span class="normal">609</span>
+<span class="normal">610</span>
+<span class="normal">611</span>
+<span class="normal">612</span>
+<span class="normal">613</span>
+<span class="normal">614</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">trata_ORIENC</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trata a coluna TABAGISM gerando a coluna _Gerada__ORIENC_SUS .</span>
+<span class="sd">    ORIENC = 1 ==&gt;&gt; True</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a_var</span> <span class="o">=</span> <span class="s1">&#39;ORIENC&#39;</span>
+    <span class="n">a_new_col</span> <span class="o">=</span> <span class="s1">&#39;_Gerada_ORIENC_SUS&#39;</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">a_new_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_var</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="pp4_transf.trata_TABAGISM" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">trata_TABAGISM</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Trata a coluna TABAGISM gerando a coluna _Gerada_TABAGISM .
+TABAGISM = 3 ==&gt;&gt; True
+Parameters:
+    df (DataFrame): DataFrame a ser transformado / analisado</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>df modificado</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="quote">
+              <summary>Source code in <code>pp4_transf.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span>
+<span class="normal">561</span>
+<span class="normal">562</span>
+<span class="normal">563</span>
+<span class="normal">564</span>
+<span class="normal">565</span>
+<span class="normal">566</span>
+<span class="normal">567</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">trata_TABAGISM</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trata a coluna TABAGISM gerando a coluna _Gerada_TABAGISM .</span>
+<span class="sd">    TABAGISM = 3 ==&gt;&gt; True</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        df (DataFrame): DataFrame a ser transformado / analisado</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (DataFrame): df modificado</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a_var</span> <span class="o">=</span> <span class="s1">&#39;TABAGISM&#39;</span>
+    <span class="n">a_new_col</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;_Gerada_</span><span class="si">{</span><span class="n">a_var</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">a_new_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">a_var</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;3&#39;</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

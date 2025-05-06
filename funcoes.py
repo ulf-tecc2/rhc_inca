@@ -12,6 +12,8 @@ import os
 
 from tabulate import tabulate
 
+import pickle
+
 
 class Log:
     def __init__(self):
@@ -105,6 +107,8 @@ class Log:
                 "DTPRICON",
                 "DIAGANT",
                 "BASMAIMP",
+                "_Gerada_BASMAIMP",
+                "_Gerada_BASMAIMP",
                 "LOCTUDET",
                 "LOCTUPRI",
                 "TIPOHIST",
@@ -119,6 +123,7 @@ class Log:
                 "DTINITRT",
                 "PRITRATH",
                 "ESTDFIMT",
+                "_Gerada_ESTDFIMT",
                 "CNES",
                 "UFUH",
                 "MUUH",
@@ -250,8 +255,129 @@ def lista_valores_unicos(df, lista_colunas):
     return
 
 def filtrar_registros_validos(df):
-    #ver apenas os casos analiticos e que fizeram tratamento
-    values = ['1', '2' , '3' , '4' , '5' , '6' , '7']
-    b = df[df['RZNTR'].isin(values) | (df['TPCASO'] != '1')]
+    """Responde apenas os registros validos para a modelagem: Casos Analiticos e com Tratamento
+
+    Parameters:
+        df (DataFrame): dados a serem filtrados
+
+    Returns:
+
+    """
+    if '_TeveTratamento' in df.columns:
+        b = df[(df['_TeveTratamento'] == False) | (df['TPCASO'] != '1')]
+    else:
+        b = df[(~df['PRITRATH'].str.contains(r'^[1-8]+$', regex=True, na=False)) | (df['TPCASO'] != '1')]
+
     df_validos = df.drop(b.index, inplace = False)
+    
+    
+
     return df_validos
+
+def get_nome_coluna_indicador_variavel(var):
+    a_name = f'_Indicador{var}'
+    return a_name
+
+def get_dict_names_colunas(df):
+    
+    colunas = list(df.columns)
+    colunas_geradas_inconsistentes = [s for s in colunas if s.startswith('_Indicador')]
+    colunas_geradas_analise = [s for s in colunas if s.startswith('_Analise')]
+    colunas_negocio = [s for s in colunas if not s.startswith('_')]
+    colunas_geradas_negocio =  [s for s in colunas if s.startswith('_Gerada_')] 
+    
+    a_dict = {
+        'inconsistente' : colunas_geradas_inconsistentes,
+        'analise' : colunas_geradas_analise,
+        'negocio' : colunas_negocio,
+        'geradas' : colunas_geradas_negocio
+        }
+    
+    return a_dict
+    
+
+def save_objects(a_dict , dir_name):
+    """Salva os objetos definidos no dicionario.
+    
+    key: nome do objeto
+    value: objeto a ser salvo
+    nomes dos arquivos serao dir_padrao/dir_name/nome_objeto.pkl 
+
+    Parameters:
+        a_dict (Dictionary): dicionario com pares nome / objeto a serem salvos
+        dir_name (String): diretorio de destino
+
+    """
+    dir_padrao = "dados/workdir/"
+    root_dir_name = os.path.join(dir_padrao, dir_name)
+    os.makedirs(root_dir_name, exist_ok=True)
+    
+    for a_key in a_dict:
+        file_name = os.path.join(root_dir_name, a_key) + '.pkl'
+        with open(file_name, 'wb') as file:  
+            pickle.dump(a_dict[a_key], file)
+            
+          
+def load_objects(dir_name):
+    """carrega os objetos de dir_name em um dicionario
+    key: nome do objeto
+    value: objeto carregado
+
+    Parameters:
+        dir_name (String): diretorio de destino
+
+    Returns:
+        a_dict (Dictionary): dicionario com pares nome / objeto carregados
+    """
+    
+    dir_padrao = "dados/workdir/"
+    root_dir_name = os.path.join(dir_padrao, dir_name)
+    
+     # ver se diretorio existe
+    if not os.access(root_dir_name, os.F_OK):
+         return
+    a_dict = {}
+    for a_name in os.listdir(root_dir_name):
+        a_file_name = os.path.join(root_dir_name, a_name)
+        print(a_file_name)
+        if os.path.isfile(a_file_name):
+            with open(a_file_name, 'rb') as file:  
+                an_obj = pickle.load(file)
+            a_dict[a_name.removesuffix('.pkl')] = an_obj
+                
+    return a_dict    
+
+def obter_modelo_salvo(a_name):
+    a_dict = load_objects(a_name)
+    return a_dict['modelo']
+
+def save_model(model_name , model):
+    """Salva o modelo.
+
+    Parameters:
+        model_name (String): nome do modelo para gerar o nome do arquivo pkl
+        model (Modelo): modelo a ser salvo
+
+    """
+    dir_padrao = "dados/models/"
+
+    file_name = os.path.join(dir_padrao, model_name) + '.pkl'
+    with open(file_name, 'wb') as file:  
+        pickle.dump(model, file)
+
+def load_model(model_name):
+    
+    dir_padrao = "dados/models/"
+    
+    a_file_name = os.path.join(dir_padrao, model_name) + '.pkl'
+    with open(a_file_name, 'rb') as file:  
+        a_model = pickle.load(file)
+        
+    return a_model
+
+def carrega_modelos(file_sufix = ''):
+    mod_log = load_model('LogisticoBinario_Escolhido' + file_sufix)
+    mod_rf = load_model('RandonForest_Model' + file_sufix)
+    mod_xgb = load_model('XGBoost_Model' + file_sufix)
+    
+    return mod_log , mod_rf , mod_xgb

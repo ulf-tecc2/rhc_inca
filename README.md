@@ -33,7 +33,7 @@ A figura abaixo mostra as etapas e artefatos gerados no processo de preparação
 
 ## Conjunto de Dados
 
-**Arquivos com os conjntos de dados gerados - Período de 1985 a 2022** 
+**Arquivos com os conjuntos de dados gerados - Período de 1985 a 2022** 
 
 
 #### Dados brutos consolidados em um arquivo único (CSV)
