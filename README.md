@@ -14,12 +14,17 @@ Dr Luiz Claudio Santos Thuler - Pesquisador do INCA - lthuler@inca.gov.br.
 ## Contexto
 Este projeto foi desenvolvido no contexto do MBA em Data Science e Analytics - USP/Esalq - 2025 e se baseia nos dados disponibilizados pelo IntegradorRHC, um sistema desenvolvido pelo INCA – Instituto Nacional de Câncer, para consolidação de casos assistidos nas Unidades Hospitalares após eliminação de multiplicidades. Os dados são provenientes dos Registros Hospitalares de Câncer (RHC) de todo o Brasil e são de acesso público no Instituto Nacional de Câncer [INCA] (2023a), abrangendo o período de 1985 até 2022 (Instituto Nacional de Câncer [INCA], 2011).
 
+## Texto completo do Projeto
+[**TCC Ulf Bergmann**](https://drive.google.com/uc?export=download&id=1qyhOfIxizJ61APhmKrJnQQVIi9kcMR6-) 
+
 ## Objetivos
 Este projeto foi desenvolvido a partir dos dados disponíveis no IntegradorRHC com dois objetivos principais:
 
 a. Identificar transformações nos dados que possam completar informações ausentes, melhorando o indicador de Completude, e transformações que possam identificar e resolver inconsistências, todas com o objetivo de contribuir para que pesquisadores da área tenham acesso a melhores e mais completas informações sobre o tratamento oncológico no Brasil. 
 
-b. Utilização da base na construção de modelos de Machine Learning para a predição da resposta ao primeiro tratamento identificando oportunidades de melhoria nas ações de saúde pública no tratamento oncológico.
+b. Utilização da base na construção de modelos de Machine Learning para a predição da resposta ao primeiro tratamento
+
+c. Analisar os modelos criados identificando oportunidades de melhoria nas ações de saúde pública no tratamento oncológico.
 
 ## Processo Utilizado
 A figura abaixo mostra as etapas e artefatos gerados no processo de preparação dos dados obtidos a partir do RHC/INCA
@@ -35,30 +40,24 @@ A figura abaixo mostra as etapas e artefatos gerados no processo de preparação
 
 **Arquivos com os conjuntos de dados gerados - Período de 1985 a 2022** 
 
+### Dicionário de Dados
+[**Dicionario de Dados**](https://drive.google.com/uc?export=download&id=1qyhOfIxizJ61APhmKrJnQQVIi9kcMR6-) 
+
 
 #### Dados brutos consolidados em um arquivo único (CSV)
-[**Base Consolidada**](https://drive.google.com/uc?export=download&id=1cuQM-6iXD0h1iRdbIxkAS8epgMval-E0) 
+[**Base Consolidada**](https://drive.google.com/uc?export=download&id=1qyhOfIxizJ61APhmKrJnQQVIi9kcMR6-) 
 
 
-#### Dados com tipos definidos (arquivo parquet)
-[**Base Inicial  (parquet)**](https://drive.google.com/uc?export=download&id=1uPpY5HqBnu1Wk4rDjFAJuEATV-LUHJw_) 
-
- 
-
-#### Dados com resultado das análises e sanitização (arquivo parquet)
-[**Base Sanitizada  (parquet)**](https://drive.google.com/uc?export=download&id=1r1THemc6rytFb_etlB_VF4nLoQrPnnWS) 
-
+#### Dados originais com a adição dos resultados das análises (arquivo parquet)
+[**Base Indicadores  (parquet)**](https://drive.google.com/uc?export=download&id=1IHJwb28UrgB3LBBbwIf52tQJaoI_UwGW) 
 
 
 #### Dados com resultado das transformações e inferências (arquivo parquet)
-[**Base Transformada  (parquet)**](https://drive.google.com/uc?export=download&id=1EwoECP30XTOj5fbbNQhgYXxElE_hNeKx) 
-
+[**Base Transformada  (parquet)**](https://drive.google.com/uc?export=download&id=1WPlX4Wga_6OFTU64MLJVX8dTT917tEkS) 
 
 
 #### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet)
-[**Base Modelagem (parquet)**](https://drive.google.com/uc?export=download&id=1IC6QiskG5XYzO5uKxgYO9nZlppzw0zta) 
-
-
+[**Base Modelagem (parquet)**](https://drive.google.com/uc?export=download&id=1frbCZfJOa_ZBPDG6BTGB7OsjhxMDBfs3) 
 
 
 ## Analises e Conclusões

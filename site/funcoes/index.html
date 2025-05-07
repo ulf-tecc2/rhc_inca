@@ -1017,8 +1017,9 @@
 <a id="funcoes"></a>
     <div class="doc doc-contents first">
 
-        <p>Created on Sun Dec 22 07:46:21 2024</p>
-<p>@author: ulf</p>
+        <p>Registros Hospitalares de Câncer (RHC) - Funções específicas do projeto.</p>
+<p>MBA em Data Science e Analytics - USP/Esalq - 2025</p>
+<p>@author: Ulf Bergmann</p>
 
 
 
@@ -1059,10 +1060,7 @@
 
               <details class="quote">
                 <summary>Source code in <code>funcoes.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
-<span class="normal"> 21</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 21</span>
 <span class="normal"> 22</span>
 <span class="normal"> 23</span>
 <span class="normal"> 24</span>
@@ -1231,7 +1229,10 @@
 <span class="normal">187</span>
 <span class="normal">188</span>
 <span class="normal">189</span>
-<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Log</span><span class="p">:</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Log</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__acoes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tipo&quot;</span><span class="p">,</span> <span class="s2">&quot;descricao&quot;</span><span class="p">,</span> <span class="s2">&quot;indicador&quot;</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__indicadores</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># key: tipo value: DataFrame</span>
@@ -1459,10 +1460,7 @@
 
             <details class="quote">
               <summary>Source code in <code>funcoes.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span>
@@ -1474,7 +1472,10 @@
 <span class="normal">58</span>
 <span class="normal">59</span>
 <span class="normal">60</span>
-<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">asString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">asString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Mostra o log como string.</span>
 
 <span class="sd">    Parameters:</span>
@@ -1598,10 +1599,7 @@
 
             <details class="quote">
               <summary>Source code in <code>funcoes.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
@@ -1619,7 +1617,10 @@
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">logar_acao_realizada</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">,</span> <span class="n">descricao</span><span class="p">,</span> <span class="n">indicador</span><span class="p">):</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">logar_acao_realizada</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tipo</span><span class="p">,</span> <span class="n">descricao</span><span class="p">,</span> <span class="n">indicador</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Registra no Log uma acao realizada.</span>
 
 <span class="sd">    Parameters:</span>
@@ -1695,10 +1696,7 @@
 
             <details class="quote">
               <summary>Source code in <code>funcoes.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
@@ -1709,7 +1707,10 @@
 <span class="normal">74</span>
 <span class="normal">75</span>
 <span class="normal">76</span>
-<span class="normal">77</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">salvar_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">salvar_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Salva o log em arquivo excel.</span>
 
 <span class="sd">    Parameters:</span>
@@ -1787,10 +1788,7 @@
 
             <details class="quote">
               <summary>Source code in <code>funcoes.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">260</span>
 <span class="normal">261</span>
 <span class="normal">262</span>
 <span class="normal">263</span>
@@ -1805,7 +1803,10 @@
 <span class="normal">272</span>
 <span class="normal">273</span>
 <span class="normal">274</span>
-<span class="normal">275</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">filtrar_registros_validos</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">filtrar_registros_validos</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Responde apenas os registros validos para a modelagem: Casos Analiticos e com Tratamento</span>
 
 <span class="sd">    Parameters:</span>
@@ -1902,10 +1903,7 @@ value: objeto carregado</p>
 
             <details class="quote">
               <summary>Source code in <code>funcoes.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">321</span>
-<span class="normal">322</span>
-<span class="normal">323</span>
-<span class="normal">324</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">324</span>
 <span class="normal">325</span>
 <span class="normal">326</span>
 <span class="normal">327</span>
@@ -1929,7 +1927,10 @@ value: objeto carregado</p>
 <span class="normal">345</span>
 <span class="normal">346</span>
 <span class="normal">347</span>
-<span class="normal">348</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_objects</span><span class="p">(</span><span class="n">dir_name</span><span class="p">):</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_objects</span><span class="p">(</span><span class="n">dir_name</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;carrega os objetos de dir_name em um dicionario</span>
 <span class="sd">    key: nome do objeto</span>
 <span class="sd">    value: objeto carregado</span>
@@ -2011,16 +2012,16 @@ value: objeto carregado</p>
 
             <details class="quote">
               <summary>Source code in <code>funcoes.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">220</span>
 <span class="normal">221</span>
 <span class="normal">222</span>
 <span class="normal">223</span>
 <span class="normal">224</span>
 <span class="normal">225</span>
-<span class="normal">226</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">salvar_csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">):</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">salvar_csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Salva o df em arquivo CSV.</span>
 
 <span class="sd">    Parameters:</span>
@@ -2084,17 +2085,17 @@ value: objeto carregado</p>
 
             <details class="quote">
               <summary>Source code in <code>funcoes.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">235</span>
 <span class="normal">236</span>
 <span class="normal">237</span>
 <span class="normal">238</span>
 <span class="normal">239</span>
 <span class="normal">240</span>
 <span class="normal">241</span>
-<span class="normal">242</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">salvar_excel</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">):</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">salvar_excel</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Salva o df em arquivo excel no diretorio padrao de dados consolidados.</span>
 
 <span class="sd">    Parameters:</span>
@@ -2159,16 +2160,16 @@ value: objeto carregado</p>
 
             <details class="quote">
               <summary>Source code in <code>funcoes.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
 <span class="normal">211</span>
 <span class="normal">212</span>
 <span class="normal">213</span>
-<span class="normal">214</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">salvar_parquet</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">):</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">salvar_parquet</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nome_arquivo</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Salva o df em arquivo parquet.</span>
 
 <span class="sd">    Parameters:</span>
@@ -2247,10 +2248,7 @@ value: objeto carregado</p>
 
             <details class="quote">
               <summary>Source code in <code>funcoes.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">354</span>
-<span class="normal">355</span>
-<span class="normal">356</span>
-<span class="normal">357</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">357</span>
 <span class="normal">358</span>
 <span class="normal">359</span>
 <span class="normal">360</span>
@@ -2259,7 +2257,10 @@ value: objeto carregado</p>
 <span class="normal">363</span>
 <span class="normal">364</span>
 <span class="normal">365</span>
-<span class="normal">366</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">save_model</span><span class="p">(</span><span class="n">model_name</span> <span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">save_model</span><span class="p">(</span><span class="n">model_name</span> <span class="p">,</span> <span class="n">model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Salva o modelo.</span>
 
 <span class="sd">    Parameters:</span>
@@ -2344,10 +2345,7 @@ nomes dos arquivos serao dir_padrao/dir_name/nome_objeto.pkl </p>
 
             <details class="quote">
               <summary>Source code in <code>funcoes.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">299</span>
-<span class="normal">300</span>
-<span class="normal">301</span>
-<span class="normal">302</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">302</span>
 <span class="normal">303</span>
 <span class="normal">304</span>
 <span class="normal">305</span>
@@ -2363,7 +2361,10 @@ nomes dos arquivos serao dir_padrao/dir_name/nome_objeto.pkl </p>
 <span class="normal">315</span>
 <span class="normal">316</span>
 <span class="normal">317</span>
-<span class="normal">318</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">save_objects</span><span class="p">(</span><span class="n">a_dict</span> <span class="p">,</span> <span class="n">dir_name</span><span class="p">):</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">save_objects</span><span class="p">(</span><span class="n">a_dict</span> <span class="p">,</span> <span class="n">dir_name</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Salva os objetos definidos no dicionario.</span>
 
 <span class="sd">    key: nome do objeto</span>

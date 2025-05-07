@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 
-"""Registros Hospitalares de Câncer (RHC) - Carregamento e consolidacao inicial dos dados.
+"""Registros Hospitalares de Câncer (RHC) - Geração dos indicadores de incompletude e inconsistência.
 
 MBA em Data Science e Analytics - USP/Esalq - 2025
 
 @author: ulf Bergmann
-
-#Roteiro de execucao:
-
 
 """
 

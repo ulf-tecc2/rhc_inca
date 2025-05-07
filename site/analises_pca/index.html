@@ -855,7 +855,7 @@
 <a id="analises_pca"></a>
     <div class="doc doc-contents first">
 
-        <p>Registros Hospitalares de Câncer (RHC) - Modelo Logistico.</p>
+        <p>Registros Hospitalares de Câncer (RHC) - Aplicação do método PCA.</p>
 <p>MBA em Data Science e Analytics - USP/Esalq - 2025</p>
 <p>@author: Ulf Bergmann</p>
 
@@ -899,7 +899,13 @@ var_list(list) : variable column name in df.</p>
 
             <details class="quote">
               <summary>Source code in <code>analises_pca.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
 <span class="normal">46</span>
@@ -924,13 +930,7 @@ var_list(list) : variable column name in df.</p>
 <span class="normal">65</span>
 <span class="normal">66</span>
 <span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_loading</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">var_list</span><span class="p">):</span>
+<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_loading</span><span class="p">(</span><span class="n">df</span> <span class="p">,</span> <span class="n">var_list</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Plot loading factors.</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>

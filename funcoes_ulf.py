@@ -6,15 +6,6 @@
 
 This module allows the user to reuse common functions allow ML projects.
 
-The module contains the following functions:
-
-- 'plot_boxplot_for_variables - Plot a boxplot for all variables in variables_list.
-- 'def search_for_categorical_variables' - Identify how many unique values exists in each column from df.
-- 'plot_frequencias_valores_atributos' - Plot the frequency graphic for the attribute values for each variable in lista_atributos.
-- 'plot_correlation_heatmap' = Plot the correlation betwenn pairs of continuos variables.
-- 'def analyse_correlation_continuos_variables' - Analyse and plot the correlation betwenn pairs of continuos variables.
-- 'analyse_plot_correlation_categorical_variables' - Analyse and plot the correlation betwenn pairs of categorical variables. 
-
 @author: ulf Bergmann
 
 """

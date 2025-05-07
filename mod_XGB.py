@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Mar 21 15:16:53 2025
-
-@author: ulf
-"""
-
-# -*- coding: utf-8 -*-
-"""Registros Hospitalares de Câncer (RHC) - Treinamento com reducao do overfittin.
+"""Registros Hospitalares de Câncer (RHC) - Construcao do Modelo XGBoosting.
 
 MBA em Data Science e Analytics - USP/Esalq - 2025
 

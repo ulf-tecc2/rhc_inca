@@ -8,15 +8,6 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 
 """
 
-# =============================================================================
-# Definicao de inconsistencia (variavel VAR)
-#     - valores de VAR fora do dominio especifico 
-#     - valores de VAR inconsistente com outras variaveis
-# =============================================================================
-
-
-
-
 import pandas as pd
 import numpy as np
 import sys

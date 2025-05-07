@@ -1,18 +1,13 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Mar 21 11:38:57 2025
 
-@author: ulf
-"""
-
-# -*- coding: utf-8 -*-
-"""Registros Hospitalares de Câncer (RHC) - Modelo Logistico.
+"""Registros Hospitalares de Câncer (RHC) - Ajustes finais dos dados.
 
 MBA em Data Science e Analytics - USP/Esalq - 2025
 
 @author: Ulf Bergmann
 
 """
+
 
 import pandas as pd
 import numpy as np

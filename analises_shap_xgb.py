@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Registros Hospitalares de Câncer (RHC) - Analise da influencia das variaveis na predicao.
+"""Registros Hospitalares de Câncer (RHC) - Analise da influencia das variaveis na predicao do modelo XGBoosting.
 
 MBA em Data Science e Analytics - USP/Esalq - 2025
 

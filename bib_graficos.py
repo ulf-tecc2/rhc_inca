@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Sep  4 07:10:33 2024
+"""Provide several functions to create graphics.
 
-@author: ulf
+This module allows the user to reuse common functions allow ML projects.
+
+@author: ulf Bergmann
+
 """
 
 import pandas as pd # manipulação de dados em formato de dataframe

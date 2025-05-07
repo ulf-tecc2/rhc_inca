@@ -6,10 +6,6 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 
 @author: Ulf Bergmann
 
-
-#Roteiro de execucao:
-
-
 """
 
 import pandas as pd

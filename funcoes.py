@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun Dec 22 07:46:21 2024
+"""Registros Hospitalares de Câncer (RHC) - Funções específicas do projeto.
 
-@author: ulf
+MBA em Data Science e Analytics - USP/Esalq - 2025
+
+@author: Ulf Bergmann
+
 """
+
 import dbfread as db
 import pandas as pd
 import numpy as np

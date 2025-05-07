@@ -1,16 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Registros Hospitalares de Câncer (RHC) - Modelo Logistico.
+"""Registros Hospitalares de Câncer (RHC) - Aplicação do método PCA.
 
 MBA em Data Science e Analytics - USP/Esalq - 2025
 
 @author: Ulf Bergmann
 """
-
-# =============================================================================
-# Usar a PCA para reduzir a dimensionalidade do conjunto de dados.
-#  Ela gera novas variáveis (componentes principais) que são combinações das variáveis originais e não possuem colinearidade.
-# =============================================================================
-
 
 import pandas as pd
 import numpy as np

@@ -5,15 +5,17 @@ MBA em Data Science e Analytics - USP/Esalq - 2025
 
 @author: Ulf Bergmann
 
-
-#Roteiro de execucao:
-    1. Gera intervalos de tempo a partir das datas dos eventos 
-    2. Cria uma nova variavel para descrever o resultado (sucesso/insucesso) do tratamento
-    3. Transforma os valores nulos em Não Informados (normalemente 9)
-    4. Desmembra os tratamentos realizados em primeiro trat e seguintes
-    5. Salvar o arquivo como parquet
-
 """
+
+
+# #Roteiro de execucao:
+#     1. Gera intervalos de tempo a partir das datas dos eventos 
+#     2. Cria uma nova variavel para descrever o resultado (sucesso/insucesso) do tratamento
+#     3. Transforma os valores nulos em Não Informados (normalemente 9)
+#     4. Desmembra os tratamentos realizados em primeiro trat e seguintes
+#     5. Salvar o arquivo como parquet
+    
+    
 import re
 
 import pandas as pd
@@ -31,41 +33,6 @@ from funcoes import Log
 import funcoes as f
 import bib_graficos as ug
 
-# def gera_intervalo_DATAOBITO(df):
-#     """Analisa os valores da variavel DATAOBITO gerando a variavel <_intervalo obito> .
-    
-#     Analisar DATAOBITO DATAINITRT  : 
-#         1) calcular intervalo do tratamento com o obito
-#         - possui DATAOBITO - Data de fim do intervalo
-#         - data a considerar para inicio:   
-#             a) DATAINITRT se não nulo
-#             b) DATAPRICON demais casos (nao tem nulos))
-    
-#     Parameters:
-#         df (DataFrame): DataFrame a ser transformado / analisado
-
-#     Returns:
-#         (DataFrame): df modificado com as colunas inseridas
-#     """     
-#     df['_intervalo obito'] = np.where( df['DATAOBITO'].isnull()   , np.nan ,
-#                                          (df['DATAOBITO'] - np.where(~df['DATAINITRT'].isnull(), df['DATAINITRT'], df['DATAPRICON'])).dt.days)
-
-#     a_valor = df['_intervalo obito'].quantile(0.90)
-#     a_media = df['_intervalo obito'].mean()
-#     a = df[(df['_intervalo obito'] > 0) & (df['_intervalo obito'] < a_media + a_valor)]
-    
-#     ug.plot_frequencias_valores_atributos(a , ['_intervalo obito'] , bins = 20 , title = 'Intervalo ate o obito (dias)')
-#     ug.plota_histograma_distribuicao(a , '_intervalo obito' )
-    
-#     print(
-#         log.logar_acao_realizada(
-#             "Analise de valores",
-#             "Geracao da variavel <_intervalo obito>",
-#             "",
-#         )
-#     )
-    
-#     return df
 
 def calcular_distancia(linha , tabela_distancias):
     cod_origem = linha['MUUH']
