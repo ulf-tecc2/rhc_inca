@@ -12,10 +12,13 @@ Dr Luiz Claudio Santos Thuler - Pesquisador do INCA - lthuler@inca.gov.br.
 
 
 ## Contexto
-Este projeto foi desenvolvido no contexto do MBA em Data Science e Analytics - USP/Esalq - 2025 e se baseia nos dados disponibilizados pelo IntegradorRHC, um sistema desenvolvido pelo INCA – Instituto Nacional de Câncer, para consolidação de casos assistidos nas Unidades Hospitalares após eliminação de multiplicidades. Os dados são provenientes dos Registros Hospitalares de Câncer (RHC) de todo o Brasil e são de acesso público no Instituto Nacional de Câncer [INCA] (2023a), abrangendo o período de 1985 até 2022 (Instituto Nacional de Câncer [INCA], 2011).
+Este projeto foi desenvolvido no contexto do MBA em Data Science e Analytics - USP/Esalq - 2025 e se baseia nos dados disponibilizados pelo IntegradorRHC, um sistema desenvolvido pelo INCA – Instituto Nacional de Câncer, para consolidação de casos assistidos nas Unidades Hospitalares após eliminação de multiplicidades. Os dados são provenientes dos Registros Hospitalares de Câncer (RHC) de todo o Brasil e são de acesso público no Instituto Nacional de Câncer, abrangendo o período de 1985 até 2022.
 
-## Texto completo do projeto
+## Texto completo do trabalho
 [**TCC Ulf Bergmann**](https://drive.google.com/uc?export=download&id=1UMaaKiLV0aFuifEHfdy-WHjCRuhMp6Jh) 
+
+## Base de Dados do Integrador RHC
+[**Integrador RHC - INCA**](https://irhc.inca.gov.br/)
 
 ## Objetivos
 Este projeto foi desenvolvido a partir dos dados disponíveis no IntegradorRHC com dois objetivos principais:
