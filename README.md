@@ -14,8 +14,8 @@ Dr Luiz Claudio Santos Thuler - Pesquisador do INCA - lthuler@inca.gov.br.
 ## Contexto
 Este projeto foi desenvolvido no contexto do MBA em Data Science e Analytics - USP/Esalq - 2025 e se baseia nos dados disponibilizados pelo IntegradorRHC, um sistema desenvolvido pelo INCA – Instituto Nacional de Câncer, para consolidação de casos assistidos nas Unidades Hospitalares após eliminação de multiplicidades. Os dados são provenientes dos Registros Hospitalares de Câncer (RHC) de todo o Brasil e são de acesso público no Instituto Nacional de Câncer [INCA] (2023a), abrangendo o período de 1985 até 2022 (Instituto Nacional de Câncer [INCA], 2011).
 
-## Texto completo do Projeto
-[**TCC Ulf Bergmann**](https://drive.google.com/uc?export=download&id=1qyhOfIxizJ61APhmKrJnQQVIi9kcMR6-) 
+## Texto completo do projeto
+[**TCC Ulf Bergmann**](https://drive.google.com/uc?export=download&id=1UMaaKiLV0aFuifEHfdy-WHjCRuhMp6Jh) 
 
 ## Objetivos
 Este projeto foi desenvolvido a partir dos dados disponíveis no IntegradorRHC com dois objetivos principais:
@@ -41,7 +41,7 @@ A figura abaixo mostra as etapas e artefatos gerados no processo de preparação
 **Arquivos com os conjuntos de dados gerados - Período de 1985 a 2022** 
 
 ### Dicionário de Dados
-[**Dicionario de Dados**](https://drive.google.com/uc?export=download&id=1qyhOfIxizJ61APhmKrJnQQVIi9kcMR6-) 
+[**Dicionario de Dados**](https://drive.google.com/uc?export=download&id=1-n6Kq8QZONDfHlJa4a_K5-2cO8HHPWUx) 
 
 
 #### Dados brutos consolidados em um arquivo único (CSV)
@@ -59,11 +59,6 @@ A figura abaixo mostra as etapas e artefatos gerados no processo de preparação
 #### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet)
 [**Base Modelagem (parquet)**](https://drive.google.com/uc?export=download&id=1frbCZfJOa_ZBPDG6BTGB7OsjhxMDBfs3) 
 
-
-## Analises e Conclusões
-**Arquivo com os resultados detalhados das analises e conclusoes**
-
-[**Indicadores**](dados/Publicos/Resultados.xlsx) 
 
 
 
