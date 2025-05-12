@@ -44,7 +44,7 @@ A figura abaixo mostra as etapas e artefatos gerados no processo de preparação
 
 ## Conjunto de Dados
 
-**Arquivos com os conjuntos de dados gerados -  - Gerados com os dados disponibilizados no IntegradorRHC em 12/05/2025 envolvendo o período de 1985 a 2023** 
+**Arquivos com os conjuntos de dados gerados com os dados disponibilizados no IntegradorRHC em 12/05/2025 (período de 1985 a 2023)** 
 
 
 #### Dados brutos consolidados em um arquivo único
