@@ -157,7 +157,41 @@ def ulf_grid_search(fixed_param ,  X_train, X_test, y_train, y_test , param_dist
         
     return indicadores , modelos
     
+def plot_curvas_roc(modelo, X_train, y_train, X_test, y_test):
+    p_train = modelo.predict_proba(X_train)[:, 1]
+    # c_train = modelo.predict(X_train)
+    
+    p_test = modelo.predict_proba(X_test)[:, 1]
+    # c_test = modelo.predict(X_test)
 
+    auc_train = roc_auc_score(y_train, p_train)
+    auc_test = roc_auc_score(y_test, p_test)
+    
+    print(f'Avaliação base de treino: AUC = {auc_train:.2f}')
+    print(f'Avaliação base de teste: AUC = {auc_test:.2f}')
+    
+    fpr_train, tpr_train, _ = roc_curve(y_train, p_train)
+    fpr_test, tpr_test, _ = roc_curve(y_test, p_test)
+    
+    fig, ax = plt.subplots(figsize=(10,6))
+
+    plt.plot(fpr_train, tpr_train, color='red', label=f'Treino AUC = {auc_train:.2f}')
+    plt.plot(fpr_test, tpr_test, color='blue', label=f'Teste AUC = {auc_test:.2f}')
+    plt.plot([0, 1], [0, 1], color='black', linestyle='--')
+  
+    plt.title('', fontsize=22)
+    ax.set_xlabel('Falso Positivo', fontsize=11, fontfamily='arial')  ## Tamanho e tipo de fonte
+    ax.set_ylabel('Verdadeiro Positivo', fontsize=11, fontfamily='arial') 
+       
+    ax.spines['bottom'].set_linewidth(1.5)  ## Eixo X
+    ax.spines['left'].set_linewidth(1.5)    ## Eixo Y
+    ax.spines['top'].set_linewidth(0)  ## Eixo X
+    ax.spines['right'].set_linewidth(0)    ## Eixo Y
+
+    plt.xticks(np.arange(0, 1.1, 0.2), fontsize=11)
+    plt.yticks(np.arange(0, 1.1, 0.2), fontsize=11)
+    plt.legend(fontsize = 11)
+    plt.show()
 
 #%% Carga dos dados
 
@@ -433,6 +467,16 @@ best_model_param1 = {'gamma': 0.1, 'lambda': 1, 'learning_rate': 0.05, 'max_dept
 best_model_param2 = {'gamma': 0.1, 'lambda': 1, 'learning_rate': 0.05, 'max_depth': 10, 'n_estimators': 1100}
 best_model_param3 = {'gamma': 0.1, 'lambda': 1, 'learning_rate': 0.05, 'max_depth': 10, 'n_estimators': 1200}
 param = best_model_param1
+
+#%%% Curva ROC
+
+modelo = XGBClassifier(**param)  
+
+modelo.fit(X_train , y_train)
+
+plot_curvas_roc(modelo, X_train, y_train, X_test, y_test)
+    
+# ug.plot_curvas_roc(df , var_dep , ['phat_step'])
 
 
 #%%% learning_curve

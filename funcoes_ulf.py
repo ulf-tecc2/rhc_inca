@@ -917,7 +917,7 @@ def obter_distancia(cod_origem , cod_destino , gmaps):
         return f"Erro ao calcular distância: {str(e)}"
     
     
-# google_maps_api_key = 'AIzaSyB1J_GG1WCrkDU0X2Z45Ao_Y6vXfYIz71w'
+
 # gmaps = googlemaps.Client(key=google_maps_api_key)
 
 # cod_origem = '3304557'

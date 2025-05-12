@@ -267,13 +267,13 @@ def filtrar_registros_validos(df):
 
     """
     if '_TeveTratamento' in df.columns:
-        b = df[(df['_TeveTratamento'] == False) | (df['TPCASO'] != '1')]
+        df_validos = df[(df['_TeveTratamento'] == True) & (df['TPCASO'] == '1')]
+        # b = df[(df['_TeveTratamento'] == False) | (df['TPCASO'] != '1')]
     else:
-        b = df[(~df['PRITRATH'].str.contains(r'^[1-8]+$', regex=True, na=False)) | (df['TPCASO'] != '1')]
+        df_validos = df[(df['PRITRATH'].str.contains(r'^[1-8]+$', regex=True, na=False)) & (df['TPCASO'] == '1')]
+        # b = df[(~df['PRITRATH'].str.contains(r'^[1-8]+$', regex=True, na=False)) | (df['TPCASO'] != '1')]
 
-    df_validos = df.drop(b.index, inplace = False)
-    
-    
+    # df_validos = df.drop(b.index, inplace = False)
 
     return df_validos
 

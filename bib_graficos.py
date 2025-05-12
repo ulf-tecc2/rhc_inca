@@ -545,14 +545,24 @@ def plot_curvas_roc_1(modelo, X_train, y_train, X_test, y_test):
     fpr_train, tpr_train, _ = roc_curve(y_train, p_train)
     fpr_test, tpr_test, _ = roc_curve(y_test, p_test)
     
-    plt.figure(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(10,6))
+
     plt.plot(fpr_train, tpr_train, color='red', label=f'Treino AUC = {auc_train:.2f}')
     plt.plot(fpr_test, tpr_test, color='blue', label=f'Teste AUC = {auc_test:.2f}')
     plt.plot([0, 1], [0, 1], color='black', linestyle='--')
-    plt.xlabel('Falso Positivo')
-    plt.ylabel('Verdadeiro Positivo')
-    plt.title('Curva ROC')
-    plt.legend()
+  
+    plt.title('', fontsize=22)
+    ax.set_xlabel('Falso Positivo', fontsize=11, fontfamily='arial')  ## Tamanho e tipo de fonte
+    ax.set_ylabel('Verdadeiro Positivo', fontsize=11, fontfamily='arial') 
+       
+    ax.spines['bottom'].set_linewidth(1.5)  ## Eixo X
+    ax.spines['left'].set_linewidth(1.5)    ## Eixo Y
+    ax.spines['top'].set_linewidth(0)  ## Eixo X
+    ax.spines['right'].set_linewidth(0)    ## Eixo Y
+
+    plt.xticks(np.arange(0, 1.1, 0.2), fontsize=11)
+    plt.yticks(np.arange(0, 1.1, 0.2), fontsize=11)
+    plt.legend(fontsize = 11)
     plt.show()
     
 def plota_predicao_3d(df , var_x , var_y , var_z1 , var_z2, var_z3):

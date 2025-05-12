@@ -1,5 +1,5 @@
 # Registros Hospitalares de Câncer (RHC) - INCA
-Tratamento dos Registros Hospitalares de Câncer (RHC) - INCA, do período de 1985 até 2022 
+Tratamento dos Registros Hospitalares de Câncer (RHC) - INCA
 
 # Autores
 Ulf Bergmann - Aluno do MBA USP/Esalq - ulf@tecc2.com.br
@@ -44,25 +44,24 @@ A figura abaixo mostra as etapas e artefatos gerados no processo de preparação
 
 ## Conjunto de Dados
 
-**Arquivos com os conjuntos de dados gerados - Período de 1985 a 2022** 
+**Arquivos com os conjuntos de dados gerados -  - Gerados com os dados disponibilizados no IntegradorRHC em 12/05/2025 envolvendo o período de 1985 a 2023** 
 
 
-#### Dados brutos consolidados em um arquivo único (CSV)
-[**Base Consolidada**](https://drive.google.com/uc?export=download&id=1qyhOfIxizJ61APhmKrJnQQVIi9kcMR6-) 
+#### Dados brutos consolidados em um arquivo único
+[**Base Consolidada (parquet)**](https://drive.google.com/uc?export=download&id=1fc3h-mADKNJH-4IoDnvoNgKDRq9sPX1w) 
+[**Base Consolidada (csv)**](https://drive.google.com/uc?export=download&id=16gVboyk4sPBVxFrClWNwYFtZN33z2bI8) 
 
 
-#### Dados originais com a adição dos resultados das análises (arquivo parquet)
-[**Base Indicadores  (parquet)**](https://drive.google.com/uc?export=download&id=1IHJwb28UrgB3LBBbwIf52tQJaoI_UwGW) 
+#### Dados originais com a adição dos resultados das análises
+[**Base Indicadores  (parquet)**](https://drive.google.com/uc?export=download&id=1Nyf405Bx2P9W_nHpPcvXgweDyGA3MPtr) 
+[**Base Indicadores  (csv)**](https://drive.google.com/uc?export=download&id=1dlEznmTviMkRmFK0SZjzZriflTRyb-m6) 
 
 
-#### Dados com resultado das transformações e inferências (arquivo parquet)
-[**Base Transformada  (parquet)**](https://drive.google.com/uc?export=download&id=1WPlX4Wga_6OFTU64MLJVX8dTT917tEkS) 
+#### Dados com resultado das transformações e inferências
+[**Base Transformada  (parquet)**](https://drive.google.com/uc?export=download&id=1yTa1QRRNMnVHONzMaav4F-gf9PLe7hRw) 
+[**Base Transformada  (csv)**](https://drive.google.com/uc?export=download&id=1V7zZaP_VztYGLZcz35FPp7RofY1_a_ii)  
 
 
-#### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos (arquivo parquet)
-[**Base Modelagem (parquet)**](https://drive.google.com/uc?export=download&id=1frbCZfJOa_ZBPDG6BTGB7OsjhxMDBfs3) 
-
-
-
-
-
+#### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos
+[**Base Modelagem (parquet)**](https://drive.google.com/uc?export=download&id=1wqUpeVdYuPJoeDawx4hCuySTHAei--r7) 
+[**Base Modelagem (csv)**](https://drive.google.com/uc?export=download&id=1gSDm43alLA_uZi0bnmIKj71jf6fBahDf)  

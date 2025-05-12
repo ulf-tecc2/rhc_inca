@@ -452,6 +452,8 @@ def analisa_PRITRATH(df):
     df['_TeveTratamento'] = False
     df.loc[ df[nome_analise] == 'exato' , '_TeveTratamento'] = True
 
+
+
     # a = df[nome_analise].value_counts(dropna=False, normalize=False)
     # a_df = pd.DataFrame(a)
     # a_df.index.names = ["Atributo"]
@@ -1420,6 +1422,16 @@ if __name__ == "__main__":
             df.shape[0],
         )
     )
+
+# =============================================================================
+# A atualização de abril de 2025 inseriu 9830 linhas duplicadas. Elas precisam ser removidas pois esta
+# dando erro na geracao de indicadores ao usar a seguinte linha:
+# df.loc[ CONDICAO , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+# =============================================================================
+
+    df = df.drop_duplicates()
+
+
 
     df = analisar_dados(df)
     

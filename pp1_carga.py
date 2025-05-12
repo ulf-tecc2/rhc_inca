@@ -48,7 +48,7 @@ def leitura_inicial_dados(dir_bases="dados\\"):
         for nome_arquivo in lista_arquivos:  # para cada subdiretorio
             arquivo = os.path.join(a_dir, nome_arquivo)
             print("Processando arquivo:" + arquivo)
-            aux = db.DBF(arquivo, encoding="utf-8", load=True)
+            aux = db.DBF(arquivo, encoding = "Windows-1252" , load=True) # inicial => encoding="utf-8" update => "Windows-1252"
             a_df = pd.DataFrame(iter(aux))
             df_aux = pd.concat([df_aux, a_df])
             count = count + 1
@@ -159,7 +159,8 @@ def main():
     Returns:
         (DataFrame): df carregado
     """
-    df_unico = f.leitura_arquivo_csv("BaseConsolidada")
+    df_unico = f.leitura_arquivo_parquet('BaseInicialAtualizada') 
+    # df_unico = f.leitura_arquivo_csv("BaseConsolidada")
     print(
         log.logar_acao_realizada(
             "Carga Dados", "Carregamento da base bruta", df_unico.shape[0]
@@ -170,7 +171,7 @@ def main():
     df_unico = definir_tipos_variaveis(df_unico)
 
     # ETAPA INICIAL - SALVAR TRATAMENTO INICIAL
-    f.salvar_parquet(df_unico, "BaseInicial")
+    f.salvar_parquet(df_unico, "BaseInicialAtualizada_com_tipos")
     log.salvar_log("log_BaseInicial")
 
     # df_analiticos = df_unico.loc[df_unico['TPCASO'] == '1']
@@ -180,14 +181,14 @@ def main():
 
 def main_leitura_inicial():
     """Funcao para unir todos os arquivos que estao separados por anos."""
-    df_unico = leitura_inicial_dados(dir_bases="dados\\")
+    df_unico = leitura_inicial_dados(dir_bases="dados/originais/update")
     print(
         log.logar_acao_realizada(
             "Carga Dados", "Consolidacao dos arquivos separados", df_unico.shape[0]
         )
     )
 
-    f.salvar_csv(df_unico, "BaseConsolidada")
+    f.salvar_parquet(df_unico, "BaseInicialAtualizada")
 
 
 if __name__ == "__main__":

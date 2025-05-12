@@ -223,9 +223,14 @@ def TNM_PTNM_dividir(df , a_var = 'TNM'):
         (DataFrame): df modificado
     """
     a_analise = '_Analise' + a_var
-    df.loc[(df[a_analise] == 'exato') | (df[a_analise] == 'incompleto') , '_Gerada_' + a_var + '_T'] = df[a_var].str[0]
-    df.loc[(df[a_analise] == 'exato') | (df[a_analise] == 'incompleto') , '_Gerada_' + a_var + '_N'] = df[a_var].str[1]
-    df.loc[(df[a_analise] == 'exato') | (df[a_analise] == 'incompleto') , '_Gerada_' + a_var + '_M'] = df[a_var].str[2]
+    # df.loc[(df[a_analise] == 'exato') | (df[a_analise] == 'incompleto') , '_Gerada_' + a_var + '_T'] = df[a_var].str[0]
+    # df.loc[(df[a_analise] == 'exato') | (df[a_analise] == 'incompleto') , '_Gerada_' + a_var + '_N'] = df[a_var].str[1]
+    # df.loc[(df[a_analise] == 'exato') | (df[a_analise] == 'incompleto') , '_Gerada_' + a_var + '_M'] = df[a_var].str[2]
+    
+    mascara = (df[a_analise] == 'exato') | (df[a_analise] == 'incompleto') 
+    df.loc[mascara,  '_Gerada_' + a_var + '_T'] = df.loc[mascara, a_var].str[0]
+    df.loc[mascara,  '_Gerada_' + a_var + '_N'] = df.loc[mascara, a_var].str[1]
+    df.loc[mascara,  '_Gerada_' + a_var + '_M'] = df.loc[mascara, a_var].str[2]
     
     print(
         log.logar_acao_realizada(
@@ -330,16 +335,23 @@ def infere_BASMAIMP(df):
     # a = df_unico['BASMAIMP'].value_counts(dropna=False, normalize=False)
     # b = df_unico['BASDIAGSP'].value_counts(dropna=False, normalize=False)
     # c = df_unico.groupby(['BASMAIMP' , 'BASDIAGSP'] , observed=True).agg({'TPCASO' : 'count'})
-    aux_df = df.loc[
-        (df["BASMAIMP"].isnull() | (df["BASMAIMP"] == "0")) & (df["BASDIAGSP"] == "1")
-    ]
-    aux_quant = aux_df.shape[0]
+    
+    mascara = (df["BASMAIMP"].isnull() | (df["BASMAIMP"] == "0")) & (df["BASDIAGSP"] == "1") 
+
+    aux_quant = df.loc[mascara].shape[0]
     
     df['_Gerada_BASMAIMP'] = df['BASMAIMP']
-    df.loc[
-        (df["BASMAIMP"].isnull() | (df["BASMAIMP"] == "0")) & (df["BASDIAGSP"] == "1"),
-        "_Gerada_BASMAIMP",
-    ] = "1"
+    
+    df.loc[mascara,  "_Gerada_BASMAIMP"] = '1'
+    
+    
+    
+    
+    
+    # df.loc[
+    #     (df["BASMAIMP"].isnull() | (df["BASMAIMP"] == "0")) & (df["BASDIAGSP"] == "1"),
+    #     "_Gerada_BASMAIMP",
+    # ] = "1"
     print(
         log.logar_acao_realizada(
             "Gerar / Transformar Dados",
@@ -370,21 +382,20 @@ def infere_ESTDFIMT(df, dias_para_obito=365):
 
     """
     
-   
-    aux_df = df.loc[
-        ((df["ESTDFIMT"] == "8") | (df["ESTDFIMT"] == "9"))
-        & (~(df["DATAOBITO"].isnull()))
-        & (df["_Gerada_tempo_para_obito"] <  dias_para_obito)
-    ]
+    mascara = ((df["ESTDFIMT"] == "8") | (df["ESTDFIMT"] == "9")) & (~(df["DATAOBITO"].isnull())) & (df["_Gerada_tempo_para_obito"] <  dias_para_obito) 
+    aux_df = df.loc[mascara]
 
     aux_quant = aux_df.shape[0]
     df['_Gerada_ESTDFIMT'] = df['ESTDFIMT']
-    df.loc[
-        ((df["ESTDFIMT"] == "8") | (df["ESTDFIMT"] == "9"))
-        & (~(df["DATAOBITO"].isnull()))
-        & (df["_Gerada_tempo_para_obito"] <  dias_para_obito),
-        "_Gerada_ESTDFIMT",
-    ] = "6"
+    
+    df.loc[mascara,  "_Gerada_ESTDFIMT"] = '6'
+    
+    # df.loc[
+    #     ((df["ESTDFIMT"] == "8") | (df["ESTDFIMT"] == "9"))
+    #     & (~(df["DATAOBITO"].isnull()))
+    #     & (df["_Gerada_tempo_para_obito"] <  dias_para_obito),
+    #     "_Gerada_ESTDFIMT",
+    # ] = "6"
 
     print(
         log.logar_acao_realizada(

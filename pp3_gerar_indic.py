@@ -33,8 +33,9 @@ def identifica_inconsistencia_TNM_PTNM(df , a_var = 'TNM'):
     df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
     
     cod_tipo = 'dominio - regra de formato'
-    df.loc[(df[a_analise] == 'demais') | (df[a_analise] == 'invalido') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
-    q_inconsistente = df.loc[(df[a_analise] == 'demais') | (df[a_analise] == 'invalido')].shape[0]
+    mascara = (df[a_analise] == 'demais') | (df[a_analise] == 'invalido')
+    df.loc[mascara , a_inconsistencia] +=  ';' + cod_tipo 
+    q_inconsistente = df.loc[mascara].shape[0]
    
     if q_inconsistente > 0:
         a_dict = {
@@ -51,9 +52,10 @@ def identifica_inconsistencia_TNM_PTNM(df , a_var = 'TNM'):
 #     NULOS e SEM INFO
 # =============================================================================
     cod_tipo = 'valores invalidos (nulos)'
-    q_inconsistente = df.loc[(df[a_analise] == 'nulo')].shape[0]
+    mascara = (df[a_analise] == 'nulo')
+    q_inconsistente = df.loc[mascara].shape[0]
     if q_inconsistente > 0:
-        df.loc[(df[a_analise] == 'nulo') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+        df.loc[(df[a_analise] == 'nulo') , a_inconsistencia] += ';' + cod_tipo 
 
         a_dict = {
             'var' : a_var ,
@@ -68,7 +70,7 @@ def identifica_inconsistencia_TNM_PTNM(df , a_var = 'TNM'):
     cod_tipo = 'valores sem informacao'
     q_inconsistente = df.loc[(df[a_analise] == 'sem_info')].shape[0]
     if q_inconsistente > 0:
-        df.loc[(df[a_analise] == 'sem_info') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+        df.loc[(df[a_analise] == 'sem_info') , a_inconsistencia] += ';' + cod_tipo 
 
         a_dict = {
             'var' : a_var ,
@@ -83,7 +85,7 @@ def identifica_inconsistencia_TNM_PTNM(df , a_var = 'TNM'):
      
     #verificar casos que tem TNM => exato incompleto e e´ pediatrico
     cod_tipo = 'Inconsistente com pediatrico'
-    df.loc[((df[a_analise] == 'exato') | (df[a_analise] == 'incompleto')) & (df['IDADE'] < 20) , a_inconsistencia] =  df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[((df[a_analise] == 'exato') | (df[a_analise] == 'incompleto')) & (df['IDADE'] < 20) , a_inconsistencia] +=  ';' + cod_tipo
     q_inconsistente = df.loc[((df[a_analise] == 'exato') | (df[a_analise] == 'incompleto')) & (df['IDADE'] < 20)].shape[0]
     
     if q_inconsistente > 0:
@@ -100,7 +102,7 @@ def identifica_inconsistencia_TNM_PTNM(df , a_var = 'TNM'):
  
     # Hemato 'nao se aplica - Hemato'
     cod_tipo = 'Inconsistente com hematologico'
-    df.loc[((df[a_analise] == 'exato') | (df[a_analise] == 'incompleto')) & (df['_AnaliseLOCTUDET_tipo'] == 'Hemato') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[((df[a_analise] == 'exato') | (df[a_analise] == 'incompleto')) & (df['_AnaliseLOCTUDET_tipo'] == 'Hemato') , a_inconsistencia] +=  ';' + cod_tipo
     q_inconsistente = df.loc[((df[a_analise] == 'exato') | (df[a_analise] == 'incompleto')) & (df['_AnaliseLOCTUDET_tipo'] == 'Hemato') ].shape[0]
 
     if q_inconsistente > 0:
@@ -137,7 +139,7 @@ def identifica_inconsistencia_ESTADIAM(df):
     df , a_inconsistencia = cria_coluna_inconsistencia( df , 'ESTADIAM')
     
     cod_tipo = 'dominio - regra de formato'
-    df.loc[(df['_AnaliseESTADIAM'] == 'demais') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[(df['_AnaliseESTADIAM'] == 'demais') , a_inconsistencia] += ';' + cod_tipo
     q_inconsistente = df.loc[(df['_AnaliseESTADIAM'] == 'demais') ].shape[0]
 
     
@@ -158,7 +160,7 @@ def identifica_inconsistencia_ESTADIAM(df):
     cod_tipo = 'valores invalidos (nulos)'
     q_inconsistente = df.loc[(df['_AnaliseESTADIAM'] == 'nulo')].shape[0]
     if q_inconsistente > 0:
-        df.loc[(df['_AnaliseESTADIAM'] == 'nulo') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+        df.loc[(df['_AnaliseESTADIAM'] == 'nulo') , a_inconsistencia] += ';' + cod_tipo 
 
         a_dict = {
             'var' : 'ESTADIAM' ,
@@ -173,7 +175,7 @@ def identifica_inconsistencia_ESTADIAM(df):
     cod_tipo = 'valores sem informacao'
     q_inconsistente = df.loc[(df['_AnaliseESTADIAM'] == 'sem_info')].shape[0]
     if q_inconsistente > 0:
-        df.loc[(df['_AnaliseESTADIAM'] == 'sem_info') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+        df.loc[(df['_AnaliseESTADIAM'] == 'sem_info') , a_inconsistencia] += ';' + cod_tipo 
 
         a_dict = {
             'var' : 'ESTADIAM' ,
@@ -187,7 +189,7 @@ def identifica_inconsistencia_ESTADIAM(df):
 
     #verificar casos que tem ESTADIAM => exato  e e´ pediatrico
     cod_tipo = 'Inconsistente com pediatrico'
-    df.loc[((df['_AnaliseESTADIAM'] == 'exato')) & (df['IDADE'] < 20) , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[((df['_AnaliseESTADIAM'] == 'exato')) & (df['IDADE'] < 20) , a_inconsistencia] +=  ';' + cod_tipo
     q_inconsistente = df.loc[(df['_AnaliseESTADIAM'] == 'exato') & (df['IDADE'] < 20)].shape[0]
     
     if q_inconsistente > 0:
@@ -205,7 +207,7 @@ def identifica_inconsistencia_ESTADIAM(df):
 
     #verificar casos que tem ESTADIAM => exato  e e´ pediatrico
     cod_tipo = 'Inconsistente com hematologico'
-    df.loc[((df['_AnaliseESTADIAM'] == 'exato')) & (df['_AnaliseLOCTUDET_tipo'] == 'Hemato') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[((df['_AnaliseESTADIAM'] == 'exato')) & (df['_AnaliseLOCTUDET_tipo'] == 'Hemato') , a_inconsistencia] += ';' + cod_tipo
     q_inconsistente = df.loc[(df['_AnaliseESTADIAM'] == 'exato') & (df['_AnaliseLOCTUDET_tipo'] == 'Hemato')].shape[0]
     
     if q_inconsistente > 0:
@@ -322,7 +324,7 @@ def identifica_inconsistencia_anos(df):
         df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
         
         cod_tipo = 'dominio'
-        df.loc[(~df[a_var].isnull()) & ((df[a_var] < 1900) | (df[a_var] > 2023)) , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+        df.loc[(~df[a_var].isnull()) & ((df[a_var] < 1900) | (df[a_var] > 2023)) , a_inconsistencia] +=  ';' + cod_tipo
         q_inconsistente = df.loc[(~df[a_var].isnull()) & ((df[a_var] < 1900) | (df[a_var] > 2023))].shape[0]
         
         if (q_inconsistente) > 0: 
@@ -354,7 +356,7 @@ def identifica_inconsistencia_datas(df):
         df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
         
         cod_tipo = 'dominio'
-        df.loc[(~df[a_var].isnull()) & ((df[a_var].dt.year < 1900) | (df[a_var].dt.year > 2023)) , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+        df.loc[(~df[a_var].isnull()) & ((df[a_var].dt.year < 1900) | (df[a_var].dt.year > 2023)) , a_inconsistencia] += ';' + cod_tipo
         q_inconsistente = df.loc[(~df[a_var].isnull()) & ((df[a_var].dt.year < 1900) | (df[a_var].dt.year > 2023))].shape[0]
         
         if (q_inconsistente) > 0: 
@@ -384,7 +386,7 @@ def identifica_inconsistencia_IDADE(df):
     df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
     
     cod_tipo = 'dominio'
-    df.loc[(~df[a_var].isnull()) & ((df[a_var] < 0) | (df[a_var] > 110)) , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[(~df[a_var].isnull()) & ((df[a_var] < 0) | (df[a_var] > 110)) , a_inconsistencia] += ';' + cod_tipo
     q_inconsistente = df.loc[(~df[a_var].isnull()) & ((df[a_var] < 0) | (df[a_var] > 110)) ].shape[0]
     
     if (q_inconsistente) > 0: 
@@ -416,7 +418,7 @@ def identifica_inconsistencia_tratamento(df):
     a_var = 'RZNTR'
     df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
     cod_tipo = 'entre variaveis'
-    df.loc[(df['_AnalisePRITRATH'] == 'exato') & (df['_AnaliseRZNTR'] == 'nao_tratou') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[(df['_AnalisePRITRATH'] == 'exato') & (df['_AnaliseRZNTR'] == 'nao_tratou') , a_inconsistencia] += ';' + cod_tipo
     q_inconsistente = df.loc[(df['_AnalisePRITRATH'] == 'exato') & (df['_AnaliseRZNTR'] == 'nao_tratou') ].shape[0]
     
     if (q_inconsistente) > 0: 
@@ -434,7 +436,7 @@ def identifica_inconsistencia_tratamento(df):
     a_var = 'DATAINITRT'
     df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
     cod_tipo = 'entre variaveis'
-    df.loc[(df['_AnalisePRITRATH'] == 'nulo') & (~df['DATAINITRT'].isnull())  , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[(df['_AnalisePRITRATH'] == 'nulo') & (~df['DATAINITRT'].isnull())  , a_inconsistencia] += ';' + cod_tipo
     q_inconsistente =df.loc[(df['_AnalisePRITRATH'] == 'nulo') & (~df['DATAINITRT'].isnull()) ].shape[0]
     
     if (q_inconsistente) > 0: 
@@ -452,7 +454,7 @@ def identifica_inconsistencia_tratamento(df):
     a_var = 'DTINITRT'
     df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
     cod_tipo = 'entre variaveis'
-    df.loc[(df['_AnalisePRITRATH'] == 'nulo') & (~df['DTINITRT'].isnull())  , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[(df['_AnalisePRITRATH'] == 'nulo') & (~df['DTINITRT'].isnull())  , a_inconsistencia] += ';' + cod_tipo
     q_inconsistente =df.loc[(df['_AnalisePRITRATH'] == 'nulo') & (~df['DTINITRT'].isnull()) ].shape[0]
     
     if (q_inconsistente) > 0: 
@@ -471,7 +473,7 @@ def identifica_inconsistencia_tratamento(df):
     a_var = 'ESTDFIMT'
     df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
     cod_tipo = 'entre variaveis'
-    df.loc[(df['_AnalisePRITRATH'] == 'nulo') & df['ESTDFIMT'].isin(range(1,6)) , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[(df['_AnalisePRITRATH'] == 'nulo') & df['ESTDFIMT'].isin(range(1,6)) , a_inconsistencia] += ';' + cod_tipo
     q_inconsistente =df.loc[(df['_AnalisePRITRATH'] == 'nulo') & df['ESTDFIMT'].isin(range(1,6))].shape[0]
     
     if (q_inconsistente) > 0: 
@@ -505,7 +507,7 @@ def identifica_inconsistencia_ordem_datas(df , var_1 , var_2):
     df.loc[
         (~ df[var_2].isnull()) &
         (~ df[var_1].isnull()) &
-        (df[var_2] < df[var_1]) , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+        (df[var_2] < df[var_1]) , a_inconsistencia] += ';' + cod_tipo
     
     q_inconsistente = df.loc[
             (~ df[var_2].isnull()) &
@@ -543,7 +545,7 @@ def identifica_inconsistencia_LOCTU(df):
         df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
         nome_analise = "_Analise" + a_var
         
-        df.loc[(df[nome_analise] == 'incompleto') | (df[nome_analise] == 'demais'), a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+        df.loc[(df[nome_analise] == 'incompleto') | (df[nome_analise] == 'demais'), a_inconsistencia] += ';' + cod_tipo
         q_inconsistente = df.loc[(df[nome_analise] == 'incompleto') | (df[nome_analise] == 'demais') ] .shape[0]
         
         if (q_inconsistente) > 0: 
@@ -563,7 +565,7 @@ def identifica_inconsistencia_LOCTU(df):
         cod_tipo = 'valores invalidos (nulos)'
         q_inconsistente = df.loc[(df[nome_analise] == 'nulo')].shape[0]
         if q_inconsistente > 0:
-            df.loc[(df[nome_analise] == 'nulo') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+            df.loc[(df[nome_analise] == 'nulo') , a_inconsistencia] += ';' + cod_tipo 
 
             a_dict = {
                 'var' : a_var ,
@@ -578,7 +580,7 @@ def identifica_inconsistencia_LOCTU(df):
         cod_tipo = 'valores sem informacao'
         q_inconsistente = df.loc[(df[nome_analise] == 'sem_info')].shape[0]
         if q_inconsistente > 0:
-            df.loc[(df[nome_analise] == 'sem_info') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+            df.loc[(df[nome_analise] == 'sem_info') , a_inconsistencia] += ';' + cod_tipo 
 
             a_dict = {
                 'var' : a_var ,
@@ -599,7 +601,7 @@ def identifica_inconsistencia_TIPOHIST(df):
     df , a_inconsistencia = cria_coluna_inconsistencia( df , 'TIPOHIST')
     
     cod_tipo = 'dominio - regra de formato'
-    df.loc[(df['_AnaliseTIPOHIST'] == 'demais') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[(df['_AnaliseTIPOHIST'] == 'demais') , a_inconsistencia] += ';' + cod_tipo
     q_inconsistente = df.loc[(df['_AnaliseTIPOHIST'] == 'demais') ].shape[0]
 
     
@@ -621,7 +623,7 @@ def identifica_inconsistencia_TIPOHIST(df):
     cod_tipo = 'valores invalidos (nulos)'
     q_inconsistente = df.loc[(df['_AnaliseTIPOHIST'] == 'nulo')].shape[0]
     if q_inconsistente > 0:
-        df.loc[(df['_AnaliseTIPOHIST'] == 'nulo') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+        df.loc[(df['_AnaliseTIPOHIST'] == 'nulo') , a_inconsistencia] += ';' + cod_tipo 
 
         a_dict = {
             'var' : 'TIPOHIST' ,
@@ -636,7 +638,7 @@ def identifica_inconsistencia_TIPOHIST(df):
     cod_tipo = 'valores sem informacao'
     q_inconsistente = df.loc[(df['_AnaliseTIPOHIST'] == 'sem_info')].shape[0]
     if q_inconsistente > 0:
-        df.loc[(df['_AnaliseTIPOHIST'] == 'sem_info') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+        df.loc[(df['_AnaliseTIPOHIST'] == 'sem_info') , a_inconsistencia] += ';' + cod_tipo 
 
         a_dict = {
             'var' : 'TIPOHIST' ,
@@ -659,7 +661,7 @@ def identifica_inconsistencia_municipios(df):
     df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
     
     cod_tipo = 'dominio - regra de formato'
-    df.loc[(df[a_analise] == 'demais') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[(df[a_analise] == 'demais') , a_inconsistencia] += ';' + cod_tipo
     q_inconsistente = df.loc[(df[a_analise] == 'demais') ].shape[0]
     a_dict = {
         'var' : a_var ,
@@ -675,7 +677,7 @@ def identifica_inconsistencia_municipios(df):
     cod_tipo = 'valores invalidos (nulos)'
     q_inconsistente = df.loc[(df[a_analise] == 'nulo')].shape[0]
     if q_inconsistente > 0:
-        df.loc[(df[a_analise] == 'nulo') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+        df.loc[(df[a_analise] == 'nulo') , a_inconsistencia] += ';' + cod_tipo 
         a_dict = {
             'var' : a_var ,
             'criterio' : 'Incompletude' ,
@@ -689,7 +691,7 @@ def identifica_inconsistencia_municipios(df):
     cod_tipo = 'valores sem informacao'
     q_inconsistente = df.loc[(df[a_analise] == 'sem_info')].shape[0]
     if q_inconsistente > 0:
-        df.loc[(df[a_analise] == 'sem_info') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+        df.loc[(df[a_analise] == 'sem_info') , a_inconsistencia] += ';' + cod_tipo 
 
         a_dict = {
             'var' : a_var ,
@@ -706,7 +708,7 @@ def identifica_inconsistencia_municipios(df):
     df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
     
     cod_tipo = 'dominio - regra de formato'
-    df.loc[(df[a_analise] == 'demais') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+    df.loc[(df[a_analise] == 'demais') , a_inconsistencia] += ';' + cod_tipo
     q_inconsistente = df.loc[(df[a_analise] == 'demais') ].shape[0]
     a_dict = {
         'var' : a_var ,
@@ -722,7 +724,7 @@ def identifica_inconsistencia_municipios(df):
     cod_tipo = 'valores invalidos (nulos)'
     q_inconsistente = df.loc[(df[a_analise] == 'nulo')].shape[0]
     if q_inconsistente > 0:
-        df.loc[(df[a_analise] == 'nulo') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+        df.loc[(df[a_analise] == 'nulo') , a_inconsistencia] += ';' + cod_tipo 
         a_dict = {
             'var' : a_var ,
             'criterio' : 'Incompletude' ,
@@ -736,7 +738,7 @@ def identifica_inconsistencia_municipios(df):
     cod_tipo = 'valores sem informacao'
     q_inconsistente = df.loc[(df[a_analise] == 'sem_info')].shape[0]
     if q_inconsistente > 0:
-        df.loc[(df[a_analise] == 'sem_info') , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo 
+        df.loc[(df[a_analise] == 'sem_info') , a_inconsistencia] += ';' + cod_tipo 
 
         a_dict = {
             'var' : a_var ,
@@ -828,7 +830,7 @@ def identifica_incompletude_variaveis(df , lista_var):
             if q_inconsistente > 0:
                 cod_tipo = 'valores invalidos (nulos)'
                 df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
-                df.loc[ df[a_var].isin(nan_values[a_var]) , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+                df.loc[ df[a_var].isin(nan_values[a_var]) , a_inconsistencia] += ';' + cod_tipo
             
                 nome_analise = "_Analise" + a_var
                 b = pd.Series({"Regra Nulo": nan_values[a_var]}, name=nome_analise)
@@ -852,7 +854,7 @@ def identifica_incompletude_variaveis(df , lista_var):
             if q_inconsistente > 0:
                 cod_tipo = 'valores sem informacao'
                 df , a_inconsistencia = cria_coluna_inconsistencia( df , a_var)
-                df.loc[ df[a_var].isin(informacao_ignorada[a_var]) , a_inconsistencia] = df[a_inconsistencia] + ';' + cod_tipo
+                df.loc[ df[a_var].isin(informacao_ignorada[a_var]) , a_inconsistencia] += ';' + cod_tipo
             
                 nome_analise = "_Analise" + a_var
                 b = pd.Series({"Regra Sem Informacao": informacao_ignorada[a_var]}, name=nome_analise)
