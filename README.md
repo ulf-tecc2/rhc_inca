@@ -49,19 +49,23 @@ A figura abaixo mostra as etapas e artefatos gerados no processo de preparação
 
 #### Dados brutos consolidados em um arquivo único
 [**Base Consolidada (parquet)**](https://drive.google.com/uc?export=download&id=1fc3h-mADKNJH-4IoDnvoNgKDRq9sPX1w) 
+
 [**Base Consolidada (csv)**](https://drive.google.com/uc?export=download&id=16gVboyk4sPBVxFrClWNwYFtZN33z2bI8) 
 
 
 #### Dados originais com a adição dos resultados das análises
 [**Base Indicadores  (parquet)**](https://drive.google.com/uc?export=download&id=1Nyf405Bx2P9W_nHpPcvXgweDyGA3MPtr) 
+
 [**Base Indicadores  (csv)**](https://drive.google.com/uc?export=download&id=1dlEznmTviMkRmFK0SZjzZriflTRyb-m6) 
 
 
 #### Dados com resultado das transformações e inferências
 [**Base Transformada  (parquet)**](https://drive.google.com/uc?export=download&id=1yTa1QRRNMnVHONzMaav4F-gf9PLe7hRw) 
+
 [**Base Transformada  (csv)**](https://drive.google.com/uc?export=download&id=1V7zZaP_VztYGLZcz35FPp7RofY1_a_ii)  
 
 
 #### Dados de Casos Analíticos pré-processados - Prontos para uso na construção de modelos
 [**Base Modelagem (parquet)**](https://drive.google.com/uc?export=download&id=1wqUpeVdYuPJoeDawx4hCuySTHAei--r7) 
+
 [**Base Modelagem (csv)**](https://drive.google.com/uc?export=download&id=1gSDm43alLA_uZi0bnmIKj71jf6fBahDf)  
